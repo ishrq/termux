@@ -1,0 +1,58 @@
+# Query feed
+"query:Today:unread = \"yes\" and age < 1 and tags !# \"hn\" and tags !# \"video\" and tags !# \"twitter\""
+"query:Older:unread = \"yes\" and tags !# \"video\" and tags !# \"hn\" and tags !# \"roundup\" and tags !# \"twitter\" and age > 1"
+"query:Apps:unread = \"yes\" and tags # \"release\""
+"query:Videos:unread = \"yes\" and tags # \"video\""
+"query:HackerNews:unread = \"yes\" and tags # \"hn\""
+"query:Roundups:unread = \"yes\" and tags # \"roundup\""
+# "query:Social Media:unread = \"yes\" and tags # \"twitter\""
+
+# Applications
+https://github.com/fish-shell/fish-shell/releases.atom "~Fish" "release" !
+https://github.com/florisboard/florisboard/releases.atom "~Florisboard" "release" !
+https://github.com/junegunn/fzf/releases.atom "~Fzf" "release" !
+https://github.com/neovim/neovim/releases.atom "~Neovim" "release" !
+
+# HN
+https://hnrss.org/frontpage?points=150 "~" "hn" !
+https://hnrss.org/newest?q=book+OR+writing+OR+write+OR+notes+OR+productivity+OR+tips+OR+health+OR+fitness+OR+nutrition+OR+diy+OR+tool+OR+tutorial+OR+guide+OR+commandline+OR+cli+OR+vim+OR+neovim+OR+git+OR+unix+OR+html+OR+css&points=100&search_attrs=title,url&count=100 "~" "hn" !
+
+# Blog/newsletter
+https://www.aleksandrhovhannisyan.com/feed.xml "~Aleksandr Hovhannisyan"
+https://tips.ariyh.com/feed "~Ariyh"
+https://chriscoyier.net/feed/ "~Chris Coyier"
+https://lemire.me/blog/feed/ "~Daniel Lemire"
+http://daverupert.com/atom.xml "~Dave Rupert"
+https://educatedguesswork.org/feed/feed.xml "~Educated Guesswork"
+https://eli.thegreenplace.net/feeds/all.atom.xml "~Eli Bendersky"
+https://blog.jim-nielsen.com/feed.xml "~Jim Nielsen"
+https://www.joshwcomeau.com/rss.xml "~Josh W Comeau"
+https://jvns.ca/atom.xml "~Julia Evans"
+http://www.kirupa.com/modular/kirupa.xml "~Kirupa"
+https://matt.might.net/articles/feed.rss "~Matt Might"
+https://www.matuzo.at/feed.xml "~Manuel Matuzovic"
+https://manuelmoreale.com/feed/rss "~Manuel Moreale"
+https://nintil.com/rss.xml "~Nintil"
+https://blog.thenewoil.org/feed/ "~New Oil"
+https://www.trickster.dev/post/index.xml "~Trickster Dev"
+https://thevaluable.dev/index.xml "~Valuable Dev"
+https://vimtricks.com/feed/ "~Vim Tricks"
+https://web.dev/feed.xml "~Web dev"
+https://xn--gckvb8fzb.com/index.xml "~マリウス"
+
+# Roundup
+https://console.substack.com/feed "~Console" "roundup" !
+https://this-week-in-neovim.org/rss "~TWiN" "roundup" !
+
+# Video
+https://pipedapi.kavin.rocks/feed/unauthenticated/rss?channels=UC8ENHE5xdFSwx71u3fDH5Xw "~ThePrimeagen" "video" !
+https://pipedapi.kavin.rocks/feed/unauthenticated/rss?channels=UCd3dNckv1Za2coSaHGHl5aA "~TJ DeVries" "video" !
+https://pipedapi.kavin.rocks/feed/unauthenticated/rss?channels=UCz2t2oGOAR_f-gL5cZCl1dQ "~XRay" "video" !
+https://pipedapi.kavin.rocks/feed/unauthenticated/rss?channels=UCRG_N2uO405WO4P3Ruef9NA "~Fri Checkout" "video" !
+https://pipedapi.kavin.rocks/feed/unauthenticated/rss?channels=UCE2hIKMrB6Heg3b53NcoeLQ "~Joe Delaney" "video" !
+https://pipedapi.kavin.rocks/feed/unauthenticated/rss?channels=UCB2wtYpfbCpYDc5TeTwuqFA "~Will Tennyson" "video" !
+https://pipedapi.kavin.rocks/feed/unauthenticated/rss?channels=UCEjIjshJ8bvvCkGNk0pkYcA "~Jesse James" "video" !
+https://pipedapi.kavin.rocks/feed/unauthenticated/rss?channels=UCbYoTv5DbJmzKwxx5dmnu6g "~Bald Omni Man" "video" !
+https://pipedapi.kavin.rocks/feed/unauthenticated/rss?channels=UCdn4zi8Tta1FSt0w87vCZwA "~Josh Bryant" "video" !
+https://pipedapi.kavin.rocks/feed/unauthenticated/rss?channels=UCmdlnVFzmf7Zhqm_QE-UlJw "~Alex Leonidas" "video" !
+https://pipedapi.kavin.rocks/feed/unauthenticated/rss?channels=UChQ-d14tHB62nskossxO0tw "~Joe Fazer" "video" !

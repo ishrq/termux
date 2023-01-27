@@ -1,0 +1,16 @@
+MM/2022
+
+---
+Balance Open
+  AB:
+  BKASH:
+  CASH:
+  CITY:
+Balance Close
+  AB:
+  BKASH:
+  CASH:
+  CITY:
+---
+
+DAILY

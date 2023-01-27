@@ -1,0 +1,4 @@
+fish/.config/fish/fish_variables
+git/.config/git/config.local
+newsboat/.config/newsboat/config
+nvim/.config/nvim/lazy-lock.json

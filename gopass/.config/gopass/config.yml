@@ -1,0 +1,11 @@
+age.usekeychain = false
+core.autoclip = false
+core.autoimport = true
+core.autosync = true
+core.cliptimeout = 45
+core.exportkeys = true
+core.nopager = false
+core.notifications = false
+core.parsing = true
+core.showsafecontent = true
+mounts.path = /data/data/com.termux/files/home/.local/share/gopass/stores/root

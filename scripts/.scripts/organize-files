@@ -1,0 +1,22 @@
+#!/data/data/com.termux/files/usr/bin/fish
+#---------------
+# Last edit [2021-12-11 01:34]
+#---------------
+
+### Rename files
+
+# DCIM/Screenshots
+
+exiftool '-FileName<${FileModifyDate}' -d '%Y%m%d-%H%M%S.%%e' /storage/emulated/0/DCIM/Screenshots/
+
+termux-media-scan -r /storage/emulated/0/DCIM/Screenshots/
+
+#---------------
+
+### Delete files
+
+# Files in /tmp older than 1 day
+fd --change-older-than 1day --base-directory '/data/data/com.termux/files/usr/tmp/' -X rm
+
+# .apk older than 1 day
+fd -d 1 --change-older-than 1day -e '.apk' --base-directory '/storage/emulated/0/Download/' -X rm

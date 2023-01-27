@@ -1,0 +1,69 @@
+# general
+auto-reload yes
+browser "termux-open-url"
+cleanup-on-quit yes
+download-retries 4
+download-timeout 10
+goto-next-feed no
+history-limit 0
+prepopulate-query-feeds yes
+reload-threads 4
+reload-time 120
+save-path "~/INBOX"
+
+# display
+show-keymap-hint no
+show-read-articles no
+show-read-feeds no
+show-title-bar no
+text-width 50
+datetime-format "%y-%m-%d"
+feedlist-format "%2i %t %u"
+articlelist-format "%2i %?T?%T: ?%t"
+article-sort-order date
+
+# keybinding
+unbind-key ^B
+unbind-key l
+unbind-key L
+unbind-key C
+unbind-key A
+bind-key n toggle-article-read
+bind-key N next-unread
+bind-key m mark-feed-read
+bind-key M mark-all-feeds-read
+bind-key b bookmark
+bind-key o open-in-browser-and-mark-read
+bind-key O open-in-browser
+bind-key a toggle-show-read-feeds
+bind-key j down
+bind-key k up
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key l open
+bind-key h quit
+bind-key g home
+bind-key G end
+bind-key u show-urls
+bind-key s sort
+bind-key S rev-sort
+bind-key w save
+
+# macro
+macro d set browser "yt-dlp -q --progress -P '~/storage/downloads/Youtube-dl/' --restrict-filenames --embed-subs" ; open-in-browser-and-mark-read ; set browser "termux-open-url"
+macro p set browser "yt-dlp -q --progress -P '~/storage/downloads/Podcasts/' --restrict-filenames -x" ; open-in-browser-and-mark-read ; set browser "termux-open-url"
+
+# bookmarks
+bookmark-cmd "~/.config/newsboat/nb-book.fish"
+bookmark-interactive no
+bookmark-autopilot yes
+
+# color
+color listnormal color239 default
+color listnormal_unread color254 default
+color listfocus color239 color96
+color listfocus_unread color254 color96
+color article color254 default
+color info color254 default
