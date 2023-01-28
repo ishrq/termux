@@ -1,4 +1,15 @@
 fish/.config/fish/fish_variables
+fish/.cofig/fish/conf.d/fzf.fish
+fish/.cofig/fish/conf.d/pisces.fish
+fish/.cofig/fish/conf.d/sponge.fish
+fish/.cofig/fish/conf.d/weather.fish
+fish/.cofig/fish/functions/_fzf*.fish
+fish/.cofig/fish/functions/_pisces*.fish
+fish/.cofig/fish/functions/_sponge*.fish
+fish/.cofig/fish/functions/fish_greeting.fish
+fish/.cofig/fish/functions/fisher.fish
+fish/.cofig/fish/functions/fzf_*.fish
+fish/.cofig/fish/functions/sponge_*.fish
 git/.config/git/config.local
 newsboat/.config/newsboat/config
 newsboat/.config/newsboat/urls
