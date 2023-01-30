@@ -61,10 +61,15 @@ autocmd('FileType', {
 
 --ledger
 autocmd('BufNewFile', {
- pattern = '*/Finance/Ledger/ledger*.txt',
- command = '0r ~/.config/nvim/skeletons/ledger.txt' })
+    pattern = '*/Finance/Ledger/ledger*.txt',
+    command = '0r ~/.config/nvim/skeletons/ledger.txt' })
 
 --html
 autocmd('BufNewFile', {
- pattern = '*.html',
- command = '0r ~/.config/nvim/skeletons/html-skeleton.html' })
+    pattern = '*.html',
+    command = '0r ~/.config/nvim/skeletons/html-skeleton.html' })
+
+--css
+autocmd('BufNewFile', {
+    pattern = {'style.css', 'reset.css'},
+    command = '0r ~/.config/nvim/skeletons/css-reset.css' })
