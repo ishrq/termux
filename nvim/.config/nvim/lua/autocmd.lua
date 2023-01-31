@@ -46,7 +46,6 @@ autocmd('BufWritePre', {
   end
 })
 
-
 --Markdown/gitcommit
 autocmd('FileType', {
 	pattern = { "gitcommit", "markdown" },
@@ -54,6 +53,14 @@ autocmd('FileType', {
 		vim.opt_local.wrap = true
 		vim.opt_local.spell = true
 	end,
+})
+
+--HTML/CSS Shiftwidth
+autocmd("FileType", {
+    pattern = { "html", "css" },
+    callback = function()
+        vim.bo.shiftwidth = 2
+    end,
 })
 
 
