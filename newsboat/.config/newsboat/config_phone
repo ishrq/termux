@@ -50,6 +50,8 @@ bind-key u show-urls
 bind-key s sort
 bind-key S rev-sort
 bind-key w save
+bind-key r reload-all
+bind-key R reload
 
 # macro
 macro d set browser "yt-dlp -q --progress -P '~/storage/downloads/Youtube-dl/' --restrict-filenames --embed-subs" ; open-in-browser-and-mark-read ; set browser "termux-open-url"
