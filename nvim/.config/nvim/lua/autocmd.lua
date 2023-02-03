@@ -54,7 +54,7 @@ autocmd('FileType', {
 	end,
 })
 
---HTML/CSS Shiftwidth
+--Custom shiftwidth
 autocmd("FileType", {
     pattern = { "html", "css" },
     callback = function()
