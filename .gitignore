@@ -13,4 +13,5 @@ fish/.cofig/fish/functions/sponge_*.fish
 git/.config/git/config.local
 newsboat/.config/newsboat/config
 newsboat/.config/newsboat/urls
+newsboat/.config/newsboat/urls-alt
 nvim/.config/nvim/lazy-lock.json
