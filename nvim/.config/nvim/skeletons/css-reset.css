@@ -1,3 +1,13 @@
+ Variables */
+:root {
+  --white: #bbb;
+  --black: #222;
+  /* --primary: #b2f; */
+  /* --secondary: #e86; */
+  --font-sans: Helvetica, sans-serif, system-ui;
+  --font-mono: monospace;
+  /* --primary-underline: solid underline 3px var(--primary); */
+}
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -9,7 +19,7 @@ html:focus-within {
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: sans-serif;
+  font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.15;
   text-rendering: optimizeSpeed;
@@ -35,8 +45,8 @@ a {
 }
 
 code, kbd, samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em; /* 2 */
+  font-family: var(--font-mono);
+  font-size: 1em;
 }
 
 small {
