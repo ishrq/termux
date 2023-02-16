@@ -5,24 +5,24 @@
 
 function bookmark
     if test $USER = "u0_a1692" #S8/Termux
+        set browser "termux-open-url"
         set dir ~/storage/shared/Documents/COMPUTER/RESOURCES/Bookmarks/
         set bk_file ~/storage/shared/Documents/COMPUTER/RESOURCES/Bookmarks/bookmark.txt
         set rl_file ~/storage/shared/Documents/COMPUTER/RESOURCES/Bookmarks/readlater.txt
         set ar_file ~/storage/shared/Documents/COMPUTER/RESOURCES/Bookmarks/archive-reads.txt
     else #PC
+        set browser "librewolf"
         set dir ~/RESOURCES/Bookmarks/
         set bk_file ~/RESOURCES/Bookmarks/bookmark.txt
         set rl_file ~/RESOURCES/Bookmarks/readlater.txt
         set ar_file ~/RESOURCES/Bookmarks/archive-reads.txt
     end
 
-    set clipboard fish_clipboard_copy
-
-    set enter "execute(open {-1} >/dev/null 2>&1 &)+abort"
+    set enter "become($browser {+})"
     set ctrl_o "execute-silent(open {-1} >/dev/null 2>&1 &)"
 
     set alt_e "execute(rg -l {-1} $dir | xargs $EDITOR)"
-    set ctrl_y "execute(echo -n {-1} | $clipboard)+abort"
+    set ctrl_y "execute(echo -n {-1} | fish_clipboard_copy)+abort"
 
     set ctrl_b "reload(awk '!/^(\$|#)/' $bk_file)+change-prompt(Bookmarks> )+unbind(tab,ctrl-b)+rebind(change,ctrl-z,ctrl-r)"
     set ctrl_r "reload(awk '!/^(\$|#)/' $rl_file)+change-prompt(Readlater> )+unbind(change,ctrl-r)+rebind(ctrl-z,ctrl-b,tab)"
@@ -33,7 +33,7 @@ function bookmark
 
 
     awk '!/^($|#)/' $rl_file | fzf\
-        -e --no-bold --tac +s --preview-window='up,1'\
+        -e --multi --no-bold --tac +s --preview-window='up,1'\
         --color='hl+:magenta,hl:dim:bright-magenta,bg+:black,fg+:underline:-1,header:white,prompt:white'\
         --preview='echo {-1}'\
         --query=(commandline) \

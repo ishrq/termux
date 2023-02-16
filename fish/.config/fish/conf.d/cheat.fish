@@ -15,9 +15,6 @@ function cheat -d "Cheatsheet"
 
     set filter "echo {} | awk -F':' '{print \$NF }'"
 
-    #BUG:
-    # set alt_e "execute(rg -l {q} $dir | xargs $EDITOR)"
-
     set ctrl_y "execute($filter | $clipboard)+abort"
 
     set selected (
