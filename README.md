@@ -2,18 +2,28 @@
 
 ## Dependencies
 
-[GNU Stow](https://www.gnu.org/software/stow/){:target="_blank"}
+Dotfiles are managed using [GNU Stow](https://www.gnu.org/software/stow/).
+
 
 ## Instructions
 
+Install packages
 ```
-# Clone repository
+pkg install bat fish git git-delta gopass neovim-nightly newsboat starship stow
+```
+
+1. Clone repository
+```
 git clone git@github.com:ishrq/termux.git ~/.dotfiles/
-
-# Change directory
-cd ~/.dotfiles/
-
-# Copy configs with Stow
-stow -S <package-name>  #e.g. `stow -S fish`
-
 ```
+
+2. Change directory
+```
+cd ~/.dotfiles/
+```
+
+3. Copy configs with Stow
+```
+stow -S bat fish git gopass newsboat nvim scripts starship termux
+```
+
