@@ -1,12 +1,19 @@
 # Dotfiles for Termux
 
 ## Dependencies
-[GNU Stow](https://www.gnu.org/software/stow/)
+
+[GNU Stow](https://www.gnu.org/software/stow/){:target="_blank"}
 
 ## Instructions
 
-`git clone git@github.com:ishrq/termux.git ~/.dotfiles/`
+```
+# Clone repository
+git clone git@github.com:ishrq/termux.git ~/.dotfiles/
 
-`cd ~/.dotfiles/`
+# Change directory
+cd ~/.dotfiles/
 
-`stow -S <package-name>`
+# Copy configs with Stow
+stow -S <package-name>  #e.g. `stow -S fish`
+
+```
