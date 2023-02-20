@@ -1,8 +1,6 @@
-# Dotfiles for Termux
+# Dot-files for Termux
 
-## Dependencies
-
-Dotfiles are managed using [GNU Stow](https://www.gnu.org/software/stow/).
+Managed using [GNU Stow](https://www.gnu.org/software/stow/).
 
 
 ## Instructions
@@ -22,8 +20,11 @@ git clone git@github.com:ishrq/termux.git ~/.dotfiles/
 cd ~/.dotfiles/
 ```
 
-3. Copy configs with Stow
+3. Create symlink with Stow
 ```
 stow -S bat fish git gopass newsboat nvim scripts starship termux
 ```
 
+Delete symlink: `stow -D package`
+
+Re-add symlink: `stow -R package`
