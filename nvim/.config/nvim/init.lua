@@ -21,4 +21,21 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
-require("lazy").setup("plugins")
+require("lazy").setup({
+  spec = { { import = "plugins" }, },
+  checker = { enabled = true },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        -- "matchit",
+        -- "matchparen",
+        -- "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
+})
