@@ -74,7 +74,7 @@ abbr -a tree 'exa --icons --tree --level=2'
 #git
 abbr -a g 'git'
 abbr -a ga 'git add'
-abbr -a gc 'git commit -S'
+abbr -a gc 'git commit'
 abbr -a gk 'git checkout (git branch -a | fzf | xargs)'
 abbr -a gd 'git diff'
 abbr -a gp 'git push'
