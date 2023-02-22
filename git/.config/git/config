@@ -6,12 +6,37 @@
     editor = nvim
     whitespace = warn
 
+[format]
+  signOff = yes
+
+[gpg]
+	program = gpg2
+    format = openpgp
+
+[init]
+    defaultBranch = main
+
 [commit]
 	verbose = true
 	gpgsign = true
 
-[gpg]
-	program = gpg2
+[pull]
+  rebase = true
+
+[push]
+  gpgSign = if-asked
+  default = simple
+  autoSetupRemote = true
+  followTags = yes
+
+[merge]
+    conflictstyle = diff3
+
+[help]
+  autoCorrect = prompt
+
+[color]
+  ui = true
 
 [interactive]
     diffFilter = delta --color-only
@@ -20,14 +45,5 @@
     navigate = true  # n/N move between diff sections
     light = false    # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 
-[merge]
-    conflictstyle = diff3
-
 [diff]
     colorMoved = default
-
-[init]
-    defaultBranch = main
-
-[color]
-  ui = true
