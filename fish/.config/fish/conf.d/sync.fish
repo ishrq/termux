@@ -25,5 +25,6 @@ function sync -d "Sync files between devices"
     rsync -auzP --exclude={autopair,fzf,sponge}.fish ~/.config/fish/conf.d/ $dest:~/.config/fish/conf.d/
     rsync -auzP ~/.config/nvim/snippets/ $dest:~/.config/nvim/snippets/
     rsync -auzP ~/.config/nvim/skeletons/ $dest:~/.config/nvim/skeletons/
+    rsync -auzP ~/.config/git/config $dest:~/.config/git/
 
 end
