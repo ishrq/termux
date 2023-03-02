@@ -1,5 +1,5 @@
 [include]
-	path = ~/.config/git/config.local
+    path = ~/.config/git/config.local
 
 [core]
     pager = delta
@@ -7,36 +7,36 @@
     whitespace = warn
 
 [format]
-  signOff = yes
+    signOff = yes
 
 [gpg]
-	program = gpg2
+    program = gpg2
     format = openpgp
 
 [init]
     defaultBranch = main
 
 [commit]
-	verbose = true
-	gpgsign = true
+    verbose = true
+    gpgsign = true
 
 [pull]
-  rebase = true
+    rebase = true
 
 [push]
-  gpgSign = if-asked
-  default = simple
-  autoSetupRemote = true
-  followTags = yes
+    gpgSign = if-asked
+    default = simple
+    autoSetupRemote = true
+    followTags = yes
 
 [merge]
     conflictstyle = diff3
 
 [help]
-  autoCorrect = prompt
+    autoCorrect = prompt
 
 [color]
-  ui = true
+    ui = true
 
 [interactive]
     diffFilter = delta --color-only
@@ -44,6 +44,5 @@
 [delta]
     navigate = true  # n/N move between diff sections
     light = false    # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
-
 [diff]
     colorMoved = default
