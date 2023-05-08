@@ -14,14 +14,12 @@ function sync -d "Sync files between devices"
         rsync -auzP --exclude=TBR/Audiobook ~/storage/shared/Documents/ m10:~/storage/shared/Documents/
 
         rsync -auzP ~/.local/share/newsboat/ m10:~/.local/share/newsboat/
-        rsync -auzP --exclude=git ~/.config/ m10:~/.config/
 
     else if test $USER = "u0_a215" #M10
         set dest "laptop"
 
         rsync -auzP ~/storage/shared/Documents/ s8:~/storage/shared/Documents/
         rsync -auzP ~/.local/share/newsboat/ s8:~/.local/share/newsboat/
-        rsync -auzP --exclude=git ~/.config/ s8:~/.config/
 
     else
         set dest "s8"
