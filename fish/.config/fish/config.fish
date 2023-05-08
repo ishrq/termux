@@ -15,9 +15,9 @@ end
 
 
 
-# S8: Termux
+# S8/M10: Termux
 
-if test $USER = "u0_a1692"
+if test $USER = "u0_a1692" || test $USER = "u0_a215"
     # Command not found
     function __fish_command_not_found_handler --on-event fish_command_not_found
         /data/data/com.termux/files/usr/libexec/termux/command-not-found $argv[1]
@@ -39,7 +39,7 @@ end
 starship init fish | source
 zoxide init fish | source
 
-set -gx EDITOR (which nvim)
+set -gx EDITOR nvim
 set -gx VISUAL $EDITOR
 set -gx SUDO_EDITOR $EDITOR
 set -gx GPG_TTY $(tty)
