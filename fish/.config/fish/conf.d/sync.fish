@@ -11,12 +11,26 @@ function sync -d "Sync files between devices"
         rsync -auzP ~/storage/dcim/Screenshots/ laptop:~/ARCHIVE/Screenshots/
         rsync -auzP ~/storage/shared/backups/ laptop:~/ARCHIVE/Backup_S8/
 
+        rsync -auzP --exclude=TBR/Audiobook ~/storage/shared/Documents/ m10:~/storage/shared/Documents/
+
+        rsync -auzP ~/.local/share/newsboat/ m10:~/.local/share/newsboat/
+        rsync -auzP --exclude=git ~/.config/ m10:~/.config/
+
+    else if test $USER = "u0_a215" #M10
+        set dest "laptop"
+
+        rsync -auzP ~/storage/shared/Documents/ s8:~/storage/shared/Documents/
+        rsync -auzP ~/.local/share/newsboat/ s8:~/.local/share/newsboat/
+        rsync -auzP --exclude=git ~/.config/ s8:~/.config/
+
     else
         set dest "s8"
 
         rsync -auzP ~/RESOURCES/ --exclude=Fonts/ s8:~/storage/shared/Documents/COMPUTER/RESOURCES/
         rsync -auzP ~/ARCHIVE/{Workouts,Daybook,Weight-Log,Logs,Journal} s8:~/storage/shared/Documents/COMPUTER/ARCHIVE/
 
+        rsync -auzP ~/RESOURCES/ --exclude=Fonts/ m10:~/storage/shared/Documents/COMPUTER/RESOURCES/
+        rsync -auzP ~/ARCHIVE/{Workouts,Daybook,Weight-Log,Logs,Journal} m10:~/storage/shared/Documents/COMPUTER/ARCHIVE/
     end
 
     rsync -auzP ~/.config/newsboat/ $dest:~/.config/newsboat/
