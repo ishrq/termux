@@ -10,7 +10,7 @@ switch $argv
         set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/RESOURCES/Bookmarks/bookmark.txt
     case "Books"
         set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/books.txt
-    case "Idea"
+    case "Ideas"
         set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/ideas.txt
     case "Journal"
         set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/journal.txt
