@@ -4,7 +4,7 @@
 
 
 function bookmark
-    if test $USER = "u0_a1692" #S8/Termux
+    if test $USER = "u0_a1692" || test $USER = "u0_a215" #Termux S8,M10
         set browser "termux-open-url"
         set dir ~/storage/shared/Documents/COMPUTER/RESOURCES/Bookmarks/
         set bk_file ~/storage/shared/Documents/COMPUTER/RESOURCES/Bookmarks/bookmark.txt

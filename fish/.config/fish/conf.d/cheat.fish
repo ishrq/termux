@@ -3,7 +3,7 @@
 
 function cheat -d "Cheatsheet"
     # Device specific config
-    if test $USER = "u0_a1692" #S8/Termux
+    if test $USER = "u0_a1692" || test $USER = "u0_a215" #Termux S8,M10
         set dir ~/storage/shared/Documents/COMPUTER/RESOURCES/Notes/Cheatsheet/
         set file ~/storage/shared/Documents/COMPUTER/RESOURCES/Notes/Cheatsheet/*.txt
         set clipboard "termux-clipboard-set"

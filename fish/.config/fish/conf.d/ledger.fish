@@ -5,7 +5,7 @@
 
 
 function ledger
-  if test $USER = "u0_a1692" #S8/Termux
+    if test $USER = "u0_a1692" || test $USER = "u0_a215" #Termux S8,M10
     set -f file ~/storage/shared/Documents/COMPUTER/AREAS/Finance/Ledger/ledger-$(date +"%Y%m").txt
   else
     set -f file ~/AREAS/Finance/Ledger/ledger-$(date +"%Y%m").txt
