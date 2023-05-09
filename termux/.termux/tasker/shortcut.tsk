@@ -1,0 +1,18 @@
+#!/data/data/com.termux/files/usr/bin/fish
+#---------------
+
+# Log weight
+switch $argv
+    case weight
+        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Workouts/workout-note.txt
+    case journal
+        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/journal.txt
+    case watchlist
+        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/watchlist.txt
+    case idea
+        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/ideas.txt
+    case backlog
+        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/backlog.txt
+end
+
+nvim $file
