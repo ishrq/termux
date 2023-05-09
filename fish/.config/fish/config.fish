@@ -11,6 +11,7 @@ if test $USER="ia" && test $hostname="pop-os"
     # Abbreviations
     abbr -a a 'aerc'
     abbr -a b 'vi ~/ARCHIVE/Journal/books.txt'
+    abbr -a n 'newsboat'
 end
 
 
@@ -63,7 +64,6 @@ fish_add_path $GOPATH $GOPATH/bin
 abbr -a cp 'cp -rv'
 abbr -a mkdir 'mkdir -v'
 abbr -a mv 'mv -v'
-abbr -a n 'newsboat'
 abbr -a y '  yt-dlp'
 #exa
 abbr -a la 'exa -a --icons --group-directories-first'

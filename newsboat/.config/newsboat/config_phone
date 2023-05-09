@@ -19,7 +19,7 @@ show-title-bar no
 text-width 50
 datetime-format "%y-%m-%d"
 feedlist-format "%2i %t %u"
-articlelist-format "%2i %?T?%T: ?%t"
+articlelist-format "%D %?T?%T: ?%t"
 article-sort-order date
 
 # keybinding
