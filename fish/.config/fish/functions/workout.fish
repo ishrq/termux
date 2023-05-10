@@ -10,7 +10,7 @@ function workout -d "Workout log"
     end
     switch $argv
         case $argv
-            echo "$(date +"%F%t$argv")" >> $file
+            echo "$(date +"%n%F%t$argv")" >> $file
     end
     $EDITOR $file
 end
