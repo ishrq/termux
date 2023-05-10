@@ -12,6 +12,8 @@ if test $USER="ia" && test $hostname="pop-os"
     abbr -a a 'aerc'
     abbr -a b 'vi ~/ARCHIVE/Journal/books.txt'
     abbr -a n 'newsboat'
+    abbr -a bc 'bluetoothctl connect FC:E8:06:E9:03:B9'
+    abbr -a bd 'bluetoothctl disconnect FC:E8:06:E9:03:B9'
 end
 
 
