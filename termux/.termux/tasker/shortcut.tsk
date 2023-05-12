@@ -14,6 +14,8 @@ switch $argv
         set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/ideas.txt
     case "Journal"
         set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/journal.txt
+    case "Planned Projects"
+        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/RESOURCES/Lists/planned-projects.txt
     case "Readlater"
         set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/RESOURCES/Bookmarks/readlater.txt
     case "Watchlist"
