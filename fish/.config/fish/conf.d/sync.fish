@@ -19,7 +19,7 @@ function sync -d "Sync files between devices"
     else if test $USER = "u0_a215" #M10
         set dest "laptop"
 
-        rsync -auzP ~/storage/shared/Documents/ s8:~/storage/shared/Documents/
+        rsync -auzP --exclude=TBR/Audiobook ~/storage/shared/Documents/ s8:~/storage/shared/Documents/
         rsync -auzP ~/.local/share/newsboat/ s8:~/.local/share/newsboat/
         rsync -auzP ~/.config/newsboat/{urls,urls_alt} s8:~/.config/newsboat/
 
