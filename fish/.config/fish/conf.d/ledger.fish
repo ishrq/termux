@@ -1,7 +1,7 @@
 # Author: IA
 # ---
 
-# ---DEPENDENCIES: rg, sd
+# ---DEPENDENCIES: grep, sed
 
 
 function ledger
@@ -20,11 +20,11 @@ function ledger
     case '*'
       set -f day $(date +"%d/%m/%Y")
       set -f entry "\t$argv[1] $argv[2]"
-      if rg -q ^$day $file
-        sd $day $day\n$entry $file
+      if grep -q ^$day $file
+        sed -i "s/$day/$day\\n$entry/g" $file
       else
-        sd DAILY DAILY\n\n$day $file
-        sd $day $day\n$entry $file
+        sed -i "s/DAILY/DAILY\\n\\n$day/g" $file
+        sed -i "s/$day/$day\\n$entry/g" $file
       end
       echo "[Entry added]"
  end
