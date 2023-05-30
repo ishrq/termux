@@ -22,6 +22,7 @@ map('v', '>', '>gv^') -- Don't leave visual mode after indenting
 map('v', '<', '<gv^') -- Don't leave visual mode after indenting
 map("n", "<leader>=", ":set spell!<cr>", { desc = "Spelling" })
 map("n", "<leader>a", ":keepjumps normal! GVgg<cr>", def, { desc = "Select all" })
+map("n", "<leader>fd", ":find **/", {desc = "Fuzzy find"})
 map("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Search replace current word" })
 map("n", "<leader>x", ":!chmod +x %<CR>", def, { desc = "Make file executable" })
 

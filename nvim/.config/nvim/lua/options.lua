@@ -51,7 +51,6 @@ opt.foldenable  = true
 opt.foldlevel   = 99
 opt.foldmethod  = 'indent' --manual, indent, syntax, expr, marker
 opt.grepprg     = 'rg' --default grep
-opt.path        = '**' --search subdirectories
 opt.ls          = 0
 opt.lazyredraw  = true
 opt.mouse       = 'a'
@@ -60,7 +59,6 @@ opt.spo         = 'noplainbuffer' --no spellcheck in code
 opt.timeoutlen  = 1000 --key timeout
 opt.undofile    = true --save undo history
 opt.updatetime  = 250  --decrease update time
-opt.wildmenu    = true --display filename in tab complete
 -- opt.wbr = "%f"
 
 
@@ -69,6 +67,10 @@ opt.wildmenu    = true --display filename in tab complete
 opt.ignorecase  = true
 opt.incsearch   = true
 opt.smartcase   = true
+
+--Fuzzy search
+-- vim.opt.pathappend('**') --search subdir
+opt.wmnu = true --tab complete
 
 
 --borrowed https://this-week-in-neovim.org/2023/Jan/09
