@@ -1,7 +1,10 @@
+-- Author: IA
+-- Device: PC
+
+
 local cmdline = false
 local M = {
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
@@ -15,18 +18,18 @@ local M = {
 
 
 function M.config()
-    vim.o.completeopt = "menu,menuone,noselect"
 
     require("luasnip.loaders.from_snipmate").lazy_load() --Snipmate like snippets
 
     local cmp = require("cmp")
-    local luasnip = require('luasnip')
+    local luasnip = require("luasnip")
 
     local select_opts = {behavior = cmp.SelectBehavior.Select}
 
     local has_words_before = function()
-      local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-      return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+        unpack = unpack or table.unpack
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
     end
 
     cmp.setup({
@@ -38,7 +41,7 @@ function M.config()
       sources = {
         {name = 'path'},
         {name = 'luasnip', keyword_length = 1},
-        {name = 'buffer', keyword_length = 3},
+        {name = 'buffer', keyword_length = 2},
         {name = 'nvim_lsp', keyword_length = 2},
       },
       window = {
