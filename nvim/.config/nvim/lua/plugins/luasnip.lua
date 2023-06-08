@@ -14,12 +14,12 @@ return {
 
             local ls = require("luasnip")
             local snip = ls.snippet
-            local node = ls.snippet_node
-            local text = ls.text_node
+            -- local node = ls.snippet_node
+            -- local text = ls.text_node
             local insert = ls.insert_node
-            local func = ls.function_node
+            -- local func = ls.function_node
             local choice = ls.choice_node
-            local dynamic = ls.dynamic_node
+            -- local dynamic = ls.dynamic_node
             -- local r = ls.restore_node
             -- local l = require("luasnip.extras").lambda
             -- local rep = require("luasnip.extras").rep
@@ -42,19 +42,21 @@ return {
 
                 snip("if", fmt("if {}\n\t{}\nend\n\n{}", {insert(1, "condition"), insert(2), insert(0)})),
 
+                snip("set", fmt("set {} '{}' \n{}", {insert(1, "var"), insert(2, "value"), insert(0) })),
             })
 
             ls.add_snippets("markdown", {
+
                 snip("permanote", fmt("---\nType: Permanent Note\nTopic: {}\nTitle: {}\nRelated: {}\n---\n\n{}", {insert(1, "CS"), insert(2, "Title"), insert(3), insert(0) } )),
+
+                snip("rel", fmt("[[./{}]]", {insert(1),})),
+                snip("src", fmt("Source\n---\n{}", {insert(1),})),
 
                 snip("litnote", fmt("---\nType: Literature Note\n{}\n---\n\n{}", {choice(1, {
                     fmt("Book: {}\nAuthor: {}", {insert(1, "Title"), insert(2, "Author")}),
                     fmt("Article: [{}]({})\n", {insert(1, "Title"), insert(2, "URL")}),
                     fmt("Podcast: [{}]({})\n", {insert(1, "Title"), insert(2, "URL")}),
                     fmt("Video: [{}]({})\n", {insert(1, "Title"), insert(2, "URL")}), }), insert(0) } )),
-
-                snip("rel", fmt("[[./{}]]", {insert(1),})),
-                snip("src", fmt("Source\n---\n{}", {insert(1),})),
             })
 
             local map = vim.api.nvim_set_keymap
