@@ -1,5 +1,8 @@
 return {
     {
+        "nvim-lua/plenary.nvim",
+    },
+    {
         "kylechui/nvim-surround",
         event = "VeryLazy",
         config = true
@@ -11,11 +14,6 @@ return {
     },
     {
         "numToStr/Comment.nvim",
-        event = "VeryLazy",
-        config = true
-    },
-    {
-        "folke/todo-comments.nvim",
         event = "VeryLazy",
         config = true
     },

@@ -1,16 +1,22 @@
--- Author: IA
--- Device: PC
-
-
 return {
     {
         "L3MON4D3/LuaSnip",
         event = 'InsertEnter',
-        dependencies = { "rafamadriz/friendly-snippets" },
+        dependencies = {"rafamadriz/friendly-snippets" },
+        opts = {
+            history = true,
+            delete_check_events = "TextChanged",
+        },
+        keys = {
+            { "<c-n>", "<Plug>luasnip-next-choice", mode = { "i", "s"} },
+            { "<c-p>", "<Plug>luasnip-prev-choice", mode = { "i", "s" } },
+            { "<tab>", function() return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>" end, expr = true, silent = true, mode = "i", },
+            { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
+            { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+        },
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load({ exclude = {"html"} })
             require("luasnip.loaders.from_lua").lazy_load()
-            -- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
 
             local ls = require("luasnip")
             local snip = ls.snippet
@@ -59,13 +65,6 @@ return {
                     fmt("Video: [{}]({})\n", {insert(1, "Title"), insert(2, "URL")}), }), insert(0) } )),
             })
 
-            local map = vim.api.nvim_set_keymap
-            map("i", "<C-n>", "<Plug>luasnip-next-choice", {})
-            map("s", "<C-n>", "<Plug>luasnip-next-choice", {})
-            map("i", "<C-p>", "<Plug>luasnip-prev-choice", {})
-            map("s", "<C-p>", "<Plug>luasnip-prev-choice", {})
-
         end
     }
 }
-

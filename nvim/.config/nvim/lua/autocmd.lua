@@ -1,49 +1,64 @@
 -- Author: IA
--- Machine: S8
+-- Machine: Android/Termux
 
---AUTOCOMMAND
 
 local augroup = vim.api.nvim_create_augroup  --Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd  --Create autocommand
 
 augroup('bufcheck', {clear = true})
 
--- reload config file on change
+--Reload config file on change
 autocmd('BufWritePost', {
   group   = 'bufcheck',
   pattern = vim.env.MYVIMRC,
   command = 'silent source %'})
 
--- highlight yanks
+--Highlight yanks
 autocmd('TextYankPost', {
   group    = 'bufcheck',
   pattern  = '*',
   callback = function() vim.highlight.on_yank{timeout=300} end })
 
--- remove whitespace on write
-autocmd('BufWritePre', {
-  pattern = '*',
-  command = ":%s/\\s\\+$//e" })
-
--- don't auto comment new lines
-autocmd('BufEnter', {
-  pattern = '*',
-  command = 'set fo-=c fo-=r fo-=o' })
-
--- resume previous position
+--Resume previous position
 autocmd('BufReadPost', {
   pattern = '*',
   command = [[ if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]], })
 
--- auto create directory on save
-autocmd('BufWritePre', {
-  pattern = "*",
-  group = augroup("auto_create_dir", { clear = true }),
-  callback = function(ctx)
-    local dir = vim.fn.fnamemodify(ctx.file, ":p:h")
-    vim.fn.mkdir(dir, "p")
-  end
+-- resize splits if window got resized
+autocmd('VimResized', {
+  callback = function() vim.cmd("tabdo wincmd =") end,
 })
+
+--Remove whitespace on write
+autocmd('BufWritePre', {
+  pattern = '*',
+  command = ":%s/\\s\\+$//e" })
+
+--Don't auto comment new lines
+autocmd('BufEnter', {
+  pattern = '*',
+  command = 'set fo-=c fo-=r fo-=o' })
+
+--Start git messages in insert mode
+autocmd('FileType', {
+  group   = 'bufcheck',
+  pattern = { 'gitcommit', 'gitrebase', },
+  command = 'startinsert | 1' } )
+
+--No backup, swapfile, undofile for gopass
+autocmd({'BufRead', 'BufNewFile'}, {
+  pattern = { '/dev/shm/gopass*' },
+  command = ' setlocal noswapfile nobackup noundofile shada="" ' } )
+
+--Color column indicator for 80 characters
+autocmd({'BufRead', 'BufNewFile'}, {
+  pattern = { 'gitcommit', 'markdown', 'text' },
+  command = 'cc=80' } )
+
+--Disable color column
+autocmd('BufRead', {
+  pattern = {'*/Journal/*', '*/Finance/*', '*/House/*', '*/List/*'},
+  command = 'setlocal cc=' })
 
 --Markdown/gitcommit
 autocmd('FileType', {
@@ -54,28 +69,74 @@ autocmd('FileType', {
 	end,
 })
 
---Custom shiftwidth
-autocmd("FileType", {
+--Fold
+autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEnter'}, {
+  group = augroup('TS_FOLD_WORKAROUND', {}),
+  callback = function()
+    vim.opt.foldmethod = 'expr'
+    vim.opt.foldexpr   = 'nvim_treesitter#foldexpr()' end })
+
+--HTML/CSS Shiftwidth
+autocmd('FileType', {
     pattern = { "html", "css" },
     callback = function()
         vim.bo.shiftwidth = 2
     end,
 })
 
+--Create directory on save
+autocmd('BufWritePre', {
+  pattern = "*",
+  group = augroup("auto_create_dir", { clear = true }),
+  callback = function(ctx)
+    local dir = vim.fn.fnamemodify(ctx.file, ":p:h")
+    vim.fn.mkdir(dir, "p")
+  end
+})
+
+-- Open help in a new buffer instead of a vsplit
+autocmd('BufWinEnter', {
+  pattern = '*',
+  callback = function(event)
+    if vim.bo[event.buf].filetype == 'help' then
+      vim.cmd.only()
+      vim.bo.buflisted = true
+    end
+  end,
+})
+
+--Toggle relative number in Insert mode
+local numbertogglegroup = augroup("numbertoggle", { clear = true })
+
+autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave' }, {
+    pattern = '*',
+    callback = function()
+        vim.wo.relativenumber = true
+    end,
+    group = numbertogglegroup, })
+
+autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter' }, {
+    pattern = '*',
+    callback = function()
+        vim.wo.relativenumber = false
+    end,
+    group = numbertogglegroup, })
+
 
 --SKELETON
 
---ledger
+--Ledger
 autocmd('BufNewFile', {
-    pattern = 'ledger*.txt',
+    pattern = '*/Finance/Ledger/ledger*.txt',
     command = '0r ~/.config/nvim/skeletons/ledger.txt' })
 
---html
+--HTML
 autocmd('BufNewFile', {
     pattern = '*.html',
     command = '0r ~/.config/nvim/skeletons/html-skeleton.html' })
 
---css
+--CSS
 autocmd('BufNewFile', {
     pattern = {'style.css', 'reset.css'},
     command = '0r ~/.config/nvim/skeletons/css-reset.css' })
+

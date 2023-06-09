@@ -1,76 +1,75 @@
 -- Author: IA
--- Machine: S8
-
-
-local opt = vim.o
+-- Machine: Android/Termux
 
 
 --CONTEXT
-opt.number         = true
-opt.numberwidth    = 3
-opt.relativenumber = false
-opt.ruler          = true
-opt.scrolloff      = 4
-opt.sidescrolloff  = 4
-opt.signcolumn     = 'auto'
+vim.o.number         = true
+vim.o.numberwidth    = 3
+vim.o.relativenumber = false
+vim.o.ruler          = true
+vim.o.scrolloff      = 4
+vim.o.sidescrolloff  = 4
+vim.o.signcolumn     = 'auto'
+vim.o.list           = true
+vim.o.lcs            = "eol:↴"
 
 --FILETYPE
-opt.encoding     = 'utf-8'
-opt.fileencoding = 'utf-8'
-opt.termencoding = 'utf-8'
+vim.o.encoding     = 'utf-8'
+vim.o.fileencoding = 'utf-8'
+vim.o.termencoding = 'utf-8'
 
 --THEME
-opt.syntax = 'on'
-opt.termguicolors = true
+vim.o.syntax = 'on'
+vim.o.termguicolors = true
 
 --WHITESPACE
-opt.expandtab   = true
-opt.tabstop     = 4
-opt.softtabstop = 4
-opt.shiftwidth  = 4
+vim.o.expandtab   = true
+vim.o.tabstop     = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth  = 4
 
 --SPLITS
-opt.splitbelow = 1
-opt.splitright = 1
+vim.o.splitbelow = 1
+vim.o.splitright = 1
 
 --INDENT
-opt.autoindent  = true
-opt.breakindent = true
-opt.smartindent = true
+vim.o.autoindent  = true
+vim.o.breakindent = true
+vim.o.smartindent = true
 
 --WRAP
-opt.lbr  = true
-opt.wrap = true
+vim.o.lbr  = true
+vim.o.wrap = true
 
 --GENERAL
-opt.autoread    = true
-opt.ch          = 0
-opt.clipboard   = "unnamedplus" --system clipboard
-opt.cursorline  = true
-opt.foldenable  = true
-opt.foldlevel   = 99
-opt.foldmethod  = 'indent' --manual, indent, syntax, expr, marker
-opt.grepprg     = 'rg' --default grep
-opt.ls          = 0
-opt.lazyredraw  = true
-opt.mouse       = 'a'
-opt.showmatch   = true --highlight [{()}]
-opt.spo         = 'noplainbuffer' --no spellcheck in code
-opt.timeoutlen  = 1000 --key timeout
-opt.undofile    = true --save undo history
-opt.updatetime  = 250  --decrease update time
--- opt.wbr = "%f"
+vim.o.autoread    = true
+vim.o.ch          = 0
+vim.o.clipboard   = "unnamedplus" --system clipboard
+vim.o.cursorline  = true
+vim.o.foldenable  = true
+vim.o.foldlevel   = 99
+vim.o.foldmethod  = 'indent' --manual, indent, syntax, expr, marker
+vim.o.grepprg     = 'rg' --default grep
+vim.o.ls          = 0
+vim.o.lazyredraw  = true
+vim.o.mouse       = 'a'
+vim.o.showmatch   = true --highlight [{()}]
+vim.o.spo         = 'noplainbuffer' --no spellcheck in code
+vim.o.timeoutlen  = 1000 --key timeout
+vim.o.undofile    = true --save undo history
+vim.o.updatetime  = 250  --decrease update time
+-- vim.o.wbr = "%f"
 
 
 --SEARCH
--- opt.hlsearch    = false
-opt.ignorecase  = true
-opt.incsearch   = true
-opt.smartcase   = true
+-- vim.o.hlsearch    = false
+vim.o.ignorecase  = true
+vim.o.incsearch   = true
+vim.o.smartcase   = true
 
 --Fuzzy search
--- vim.opt.pathappend('**') --search subdir
-opt.wmnu = true --tab complete
+-- vim.vim.o.pathappend('**') --search subdir
+vim.o.wmnu = true --tab complete
 
 
 --borrowed https://this-week-in-neovim.org/2023/Jan/09
