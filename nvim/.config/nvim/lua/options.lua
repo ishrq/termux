@@ -1,7 +1,3 @@
--- Author: IA
--- Machine: Android/Termux
-
-
 --CONTEXT
 vim.o.number         = true
 vim.o.numberwidth    = 3

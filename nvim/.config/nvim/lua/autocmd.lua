@@ -1,7 +1,3 @@
--- Author: IA
--- Machine: Android/Termux
-
-
 local augroup = vim.api.nvim_create_augroup  --Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd  --Create autocommand
 
@@ -62,11 +58,11 @@ autocmd('BufRead', {
 
 --Markdown/gitcommit
 autocmd('FileType', {
-	pattern = { "gitcommit", "markdown", "text", "log" },
-	callback = function()
-		vim.opt_local.wrap = true
-		vim.opt_local.spell = true
-	end,
+  pattern = { "gitcommit", "markdown", "text", "log" },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
+end,
 })
 
 --Fold
@@ -139,4 +135,3 @@ autocmd('BufNewFile', {
 autocmd('BufNewFile', {
     pattern = {'style.css', 'reset.css'},
     command = '0r ~/.config/nvim/skeletons/css-reset.css' })
-
