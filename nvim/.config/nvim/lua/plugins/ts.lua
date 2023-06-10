@@ -15,7 +15,6 @@ return {
         auto_install = false,
         context_commentstring = { enable = true, enable_autocmd = false },
         ensure_installed = {
-            "bash",
             "fish",
             "html",
             "css",

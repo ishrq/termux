@@ -37,7 +37,6 @@ map("i", "<c-l>", "<right>")
 map({ "n", "v" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ "n", "v" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
-
 -- Buffer
 map("n", "]b", "<cmd>bnext<CR>", def, { desc = "Next buffer" })
 map("n", "[b", "<cmd>bprevious<CR>", def, { desc = "Previous buffer" })
@@ -77,3 +76,7 @@ map("n", "[d", vim.diagnostic.goto_prev, def)
 map("n", "]d", vim.diagnostic.goto_next, def)
 map('n', '<leader>e', vim.diagnostic.open_float)
 map('n', '<leader>q', vim.diagnostic.setloclist, def)
+
+-- Quickfix
+map("n", "[q", '<cmd>cprev<cr>', def)
+map("n", "]q", '<cmd>cnext<cr>', def)

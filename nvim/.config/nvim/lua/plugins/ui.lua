@@ -10,9 +10,7 @@ return {
             -- preset = 'crt-green',
             -- preset = 'slate',
             colors = {
-                -- primary = '#e4609b',
-                -- secondary = '#6EE2FF',
-                background = '#000000',
+                background = "#000000",
             },
             styles = {
                 italic = true,
