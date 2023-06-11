@@ -8,7 +8,6 @@ local def = { noremap = true, silent = true }
 
 -- General
 map("v", ".", ":normal .<CR>", {desc="Visual mode dot repeat"})
-map("n", "<leader>sa", "<cmd>keepjumps normal! GVgg<cr>", def, {desc="Select all" })
 map('i', '<c-f>', '<C-g>u<Esc>[S1z=`]a<c-g>u', def, {desc="Fix spelling"})
 map("n", "<leader>=", ":set spell!<cr>", {desc="Spelling"})
 map("n", "<leader>8", ':execute "set cc=" . (&cc == "" ? "80" : "")<cr>', def, {desc="Column color"})

@@ -4,7 +4,6 @@ return {
         version = false,
         config = function ()
 
-            require('mini.ai').setup()
             require('mini.bracketed').setup()
             require('mini.comment').setup()
             require('mini.cursorword').setup()
@@ -14,6 +13,21 @@ return {
 
             -- require('mini.align').setup()
             -- require('mini.splitjoin').setup()
+
+            require('mini.ai').setup{
+                custom_textobjects = {
+                    n = { '%f[%d]%d+' },
+                    d = { '()%d%d%d%d%-%d%d%-%d%d()' },
+                    g = function()
+                        local from = { line = 1, col = 1 }
+                        local to = {
+                            line = vim.fn.line('$'),
+                            col = math.max(vim.fn.getline('$'):len(), 1)
+                        }
+                        return { from = from, to = to }
+                    end,
+                }
+            }
 
             require('mini.indentscope').setup{
                 draw = { animation = require('mini.indentscope').gen_animation.none() },
