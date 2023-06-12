@@ -24,7 +24,6 @@ function cheat -d "Cheatsheet"
             --preview-window="up,25%:wrap:follow" \
             --query=(commandline) \
             --bind="alt-e:$alt_e,ctrl-y:$ctrl_y" \
-            --color='hl+:magenta,hl:dim:bright-magenta,bg+:black,fg+:underline:-1,header:white,prompt:white' \
             --no-bold
     )
 
