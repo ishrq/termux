@@ -21,7 +21,7 @@ return {
                     diagnostics.codespell,
                     diagnostics.eslint_d,
                     diagnostics.fish,
-                    diagnostics.mdl,
+                    -- diagnostics.mdl,
                     -- diagnostics.phpcs,
                     diagnostics.todo_comments,
                     diagnostics.trail_space,

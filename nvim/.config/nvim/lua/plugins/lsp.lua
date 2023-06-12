@@ -26,10 +26,10 @@ return {
 
             local lspconfig = require('lspconfig')
 
-            lspconfig.bashls.setup{} --Bash
             lspconfig.cssls.setup{capabilities=capabilities} --CSS
             lspconfig.cssmodules_ls.setup{} --CSS Modules
             lspconfig.html.setup{capabilities=capabilities} --HTML
+            -- lspconfig.bashls.setup{} --Bash
             -- lspconfig.jsonls.setup{capabilities = capabilities} --Json
             -- lspconfig.phpactor.setup{} --PHP
             -- lspconfig.pylsp.setup{} --Python
