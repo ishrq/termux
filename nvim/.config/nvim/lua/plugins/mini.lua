@@ -1,4 +1,5 @@
 return {
+    -- https://github.com/echasnovski/mini.nvim
     {
         'echasnovski/mini.nvim',
         version = false,
@@ -7,9 +8,9 @@ return {
             require('mini.bracketed').setup()
             require('mini.comment').setup()
             require('mini.cursorword').setup()
-            require('mini.jump').setup()
             require('mini.move').setup()
             require('mini.pairs').setup()
+            require('mini.statusline').setup()
 
             -- require('mini.align').setup()
             -- require('mini.splitjoin').setup()
@@ -36,6 +37,13 @@ return {
                         '()%d%d/%d%d%/%d%d%d%d()',
                     }},
 
+                    --url
+                    --NOTE: doesn't work for last/next yet
+                    u = {{
+                        '()https://.*()',
+                        '()http://.*()',
+                    }},
+
                     --all lines in buffer
                     g = function()
                         local from = { line = 1, col = 1 }
@@ -53,6 +61,10 @@ return {
                 symbol = "│",
             }
 
+            require('mini.jump').setup{
+                delay = { idle_stop = 10 }
+            }
+
             require('mini.surround').setup{
                 mappings = {
                     add = 'ys',
@@ -62,8 +74,8 @@ return {
                     highlight = '', -- Highlight surrounding
                     replace = 'cs', -- Replace surrounding
                     update_n_lines = '', -- Change number of lines
-                    suffix_last = 'l', -- Suffix to search with "prev" method
-                    suffix_next = 'n', -- Suffix to search with "next" method
+                    suffix_last = 'l', -- Suffix to search prev
+                    suffix_next = 'n', -- Suffix to search next
                 },
             }
         end
