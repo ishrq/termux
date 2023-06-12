@@ -16,8 +16,27 @@ return {
 
             require('mini.ai').setup{
                 custom_textobjects = {
-                    n = { '%f[%d]%d+' },
-                    d = { '()%d%d%d%d%-%d%d%-%d%d()' },
+                    --number
+                    x = { '%f[%d]%d+' },
+
+                    --code
+                    --NOTE: doesn't work for last/next yet
+                    c = { '`().*()`' },
+
+                    --code block
+                    --TODO: define custom text obj for code blocks
+                    -- C =
+
+                    --date
+                    --NOTE: doesn't work for dd-mm-yyyy format
+                    d = {{
+                        '()%d%d%d%d%-%d%d%-%d%d()',
+                        '()%d%d%d%d%/%d%d%/%d%d()',
+                        '()%d%d-%d%d%-%d%d%d%d()',
+                        '()%d%d/%d%d%/%d%d%d%d()',
+                    }},
+
+                    --all lines in buffer
                     g = function()
                         local from = { line = 1, col = 1 }
                         local to = {
