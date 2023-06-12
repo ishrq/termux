@@ -3,10 +3,8 @@ return {
     {
         'echasnovski/mini.nvim',
         version = false,
-        -- event = 'VeryLazy',
         config = function ()
 
-            require('mini.bracketed').setup()
             require('mini.comment').setup()
             require('mini.cursorword').setup()
             require('mini.move').setup()
@@ -29,6 +27,13 @@ return {
                         return { from = from, to = to }
                     end,
                 }
+            }
+
+            require('mini.bracketed').setup{
+                file = { suffix = '' },
+                oldfile = { suffix = '' },
+                undo = { suffix = '' },
+                yank = { suffix = '' },
             }
 
             require('mini.indentscope').setup{
