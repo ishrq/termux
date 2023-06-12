@@ -3,6 +3,7 @@ return {
     {
         'echasnovski/mini.nvim',
         version = false,
+        -- event = 'VeryLazy',
         config = function ()
 
             require('mini.bracketed').setup()
@@ -17,40 +18,14 @@ return {
 
             require('mini.ai').setup{
                 custom_textobjects = {
-                    --number
-                    x = { '%f[%d]%d+' },
-
-                    --code
-                    --NOTE: doesn't work for last/next yet
-                    c = { '`().*()`' },
-
-                    --code block
-                    --TODO: define custom text obj for code blocks
-                    -- C =
-
-                    --date
-                    --NOTE: doesn't work for dd-mm-yyyy format
-                    d = {{
-                        '()%d%d%d%d%-%d%d%-%d%d()',
-                        '()%d%d%d%d%/%d%d%/%d%d()',
-                        '()%d%d-%d%d%-%d%d%d%d()',
-                        '()%d%d/%d%d%/%d%d%d%d()',
-                    }},
-
-                    --url
-                    --NOTE: doesn't work for last/next yet
-                    u = {{
-                        '()https://.*()',
-                        '()http://.*()',
-                    }},
+                    x = { '%f[%d]%d+' }, --number
+                    d = {{ '()%d%d%d%d[-|/]%d%d[-|/]%d%d()', '()%d%d[-|/]%d%d[-|/]%d%d%d%d()', }}, --date
+                    u = {{ 'https://[%www.][%S]+', 'http://[%S]+' }}, --url
 
                     --all lines in buffer
                     g = function()
                         local from = { line = 1, col = 1 }
-                        local to = {
-                            line = vim.fn.line('$'),
-                            col = math.max(vim.fn.getline('$'):len(), 1)
-                        }
+                        local to = { line = vim.fn.line('$'), col = math.max(vim.fn.getline('$'):len(), 1) }
                         return { from = from, to = to }
                     end,
                 }
