@@ -30,9 +30,9 @@ return {
             lspconfig.cssls.setup{capabilities=capabilities} --CSS
             lspconfig.cssmodules_ls.setup{} --CSS Modules
             lspconfig.html.setup{capabilities=capabilities} --HTML
-            lspconfig.jsonls.setup{capabilities = capabilities} --Json
-            lspconfig.phpactor.setup{} --PHP
-            lspconfig.pylsp.setup{} --Python
+            -- lspconfig.jsonls.setup{capabilities = capabilities} --Json
+            -- lspconfig.phpactor.setup{} --PHP
+            -- lspconfig.pylsp.setup{} --Python
             lspconfig.vale_ls.setup{} --Vale
             -- lspconfig.clangd.setup{} --C
             -- lspconfig.golangci_lint_ls.setup{} --Go
@@ -51,16 +51,16 @@ return {
             }
 
             -- Lua
-            lspconfig.lua_ls.setup {
-                settings = {
-                    Lua = {
-                        runtime = { version = 'LuaJIT', },
-                        diagnostics = { globals = {'vim'}, },
-                        workspace = { library = vim.api.nvim_get_runtime_file("", true), },
-                        telemetry = { enable = false, },
-                    },
-                },
-            }
+            -- lspconfig.lua_ls.setup {
+            --     settings = {
+            --         Lua = {
+            --             runtime = { version = 'LuaJIT', },
+            --             diagnostics = { globals = {'vim'}, },
+            --             workspace = { library = vim.api.nvim_get_runtime_file("", true), },
+            --             telemetry = { enable = false, },
+            --         },
+            --     },
+            -- }
 
             local lsp_defaults = lspconfig.util.default_config
 
