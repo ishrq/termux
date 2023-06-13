@@ -2,15 +2,15 @@ snippet permanote
     ---
     Type: Permanent Note
     Topic: ${1: CS}
-    Title: ${2}
-    Related:${3}
+    Title: $2
+    Related:$3
     ---
 
 
-    ${0}
+    $0
 
 snippet rel
-    [[./${1}]]
+    [[./$1]]
 
 snippet src
     Source
@@ -29,47 +29,49 @@ snippet linkc
     [${1:Title}](`@+`)
 
 snippet url
-    <${1}> ${0}
+    <$1>$0
 
 snippet img
-    ![${1:alt text}](${2:path}) ${0}
+    ![${1:alt text}](${2:path})$0
 
 snippet strikethrough
-    ~~${1}~~ ${0}
+    ~~$1~~$0
 
 snippet bold
-    **${1}** $0
+    **$1**$0
 
 snippet italic
-    *${1}* $0
+    *$1*$0
 
 snippet bolditalic
-    ***${1}*** $0
+    ***$1***$0
 
 snippet quote
-    > ${1}
+    > $1
 
 snippet code
-    `${1}` $0
+    `$1`$0
 
 snippet codeblock
-    "```${1:language}", "$0", "```"
+    ```${1:language}"
+    $0
+    ```
 
 snippet subscript
-    ${1}<sub>${0}
+    $1<sub>$0
 
 snippet superscript
-    ${1}<sup>${0}
+    $1<sup>$0
 
 snippet ul
-    - ${1:first}
-    - ${2:second}
-    - ${3:third}
+    - $1
+    - $2
+    - $3
 
 snippet ol
-    1. ${1:first}
-    2. ${2:second}
-    3. ${3:third}
+    1. $1
+    2. $2
+    3. $3
 
 snippet table
     | ${1:Column1}    | ${2:Column2}    | ${3:Column3}    |
