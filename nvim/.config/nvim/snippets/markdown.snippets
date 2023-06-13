@@ -15,4 +15,90 @@ snippet rel
 snippet src
     Source
     ---
+
+snippet srcp
+    Source
+    ---
+    [${1:Title}](`@+`)
+
+
+snippet link
+    [${1:Title}](${2:URL})
+
+snippet linkc
+    [${1:Title}](`@+`)
+
+snippet url
+    <${1}> ${0}
+
+snippet img
+    ![${1:alt text}](${2:path}) ${0}
+
+snippet strikethrough
+    ~~${1}~~ ${0}
+
+snippet bold
+    **${1}** $0
+
+snippet italic
+    *${1}* $0
+
+snippet bolditalic
+    ***${1}*** $0
+
+snippet quote
+    > ${1}
+
+snippet code
+    `${1}` $0
+
+snippet codeblock
+    "```${1:language}", "$0", "```"
+
+snippet subscript
+    ${1}<sub>${0}
+
+snippet superscript
+    ${1}<sup>${0}
+
+snippet ul
+    - ${1:first}
+    - ${2:second}
+    - ${3:third}
+
+snippet ol
+    1. ${1:first}
+    2. ${2:second}
+    3. ${3:third}
+
+snippet table
+    | ${1:Column1}    | ${2:Column2}    | ${3:Column3}    |
+    |---------------- | --------------- | --------------- |
+    | ${4:Item1.1}    | ${5:Item2.1}    | ${6:Item3.1}    |
+    | ${7:Item1.2}    | ${8:Item2.2}    | ${9:Item3.2}    |
+    | ${10:Item1.3}   | ${11:Item2.3}   | ${12:Item3.3}   |
     ${0}
+
+snippet 4x1table
+    | ${1:Column1}  |
+    |-------------- |
+    | ${2:Item1}    |
+    | ${3:Item2}    |
+    | ${4:Item3}    |
+    "${0}"
+
+snippet 4x2table
+    | ${1:Column1}   | ${2:Column2}    |
+    |--------------- | --------------- |
+    | ${3:Item1.1}   | ${4:Item2.1}    |
+    | ${5:Item1.2}   | ${6:Item2.2}    |
+    | ${7:Item1.3}   | ${8:Item2.3}    |
+    ${0}
+
+snippet 4x4table
+     | ${1:Column1}    | ${2:Column2}    | ${3:Column3}    | ${4:Column4}    |
+     |---------------- | --------------- | --------------- | --------------- |
+     | ${5:Item1.1}    | ${6:Item2.1}    | ${7:Item3.1}    | ${8:Item4.1}    |
+     | ${9:Item1.2}    | ${10:Item2.2}   | ${11:Item3.2}   | ${12:Item4.2}   |
+     | ${13:Item1.3}   | ${14:Item2.3}   | ${15:Item3.3}   | ${16:Item4.3}   |
+     ${0}
