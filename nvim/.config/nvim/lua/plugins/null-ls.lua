@@ -3,6 +3,7 @@ return {
     {
         "jose-elias-alvarez/null-ls.nvim",
         event = { "BufReadPre", "BufNewFile" },
+        dependencies = 'nvim-lua/plenary.nvim',
         opts = function ()
             local null_ls = require("null-ls")
             local code_actions = null_ls.builtins.code_actions

@@ -1,7 +1,7 @@
-local augroup = vim.api.nvim_create_augroup  --Create/get autocommand group
-local autocmd = vim.api.nvim_create_autocmd  --Create autocommand
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
 
-augroup('bufcheck', {clear = true})
+augroup('bufcheck', {clear=true})
 
 --Reload config file on change
 autocmd('BufWritePost', {
@@ -58,11 +58,11 @@ autocmd('BufRead', {
 
 --Markdown/gitcommit
 autocmd('FileType', {
-  pattern = { "gitcommit", "markdown", "text", "log" },
-  callback = function()
-    vim.opt_local.wrap = true
-    vim.opt_local.spell = true
-end,
+    pattern = { "gitcommit", "markdown", "text", "log" },
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.spell = true
+    end,
 })
 
 --Fold
