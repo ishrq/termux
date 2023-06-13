@@ -24,11 +24,4 @@ return{
             autolist.create_mapping_hook('n', '<leader>x', autolist.invert_entry, "")
         end,
     },
-    -- https://github.com/norcalli/nvim-colorizer.lua
-    {
-        "NvChad/nvim-colorizer.lua",
-        ft = {"html","css","js","lua"},
-        cmd = "Colorizer",
-        config = true
-    },
 }

@@ -36,6 +36,12 @@ return {
                 yank    = { suffix = '' },
             }
 
+            require('mini.hipatterns').setup{
+                highlighters = {
+                    hex_color = require('mini.hipatterns').gen_highlighter.hex_color(),
+                },
+            }
+
             require('mini.indentscope').setup{
                 draw = {
                     animation = require('mini.indentscope').gen_animation.none()
