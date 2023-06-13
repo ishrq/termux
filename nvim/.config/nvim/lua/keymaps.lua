@@ -66,8 +66,8 @@ map('i', ';', ';<C-g>u')
 map('n', ',b', ":tab drop ~/ARCHIVE/Journal/backlog.txt<CR>", {desc='Open backlog.txt'})
 map('n', ',j', ":tab drop ~/ARCHIVE/Journal/journal.txt<CR>", {desc='Open journal.txt'})
 map('n', ',k', ":tab drop ~/.config/nvim/lua/keymaps.lua<CR>", {desc='Open keymap.lua'})
-map('n', '<Leader>tl', '<Cmd>tabmove +1<CR>', {desc='Swap tab with next'})
-map('n', '<Leader>th', '<Cmd>tabmove -1<CR>', {desc='Swap tab with previous'})
+-- map('n', '<Leader>tl', '<Cmd>tabmove +1<CR>', {desc='Swap tab with next'})
+-- map('n', '<Leader>th', '<Cmd>tabmove -1<CR>', {desc='Swap tab with previous'})
 
 -- Diagnostic keymaps
 map('n', '<Leader>e', vim.diagnostic.open_float)
@@ -82,3 +82,7 @@ map('n', 'sf', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'f')<CR>", def, {desc='
 map('n', 'Sf', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'f', {search_method='prev'})<CR>", def, {desc='Previous function'})
 map('n', 'su', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'u')<CR>", def, {desc='Next url'})
 map('n', 'Su', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'u', {search_method='prev'})<CR>", def, {desc='Previous url'})
+
+-- mini.trailspace
+map('n', '<Leader>t', '<Cmd>lua MiniTrailspace.trim()<CR>', {desc='Trim trailspace'})
+map('n', '<Leader>T', '<Cmd>lua MiniTrailspace.trim_last_lines()<CR>', {desc='Trim trail lines'})
