@@ -1,22 +1,18 @@
 snippet pn permanent note
     ---
     Type: Permanent Note
-    Topic: ${1: CS}
+    Topic: ${1:CS}
     Title: $2
     Related:$3
     ---
 
 
+    # $2
+
     $0
 
 snippet rel related files
     [[./$1]]
-
-snippet footer
-    ---
-    Footnotes (References, Citations, Sources):
-
-    $0
 
 snippet link
     [${1:Alt}](${2:URL})
@@ -33,14 +29,11 @@ snippet qurl
 snippet img image
     ![${1:Alt}](${2:Path})$0
 
-snippet fl footnote label
-    [${1:Label}]: $2
+snippet fr footnote reference
+    [^${1:ID}]: $2
 
-snippet fu footnote label with url
-    [${1:Label}]: <${2:URL}>
-
-snippet fn footnote refer
-    ^[${1:Label}]^
+snippet fn footnote
+    [^${1:ID}]
 
 snippet strikethrough
     ~~$1~~$0
@@ -66,16 +59,17 @@ snippet codeblock
     ```
 
 snippet sub subscript
-    ~$1~
+    <sub>1</sub>
 
 snippet sup superscript
-    ^$1^
-
-snippet highlight
-    ==$1==
+    <sup>1</sup>
 
 snippet task
     - [${1: }] $2
+
+snippet def definition
+    ${1: Term}
+    : ${2: Definition}
 
 snippet h1
     # $1
