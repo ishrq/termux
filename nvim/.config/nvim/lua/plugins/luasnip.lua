@@ -15,7 +15,7 @@ return {
             { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
         },
         config = function()
-            require("luasnip.loaders.from_vscode").lazy_load({ exclude = {"all", "fish", "html"} })
+            require("luasnip.loaders.from_vscode").lazy_load({ exclude = {"all", "fish", "html", "markdown"} })
             require("luasnip.loaders.from_lua").lazy_load()
 
             local ls = require("luasnip")
