@@ -1,4 +1,4 @@
-snippet pn permanent note
+snippet pn Permanent note
     ---
     Type: Permanent Note
     Topic: ${1:CS}
@@ -8,6 +8,18 @@ snippet pn permanent note
 
 
     # $2
+
+    $0
+
+snippet ln Literature note - Book
+    ---
+    Type: Literature Note
+    Book: ${1:Title}
+    Author: ${2:Author}
+    ---
+
+
+    # $1 by $2
 
     $0
 
@@ -30,10 +42,10 @@ snippet img image
     ![${1:Alt}](${2:Path})$0
 
 snippet fr footnote reference
-    [^${1:ID}]: $2
+    [^${1:1}]: $2
 
 snippet fn footnote
-    [^${1:ID}]
+    [^${1:1}]
 
 snippet strikethrough
     ~~$1~~$0
