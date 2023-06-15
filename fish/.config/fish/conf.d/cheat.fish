@@ -6,16 +6,16 @@ function cheat -d "Cheatsheet"
     if test $USER = "u0_a1692" || test $USER = "u0_a215" #Termux S8,M10
         set dir ~/storage/shared/Documents/COMPUTER/RESOURCES/Notes/Cheatsheet/
         set file ~/storage/shared/Documents/COMPUTER/RESOURCES/Notes/Cheatsheet/*.txt
-        set clipboard "termux-clipboard-set"
+        # set clipboard "termux-clipboard-set"
     else
         set dir ~/RESOURCES/Notes/Cheatsheet/
         set file ~/RESOURCES/Notes/Cheatsheet/*.txt
-        set clipboard "xargs echo -n | xclip -sel c"
+        # set clipboard "xargs echo -n | xclip -sel c"
     end
 
-    set filter "echo {} | awk -F':' '{print \$NF }'"
+    set filter "echo -n {} | awk -F':' '{print \$NF }'"
 
-    set ctrl_y "execute($filter | $clipboard)+abort"
+    set ctrl_y "execute($filter | fish_clipboard_copy)+abort"
 
     set selected (
         awk '!/^($|#)/' $file | fzf \

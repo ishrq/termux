@@ -15,7 +15,7 @@ function __rga-fzf
             --info=right \
             --border=thinblock \
             --preview='test ! -z {} && rga --pretty --context 5 {q} {}' \
-            --preview-window='80%:wrap,border-thinblock' \
+            --preview-window='wrap,border-thinblock' \
             --phony -q "$argv[-1]" \
             --bind "change:reload:$RG_PREFIX {q}" \
     )
