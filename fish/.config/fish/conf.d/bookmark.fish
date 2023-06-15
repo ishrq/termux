@@ -33,8 +33,9 @@ function bookmark
 
 
     awk '!/^($|#)/' $rl_file | fzf\
-        -e --multi --no-bold --tac +s --preview-window='up,1'\
+        -e --multi +s \
         --preview='echo {-1}'\
+        --preview-window='border-thinblock,up,1' \
         --query=(commandline) \
         --prompt="Readlater> "\
         --header 'Bookmarks | Readlater | Archive'\

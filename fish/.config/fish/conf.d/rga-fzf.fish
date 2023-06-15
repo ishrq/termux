@@ -12,9 +12,10 @@ function __rga-fzf
         FZF_DEFAULT_COMMAND="$RG_PREFIX '$argv[-1]'" \
         fzf \
             --no-bold \
-            --preview='test ! -z {} && \
-                rga --pretty --context 5 {q} {}' \
-            --preview-window='70%:wrap'\
+            --info=right \
+            --border=thinblock \
+            --preview='test ! -z {} && rga --pretty --context 5 {q} {}' \
+            --preview-window='80%:wrap,border-thinblock' \
             --phony -q "$argv[-1]" \
             --bind "change:reload:$RG_PREFIX {q}" \
     )
@@ -27,3 +28,4 @@ function __rga-fzf
 end
 
 bind \e\cg __rga-fzf
+

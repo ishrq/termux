@@ -6,7 +6,8 @@
 
 if test $USER="ia" && test $hostname="pop-os"
     # Fzf default
-    set -x FZF_DEFAULT_OPTS '--cycle --layout=reverse --info="inline" --margin="1" --height=70% --color="fg:#c5c9c5,bg:#181616,bg+:#87a987,fg+:#181616,hl:#c4746e,hl+:#a292a3,gutter:#181616,pointer:#8ea4a2,info:#949fb5,border:#181616"'
+    set -x FZF_DEFAULT_OPTS '--cycle --no-bold --layout=reverse --info=inline --margin=1 --border=thinblock --preview-window="80%:wrap" --height=70% --tabstop=4 --scrollbar="▏▕" --color="fg:#c5c9c5,bg:#181616,bg+:#87a987,fg+:#181616,hl:#c4746e,hl+:#a292a3,gutter:#181616,pointer:#8ea4a2,info:#949fb5,border:#181616"'
+
 
     # Abbreviations
     abbr -a a 'aerc'
@@ -28,7 +29,7 @@ if test $USER = "u0_a1692" || test $USER = "u0_a215"
     end
 
     # Fzf default
-    set -x FZF_DEFAULT_OPTS '--cycle --layout=reverse --info="inline" --margin="1" --preview-window="up:60%:wrap" --color="fg:#c5c9c5,bg:#000000,bg+:#87a987,fg+:#181616,hl:#c4746e,hl+:#a292a3,gutter:#181616,pointer:#8ea4a2,info:#949fb5,border:#181616"'
+    set -x FZF_DEFAULT_OPTS '--cycle --no-bold --layout=reverse --info=inline --margin=1 --border=thinblock --preview-window="up:60%:wrap" --tabstop=4 --scrollbar="▏▕" --color="fg:#c5c9c5,bg:#000000,bg+:#87a987,fg+:#181616,hl:#c4746e,hl+:#a292a3,gutter:#181616,pointer:#8ea4a2,info:#949fb5,border:#181616"'
 
     # Abbreviations
     abbr -a b 'vi ~/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/books.txt'
