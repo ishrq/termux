@@ -1,4 +1,5 @@
 return {
+    -- https://github.com/nvim-treesitter/nvim-treesitter
     { "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
@@ -7,21 +8,14 @@ return {
         { "<bs>", desc = "Decrement selection", mode = "x" },
     },
     opts = {
-        highlight = {enable = true},
-        autopairs = {enable = true},
-        indent = {enable = false},
-        sync_install = false,
         auto_install = false,
-        context_commentstring = { enable = true, enable_autocmd = false },
-        ensure_installed = {
-            "fish",
-            "html",
-            "css",
-            "javascript",
-            "lua",
-            "markdown",
-            "markdown_inline",
-        },
+        autopairs = {enable=true},
+        context_commentstring = { enable=true, enable_autocmd= false },
+        highlight = {enable=true},
+        indent = {enable=false},
+        matchup = {enable=true},
+        sync_install = false,
+        ensure_installed = {"bash", "fish", "html", "css", "javascript", "lua", "php", "python", "markdown", "markdown_inline"},
         incremental_selection = {
             enable = true,
             keymaps = {
@@ -60,9 +54,10 @@ return {
         require("nvim-treesitter.configs").setup(opts)
     end
 },
+-- https://github.com/nvim-treesitter/nvim-treesitter-context
 {
     "nvim-treesitter/nvim-treesitter-context",
-    event = "BufEnter",
+    event = "VimEnter",
     config = true
 }
 }

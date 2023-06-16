@@ -17,16 +17,19 @@ return {
 
             require('mini.ai').setup{
                 custom_textobjects = {
-                    x = { '%f[%d]%d+' }, --number
+                    c = { '()%S()' }, --character
+                    C = { { '%u[%l%d]+%f[^%l%d]', '%f[%S][%l%d]+%f[^%l%d]', '%f[%P][%l%d]+%f[^%l%d]', '^[%l%d]+%f[^%l%d]', }, '^().*()$' }, --word supporting camelCase and _underscores
                     d = {{ '()%d%d%d%d[-|/]%d%d[-|/]%d%d()', '()%d%d[-|/]%d%d[-|/]%d%d%d%d()', }}, --date
                     u = {{ 'https://[%www.][%S]+', 'http://[%www.][%S]+' }}, --url
+                    x = { '%f[%d]%d+' }, --number
 
-                    --buffer
+                    --all lines in buffer
                     B = function()
                         local from = { line = 1, col = 1 }
                         local to = { line = vim.fn.line('$'), col = math.max(vim.fn.getline('$'):len(), 1) }
                         return { from = from, to = to }
                     end,
+
                 }
             }
 
