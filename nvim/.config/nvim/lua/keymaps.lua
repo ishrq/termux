@@ -13,10 +13,12 @@ map('i', '<C-z>', '<C-g>u<Esc>[S1z=`]a<C-g>u', {desc='Fix spelling'})
 map('n', '<Leader>=', ':set spell!<CR>', {desc='Toggle spell check'})
 map('n', '<Leader>8', ':execute "set cc=" . (&cc == "" ? "80" : "")<CR>', def, {desc="Toggle character column"})
 map('n', '<Leader>r', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {desc='Replace current word'})
+map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>', { silent=true, desc='Split line' })
 map('x', 'g/', '<Esc>/\\%V', {silent=false, desc='Search inside selection'})
 
 --NOTE: use the new command mode abbr?
 -- map('n', '<Leader>x', ":!chmod +x %<CR>", def, {desc='Make executable'})
+
 
 -- Search visually selected text
 map('x', '*', [[y/\V<C-R>=escape(@", '/\')<CR><CR>]])
@@ -32,6 +34,7 @@ map('n', 'gp', '"+p', { desc = 'Paste from system clipboard' })
 map('x', 'gp', '"+P', { desc = 'Paste from system clipboard' })
 
 -- Command mode movement
+map('c', '<C-a>', '<Home>')
 map('c', '<C-n>', '<Down>')
 map('c', '<C-p>', '<Up>')
 map('c', '<M-h>', '<Left>', {silent=false})
@@ -72,6 +75,16 @@ map('n', ',k', ":tab drop ~/.config/nvim/lua/keymaps.lua<CR>", {desc='Open keyma
 -- Diagnostic keymaps
 map('n', '<Leader>e', vim.diagnostic.open_float)
 map('n', '<leader>q', vim.diagnostic.setloclist, def)
+
+-- Custom text object
+
+-- Around line: with leading and trailing whitespace
+-- map('v', 'al', ':<c-u>silent! normal! 0v$<cr>', { silent = true })
+-- map('o', 'al', ':normal val<cr>', { noremap = false, silent = true })
+
+-- Inner line: without leading or trailing whitespace
+-- map('v', 'il', ':<c-u>silent! normal! ^vg_<cr>', { silent = true })
+-- map('o', 'il', ':normal vil<cr>', { noremap = false, silent = true })
 
 -- mini.nvim: mini.ai
 map('n', 'sa', '<Cmd>lua MiniAi.move_cursor("left", "i", "a")<CR>', def, {desc='Next argument'})
