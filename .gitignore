@@ -12,7 +12,7 @@ fish/.cofig/fish/functions/fzf_*.fish
 fish/.cofig/fish/functions/sponge_*.fish
 git/.config/git/config.local
 gopass/.config/gopass/config
-newsboat/.config/newsboat/config
 newsboat/.config/newsboat/urls
 newsboat/.config/newsboat/urls-alt
+newsboat/.config/newsboat/urls-video
 nvim/.config/nvim/lazy-lock.json
