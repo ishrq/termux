@@ -82,6 +82,8 @@ map('n', 'sf', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'f')<CR>", def, {desc='
 map('n', 'Sf', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'f', {search_method='prev'})<CR>", def, {desc='Previous function'})
 map('n', 'su', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'u')<CR>", def, {desc='Next url'})
 map('n', 'Su', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'u', {search_method='prev'})<CR>", def, {desc='Previous url'})
+map('n', 'sx', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'x')<CR>", def, {desc='Next number'})
+map('n', 'Sx', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'x', {search_method='prev'})<CR>", def, {desc='Previous number'})
 
 -- mini.trailspace
 map('n', '<Leader>t', '<Cmd>lua MiniTrailspace.trim()<CR>', {desc='Trim trailspace'})
