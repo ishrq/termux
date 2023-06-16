@@ -8,17 +8,16 @@ local def = { noremap=true, silent=true }
 
 -- General
 map('', 'gV', '`[v`]', def, {desc='Select yanked/pasted/modified text'})
-map('v', '.', ':normal .<CR>', {desc='Visual mode dot repeat'})
 map('i', '<C-z>', '<C-g>u<Esc>[S1z=`]a<C-g>u', {desc='Fix spelling'})
 map('n', '<Leader>=', ':set spell!<CR>', {desc='Toggle spell check'})
 map('n', '<Leader>8', ':execute "set cc=" . (&cc == "" ? "80" : "")<CR>', def, {desc="Toggle character column"})
 map('n', '<Leader>r', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {desc='Replace current word'})
+map('v', '.', ':normal .<CR>', {desc='Visual mode dot repeat'})
 map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>', { silent=true, desc='Split line' })
 map('x', 'g/', '<Esc>/\\%V', {silent=false, desc='Search inside selection'})
 
 --NOTE: use the new command mode abbr?
 -- map('n', '<Leader>x', ":!chmod +x %<CR>", def, {desc='Make executable'})
-
 
 -- Search visually selected text
 map('x', '*', [[y/\V<C-R>=escape(@", '/\')<CR><CR>]])
@@ -30,6 +29,7 @@ map('v', '>', '>gv^')
 
 -- Register
 map({'n', 'x'}, 'gy', '"+y', { desc = 'Yank to system clipboard' })
+map({'n', 'x'}, 'gd', '"+d', { desc = 'Delete to system clipboard' })
 map('n', 'gp', '"+p', { desc = 'Paste from system clipboard' })
 map('x', 'gp', '"+P', { desc = 'Paste from system clipboard' })
 
@@ -66,15 +66,16 @@ map('i', '.', '.<C-g>u')
 map('i', ';', ';<C-g>u')
 
 -- Tabs, windows, frequent files
-map('n', ',b', ":tab drop ~/ARCHIVE/Journal/backlog.txt<CR>", {desc='Open backlog.txt'})
-map('n', ',j', ":tab drop ~/ARCHIVE/Journal/journal.txt<CR>", {desc='Open journal.txt'})
-map('n', ',k', ":tab drop ~/.config/nvim/lua/keymaps.lua<CR>", {desc='Open keymap.lua'})
+map('n', '\\b', ":tab drop ~/ARCHIVE/Journal/backlog.txt<CR>", {desc='Open backlog.txt'})
+map('n', '\\j', ":tab drop ~/ARCHIVE/Journal/journal.txt<CR>", {desc='Open journal.txt'})
+map('n', '\\k', ":tab drop ~/.config/nvim/lua/keymaps.lua<CR>", {desc='Open keymap.lua'})
 -- map('n', '<Leader>tl', '<Cmd>tabmove +1<CR>', {desc='Swap tab with next'})
 -- map('n', '<Leader>th', '<Cmd>tabmove -1<CR>', {desc='Swap tab with previous'})
 
 -- Diagnostic keymaps
 map('n', '<Leader>e', vim.diagnostic.open_float)
 map('n', '<leader>q', vim.diagnostic.setloclist, def)
+
 
 -- Custom text object
 
@@ -87,16 +88,14 @@ map('n', '<leader>q', vim.diagnostic.setloclist, def)
 -- map('o', 'il', ':normal vil<cr>', { noremap = false, silent = true })
 
 -- mini.nvim: mini.ai
-map('n', 'sa', '<Cmd>lua MiniAi.move_cursor("left", "i", "a")<CR>', def, {desc='Next argument'})
-map('n', 'Sa', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'a', {search_method='prev'})<CR>", def, {desc='Previous argument'})
-map('n', 'sd', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'd')<CR>", def, {desc='Next date'})
-map('n', 'Sd', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'd', {search_method='prev'})<CR>", def, {desc='Previous date'})
-map('n', 'sf', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'f')<CR>", def, {desc='Next function'})
-map('n', 'Sf', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'f', {search_method='prev'})<CR>", def, {desc='Previous function'})
-map('n', 'su', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'u')<CR>", def, {desc='Next url'})
-map('n', 'Su', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'u', {search_method='prev'})<CR>", def, {desc='Previous url'})
-map('n', 'sx', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'x')<CR>", def, {desc='Next number'})
-map('n', 'Sx', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'x', {search_method='prev'})<CR>", def, {desc='Previous number'})
+map('n', ']a', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'a')<CR>", def, {desc='Next argument'})
+map('n', '[a', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'a', {search_method='prev'})<CR>", def, {desc='Previous argument'})
+map('n', ']d', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'D')<CR>", def, {desc='Next date'})
+map('n', '[d', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'D', {search_method='prev'})<CR>", def, {desc='Previous date'})
+map('n', ']f', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'f')<CR>", def, {desc='Next function'})
+map('n', '[f', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'f', {search_method='prev'})<CR>", def, {desc='Previous function'})
+map('n', ']u', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'U')<CR>", def, {desc='Next url'})
+map('n', '[u', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'U', {search_method='prev'})<CR>", def, {desc='Previous url'})
 
 -- mini.trailspace
 map('n', '<Leader>t', '<Cmd>lua MiniTrailspace.trim()<CR>', {desc='Trim trailspace'})
