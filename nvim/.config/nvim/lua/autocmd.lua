@@ -72,14 +72,6 @@ autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEnter'}, {
     vim.opt.foldmethod = 'expr'
     vim.opt.foldexpr   = 'nvim_treesitter#foldexpr()' end })
 
---HTML/CSS Shiftwidth
-autocmd('FileType', {
-    pattern = { "html", "css" },
-    callback = function()
-        vim.bo.shiftwidth = 2
-    end,
-})
-
 --Create directory on save
 autocmd('BufWritePre', {
   pattern = "*",
