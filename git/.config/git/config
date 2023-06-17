@@ -5,6 +5,11 @@
     pager = delta
     editor = nvim
     whitespace = warn
+    fileMode = true
+    ignoreCase = false
+    excludesfile = ~/.config/git/ignore
+    ; attributesFile = ~/.config/git/attributes
+    ; hooksPath = ~/.config/git/hooks
 
 [format]
     signOff = yes
@@ -19,13 +24,17 @@
 [commit]
     verbose = true
     gpgsign = true
+    ; template = ~/.config/git/message
 
 [pull]
     rebase = true
 
+[fetch]
+    prune = true
+
 [push]
     gpgSign = if-asked
-    default = simple
+    default = current
     autoSetupRemote = true
     followTags = yes
 
@@ -36,7 +45,7 @@
     autoCorrect = prompt
 
 [color]
-    ui = true
+    ui = auto
 
 [interactive]
     diffFilter = delta --color-only
@@ -44,5 +53,6 @@
 [delta]
     navigate = true  # n/N move between diff sections
     light = false    # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+
 [diff]
     colorMoved = default
