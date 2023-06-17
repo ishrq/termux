@@ -78,8 +78,12 @@ map('n', '\\k', ":tab drop ~/.config/nvim/lua/keymaps.lua<CR>", {desc='Open keym
 map('n', '<Leader>e', vim.diagnostic.open_float)
 map('n', '<leader>q', vim.diagnostic.setloclist, def)
 
+-- mini.trailspace
+map('n', '<Leader>t', '<Cmd>lua MiniTrailspace.trim()<CR>', {desc='Trim trailspace'})
+map('n', '<Leader>T', '<Cmd>lua MiniTrailspace.trim_last_lines()<CR>', {desc='Trim trail lines'})
+-- map('n', '<Leader>t', '<Cmd>%s/\\s\\+$//e<CR>', {desc='Trim trailspace'})
 
--- Custom text object
+-- Textobjects
 
 -- Around line: with leading and trailing whitespace
 -- map('v', 'al', ':<c-u>silent! normal! 0v$<cr>', { silent = true })
@@ -89,17 +93,33 @@ map('n', '<leader>q', vim.diagnostic.setloclist, def)
 -- map('v', 'il', ':<c-u>silent! normal! ^vg_<cr>', { silent = true })
 -- map('o', 'il', ':normal vil<cr>', { noremap = false, silent = true })
 
--- mini.nvim: mini.ai
-map('n', ']a', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'a')<CR>", def, {desc='Next argument'})
-map('n', '[a', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'a', {search_method='prev'})<CR>", def, {desc='Previous argument'})
-map('n', ']d', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'D')<CR>", def, {desc='Next date'})
-map('n', '[d', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'D', {search_method='prev'})<CR>", def, {desc='Previous date'})
-map('n', ']f', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'f')<CR>", def, {desc='Next function'})
-map('n', '[f', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'f', {search_method='prev'})<CR>", def, {desc='Previous function'})
-map('n', ']u', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'U')<CR>", def, {desc='Next url'})
-map('n', '[u', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'U', {search_method='prev'})<CR>", def, {desc='Previous url'})
 
--- mini.trailspace
-map('n', '<Leader>t', '<Cmd>lua MiniTrailspace.trim()<CR>', {desc='Trim trailspace'})
-map('n', '<Leader>T', '<Cmd>lua MiniTrailspace.trim_last_lines()<CR>', {desc='Trim trail lines'})
--- map('n', '<Leader>t', '<Cmd>%s/\\s\\+$//e<CR>', {desc='Trim trailspace'})
+-- mini.nvim: mini.ai
+
+local map_next = function(lhs, side, textobj_id, dsc)
+    for _, mode in ipairs({ 'n', 'x', 'o' }) do
+        vim.keymap.set(mode, lhs, function() MiniAi.move_cursor(side, 'i', textobj_id, { search_method = 'next', n_lines = 100 }) end, {desc=dsc})
+    end
+end
+
+local map_previous = function(lhs, side, textobj_id, dsc)
+    for _, mode in ipairs({ 'n', 'x', 'o' }) do
+        vim.keymap.set(mode, lhs, function() MiniAi.move_cursor(side, 'i', textobj_id, { search_method = 'prev', n_lines = 100 }) end, {desc=dsc})
+    end
+end
+
+map_next(']a', 'left', 'a', 'Next argument')
+map_next(']A', 'right', 'a', 'Next argument end')
+map_previous('[a', 'left', 'a', 'Previous argument')
+map_previous('[A', 'right', 'a', 'Previous argument end')
+
+map_next(']f', 'left', 'f', 'Next function start')
+map_next(']F', 'right', 'f', 'Next function end')
+map_previous('[f', 'left', 'f', 'Previous function start')
+map_previous('[F', 'right', 'f', 'Previous function end')
+
+map_next(']d', 'left', 'D', 'Next date')
+map_previous('[d', 'left', 'D', 'Previous date')
+
+map_next(']u', 'left', 'U', 'Next URL')
+map_previous('[u', 'left', 'U', 'Previous URL')

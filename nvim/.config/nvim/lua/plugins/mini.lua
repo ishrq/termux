@@ -16,18 +16,19 @@ return {
 
             require('mini.ai').setup{
                 custom_textobjects = {
-                    D = {{ '()%d%d%d%d[-|/]%d%d[-|/]%d%d()', '()%d%d[-|/]%d%d[-|/]%d%d%d%d()', }}, --date
-                    U = {{ 'https://[%www.][%S]+', 'http://[%www.][%S]+' }}, --url
-                    x = { '%f[%d]%d+' }, --number
+                    D = {{ '()%d%d%d%d[-|/]%d%d[-|/]%d%d()', '()%d%d[-|/]%d%d[-|/]%d%d%d%d()', }}, -- date
+                    U = {{ 'https://[%www.][%S]+', 'http://[%www.][%S]+' }}, -- url
+                    x = { '%f[%d]%d+' }, -- number
 
-                    --entire buffer
+                    -- entire buffer
                     B = function()
                         local from = { line = 1, col = 1 }
                         local to = { line = vim.fn.line('$'), col = math.max(vim.fn.getline('$'):len(), 1) }
                         return { from = from, to = to }
                     end,
 
-                }
+                },
+                silent = true
             }
 
             require('mini.bracketed').setup{
