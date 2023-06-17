@@ -54,6 +54,8 @@ map({ 'n', 'x' }, 'k', 'v:count == 0 ? "gk" : "k"', {expr=true, silent=true })
 map('', 'J', 'mzJ`z')
 map('n', '<C-d>', '<C-d>zz')
 map('n', '<C-u>', '<C-u>zz')
+map('n', '*', '*zz')
+map('n', '#', '#zz')
 map('n', 'n', 'nzzzv')
 map('n', 'N', 'Nzzzv')
 map('n', '{', '{zz')
@@ -100,3 +102,4 @@ map('n', '[u', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'U', {search_method='pr
 -- mini.trailspace
 map('n', '<Leader>t', '<Cmd>lua MiniTrailspace.trim()<CR>', {desc='Trim trailspace'})
 map('n', '<Leader>T', '<Cmd>lua MiniTrailspace.trim_last_lines()<CR>', {desc='Trim trail lines'})
+-- map('n', '<Leader>t', '<Cmd>%s/\\s\\+$//e<CR>', {desc='Trim trailspace'})
