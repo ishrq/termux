@@ -20,12 +20,12 @@ autocmd('BufReadPost', {
   pattern = '*',
   command = [[ if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]], })
 
--- resize splits if window got resized
+-- Auro resize window
 autocmd('VimResized', {
   callback = function() vim.cmd("tabdo wincmd =") end,
 })
 
---Remove whitespace on write
+--Remove trailing whitespace on write
 autocmd('BufWritePre', {
   pattern = '*',
   command = ":%s/\\s\\+$//e" })
