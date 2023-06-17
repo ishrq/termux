@@ -11,13 +11,15 @@ map('', 'gV', '`[v`]', def, {desc='Select yanked/pasted/modified text'})
 map('i', '<C-z>', '<C-g>u<Esc>[S1z=`]a<C-g>u', {desc='Fix spelling'})
 map('n', '<Leader>=', ':set spell!<CR>', {desc='Toggle spell check'})
 map('n', '<Leader>8', ':execute "set cc=" . (&cc == "" ? "80" : "")<CR>', def, {desc="Toggle character column"})
-map('n', '<Leader>r', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {desc='Replace current word'})
 map('v', '.', ':normal .<CR>', {desc='Visual mode dot repeat'})
 map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>', { silent=true, desc='Split line' })
 map('x', 'g/', '<Esc>/\\%V', {silent=false, desc='Search inside selection'})
 
---NOTE: use the new command mode abbr?
+-- NOTE: use the new command mode abbr?
 -- map('n', '<Leader>x', ":!chmod +x %<CR>", def, {desc='Make executable'})
+
+-- NOTE: familiarize using 'C-r C-w' instead
+-- map('n', '<Leader>r', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {desc='Replace current word'})
 
 -- Search visually selected text
 map('x', '*', [[y/\V<C-R>=escape(@", '/\')<CR><CR>]])
@@ -76,7 +78,7 @@ map('n', '\\k', ":tab drop ~/.config/nvim/lua/keymaps.lua<CR>", {desc='Open keym
 
 -- Diagnostic keymaps
 map('n', '<Leader>e', vim.diagnostic.open_float)
-map('n', '<leader>q', vim.diagnostic.setloclist, def)
+-- map('n', '<leader>q', vim.diagnostic.setloclist, def)
 
 -- mini.trailspace
 map('n', '<Leader>t', '<Cmd>lua MiniTrailspace.trim()<CR>', {desc='Trim trailspace'})
@@ -95,31 +97,11 @@ map('n', '<Leader>T', '<Cmd>lua MiniTrailspace.trim_last_lines()<CR>', {desc='Tr
 
 
 -- mini.nvim: mini.ai
-
-local map_next = function(lhs, side, textobj_id, dsc)
-    for _, mode in ipairs({ 'n', 'x', 'o' }) do
-        vim.keymap.set(mode, lhs, function() MiniAi.move_cursor(side, 'i', textobj_id, { search_method = 'next', n_lines = 100 }) end, {desc=dsc})
-    end
-end
-
-local map_previous = function(lhs, side, textobj_id, dsc)
-    for _, mode in ipairs({ 'n', 'x', 'o' }) do
-        vim.keymap.set(mode, lhs, function() MiniAi.move_cursor(side, 'i', textobj_id, { search_method = 'prev', n_lines = 100 }) end, {desc=dsc})
-    end
-end
-
-map_next(']a', 'left', 'a', 'Next argument')
-map_next(']A', 'right', 'a', 'Next argument end')
-map_previous('[a', 'left', 'a', 'Previous argument')
-map_previous('[A', 'right', 'a', 'Previous argument end')
-
-map_next(']f', 'left', 'f', 'Next function start')
-map_next(']F', 'right', 'f', 'Next function end')
-map_previous('[f', 'left', 'f', 'Previous function start')
-map_previous('[F', 'right', 'f', 'Previous function end')
-
-map_next(']d', 'left', 'D', 'Next date')
-map_previous('[d', 'left', 'D', 'Previous date')
-
-map_next(']u', 'left', 'U', 'Next URL')
-map_previous('[u', 'left', 'U', 'Previous URL')
+map({'n','x','o'}, ']a', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'a')<CR>", {desc='Next argument'})
+map({'n','x','o'}, ']A', "<Cmd>lua MiniAi.move_cursor('right', 'i', 'a')<CR>", {desc='Next argument end'})
+map({'n','x','o'}, '[a', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'a', {search_method='prev'})<CR>", {desc='Previous argument'})
+map({'n','x','o'}, '[A', "<Cmd>lua MiniAi.move_cursor('right', 'i', 'a', {search_method='prev'})<CR>", {desc='Previous argument end'})
+map({'n','x','o'}, ']f', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'f')<CR>", {desc='Next function'})
+map({'n','x','o'}, ']F', "<Cmd>lua MiniAi.move_cursor('right', 'i', 'f')<CR>", {desc='Next function end'})
+map({'n','x','o'}, '[f', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'f', {search_method='prev'})<CR>", {desc='Previous function'})
+map({'n','x','o'}, '[F', "<Cmd>lua MiniAi.move_cursor('right', 'i', 'f', {search_method='prev'})<CR>", {desc='Previous function end'})
