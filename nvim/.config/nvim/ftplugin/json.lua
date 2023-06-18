@@ -3,7 +3,7 @@ vim.keymap.set('n', '<C-p>', ':%!jq .<CR>')
 
 -- on pressing 'o' to create a new line
 -- append comma ',' at end of previous line
--- https://github.com/JoosepAlviste/dotfiles/blob/c171efbbbe0daa5e737250ec82338a51ed53c15a/config/nvim/ftplugin/json.lua
+-- https://github.com/JoosepAlviste/dotfiles/blob/master/config/nvim/ftplugin/json.lua
 
 vim.keymap.set('n', 'o', function()
   local line = vim.api.nvim_get_current_line()
