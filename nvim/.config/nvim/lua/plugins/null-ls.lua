@@ -14,25 +14,14 @@ return {
 
             return {
                 sources = {
-                    code_actions.eslint_d,
                     code_actions.gitsigns,
                     completion.luasnip,
                     completion.spell,
-                    diagnostics.alex,
                     diagnostics.codespell,
-                    diagnostics.eslint_d,
-                    diagnostics.fish,
-                    -- diagnostics.mdl,
-                    -- diagnostics.phpcs,
                     diagnostics.todo_comments,
                     diagnostics.trail_space,
                     diagnostics.write_good,
-                    -- formatting.black,
                     formatting.codespell,
-                    formatting.eslint_d,
-                    formatting.fish_indent,
-                    -- formatting.jq,
-                    -- formatting.stylua,
                     hover.dictionary,
                 }
             }

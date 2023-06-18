@@ -10,7 +10,6 @@ return {
       require('mini.cursorword').setup()
       require('mini.move').setup()
       require('mini.pairs').setup()
-      require('mini.splitjoin').setup() --NOTE: modify keymaps to match with 'X'?
       require('mini.statusline').setup()
       require('mini.trailspace').setup()
 
@@ -65,6 +64,12 @@ return {
 
       require('mini.jump').setup{
         delay = { idle_stop = 10 }
+      }
+
+      require('mini.splitjoin').setup{
+        mappings = {
+          toggle = '<Leader>x',
+        },
       }
 
       require('mini.surround').setup{

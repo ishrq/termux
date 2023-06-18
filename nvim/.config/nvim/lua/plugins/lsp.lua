@@ -9,17 +9,16 @@ return {
                 'williamboman/mason-lspconfig.nvim',
                 dependencies = { 'williamboman/mason.nvim', config = true },
                 config = function ()
-                    ensure_installed = { 'alex', 'bashls', 'codespell', 'css-lsp', 'eslint-lsp', 'eslint_d', 'html-lsp', 'marksman', 'pyright', 'stylua', 'write-good', }
+                    ensure_installed = { 'codespell', 'marksman', 'stylua', 'write-good', }
                 end,
             },
-
         },
         opts = {
             diagnostics = {
                 underline = true,
                 update_in_inset = false,
                 severity_sort = true,
-                virtual_text = { spacing = 4, source = 'if_many', prefix = '●' },
+                virtual_text = { spacing = 4, source = 'if_many'},
             },
             capabilities = {},
             autoformat = true,
@@ -27,26 +26,7 @@ return {
             format = { formatting_options = nil, timeout_ms = nil, },
 
             -- Language server setup
-            servers = {
-                bashls = {},
-                cssls = {},
-                cssmodules_ls = {},
-                html = {},
-                jsonls = {},
-                marksman = {},
-                phpactor = {},
-                pyright = {},
-
-                eslint = {
-                    on_attach = function(client, bufnr)
-                        vim.api.nvim_create_autocmd('BufWritePre', {
-                            buffer = bufnr,
-                            command = 'EslintFixAll',
-                        })
-                    end,
-                },
-
-            }
+            servers = { marksman = {}, }
         },
         -- setup = {},
         config = function ()
@@ -77,9 +57,6 @@ return {
                     vim.keymap.set('n', ',s', vim.lsp.buf.signature_help, opts, {desc="LSP Signature Help"})
                     vim.keymap.set('n', ',td', vim.lsp.buf.type_definition, opts, {desc="LSP Type Definition"})
                     vim.keymap.set({ 'n', 'v' }, ',ca', vim.lsp.buf.code_action, opts, {desc="LSP Code Action"})
-                    -- vim.keymap.set('n', ',wa', vim.lsp.buf.add_workspace_folder, opts, {desc="LSP Add Workspace Folder"})
-                    -- vim.keymap.set('n', ',wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, opts, {desc="LSP List Workspace Folder"})
-                    -- vim.keymap.set('n', ',wr', vim.lsp.buf.remove_workspace_folder, opts, {desc="LSP Remove Workspace Folder"})
                 end,
             })
         end

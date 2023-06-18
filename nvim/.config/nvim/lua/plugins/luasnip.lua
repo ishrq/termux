@@ -2,7 +2,6 @@ return {
     {
         "L3MON4D3/LuaSnip",
         event = 'InsertEnter',
-        dependencies = {"rafamadriz/friendly-snippets" },
         opts = {
             history = true,
             delete_check_events = "TextChanged",
@@ -15,8 +14,8 @@ return {
             { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
         },
         config = function()
-            require("luasnip.loaders.from_vscode").lazy_load({ exclude = {"all", "fish", "html", "markdown"} })
             require("luasnip.loaders.from_lua").lazy_load()
+            require("luasnip.loaders.from_snipmate").lazy_load()
 
             local ls = require("luasnip")
             local snip = ls.snippet

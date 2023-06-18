@@ -15,7 +15,7 @@ return {
         indent = {enable=false},
         matchup = {enable=true},
         sync_install = false,
-        ensure_installed = {"bash", "fish", "html", "css", "javascript", "lua", "php", "python", "markdown", "markdown_inline"},
+        ensure_installed = {"bash", "fish", "lua", "markdown", "markdown_inline"},
         incremental_selection = {
             enable = true,
             keymaps = {
