@@ -69,7 +69,7 @@ autocmd('BufRead', {
   command = 'setlocal cc='
 })
 
--- Markdown/gitcommit
+-- Set wrap and spell
 autocmd('FileType', {
     pattern = { "gitcommit", "markdown", "text", "log" },
     callback = function()
@@ -105,6 +105,25 @@ autocmd('BufWritePre', {
   end
 })
 
+-- Close some filetype with 'q'
+-- Modified from https://github.com/loctvl842/nvim/blob/master/lua/tvl/core/autocmds.lua
+autocmd("FileType", {
+  group = augroup("close_with_q", {}),
+  pattern = {
+    "qf",
+    -- "help",
+    "man",
+    "notify",
+    "lspinfo",
+    "startuptime",
+    "tsplayground",
+  },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+  end,
+})
+
 -- Open help in a new buffer instead of a vsplit
 autocmd('BufWinEnter', {
   pattern = '*',
@@ -121,17 +140,12 @@ local numbertogglegroup = augroup("numbertoggle", { clear = true })
 
 autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave' }, {
     pattern = '*',
-    callback = function()
-        vim.wo.relativenumber = true
-    end,
+    callback = function() vim.wo.relativenumber = true end,
     group = numbertogglegroup,
 })
-
 autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter' }, {
     pattern = '*',
-    callback = function()
-        vim.wo.relativenumber = false
-    end,
+    callback = function() vim.wo.relativenumber = false end,
     group = numbertogglegroup,
 })
 
