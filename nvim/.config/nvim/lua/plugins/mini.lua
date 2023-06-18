@@ -30,6 +30,27 @@ return {
         silent = true
       }
 
+      require('mini.base16').setup{
+        palette = {
+          base00 = "#131314",
+          base01 = "#1f1d2e",
+          base02 = "#26233a",
+          base03 = "#767676",
+          base04 = "#ebbcba",
+          base05 = "#e0def4",
+          base06 = "#f0f0f3",
+          base07 = "#c5c3ce",
+          base08 = "#e2e1e7",
+          base09 = "#eb6f92",
+          base0A = "#f6c177",
+          base0B = "#ebbcba",
+          base0C = "#6cccff",
+          base0D = "#c4a7e7",
+          base0E = "#9ccfd8",
+          base0F = "#e5e5e5",
+        }
+      }
+
       require('mini.bracketed').setup{
         buffer     = { suffix = 'b', options = {} },
         comment    = { suffix = 'c', options = {} },
@@ -47,7 +68,7 @@ return {
         yank       = { suffix = '', options = {} },
       }
 
-      require('mini.hipatterns').setup{
+     require('mini.hipatterns').setup{
         highlighters = {
           hex_color = require('mini.hipatterns').gen_highlighter.hex_color(),
           date      = { pattern = '%d%d%d%d[-|/]%d%d[-|/]%d%d' },
