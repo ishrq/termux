@@ -19,7 +19,7 @@ function bookmark
     set ar_file ~/storage/shared/Documents/COMPUTER/RESOURCES/Bookmarks/archive-reads.txt
   end
 
-  set enter "become($browser {+})"
+  set enter "become($browser {-1})"
   set ctrl_o "execute-silent(open {-1} >/dev/null 2>&1 &)"
 
   set alt_e "execute(rg -l {-1} $dir | xargs $EDITOR)"
