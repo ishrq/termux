@@ -5,9 +5,9 @@ augroup('bufcheck', {clear=true})
 
 -- Reload config file on change
 autocmd('BufWritePost', {
-    group   = 'bufcheck',
-    pattern = vim.env.MYVIMRC,
-    command = 'silent source %'
+  group   = 'bufcheck',
+  pattern = vim.env.MYVIMRC,
+  command = 'silent source %'
 })
 
 -- Highlight yank
@@ -15,7 +15,7 @@ autocmd('TextYankPost', {
   group    = 'bufcheck',
   pattern  = '*',
   callback = function()
-      vim.highlight.on_yank{timeout=300}
+    vim.highlight.on_yank{timeout=300}
   end
 })
 
@@ -71,11 +71,11 @@ autocmd('BufRead', {
 
 -- Set wrap and spell
 autocmd('FileType', {
-    pattern = { "gitcommit", "markdown", "text", "log" },
-    callback = function()
-        vim.opt_local.wrap = true
-        vim.opt_local.spell = true
-    end,
+  pattern = { "gitcommit", "markdown", "text", "log" },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
+  end,
 })
 
 --Fold
@@ -84,15 +84,15 @@ autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEnter'}, {
   callback = function()
     vim.opt.foldmethod = 'expr'
     vim.opt.foldexpr   = 'nvim_treesitter#foldexpr()'
-end
+  end
 })
 
 --HTML/CSS Shiftwidth
 autocmd('FileType', {
-    pattern = { "html", "css" },
-    callback = function()
-        vim.bo.shiftwidth = 2
-    end,
+  pattern = { "html", "css" },
+  callback = function()
+    vim.bo.shiftwidth = 2
+  end,
 })
 
 --Create directory on save
@@ -139,14 +139,14 @@ autocmd('BufWinEnter', {
 local numbertogglegroup = augroup("numbertoggle", { clear = true })
 
 autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave' }, {
-    pattern = '*',
-    callback = function() vim.wo.relativenumber = true end,
-    group = numbertogglegroup,
+  pattern = '*',
+  callback = function() vim.wo.relativenumber = true end,
+  group = numbertogglegroup,
 })
 autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter' }, {
-    pattern = '*',
-    callback = function() vim.wo.relativenumber = false end,
-    group = numbertogglegroup,
+  pattern = '*',
+  callback = function() vim.wo.relativenumber = false end,
+  group = numbertogglegroup,
 })
 
 
@@ -154,18 +154,18 @@ autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter' }, {
 
 --Ledger
 autocmd('BufNewFile', {
-    pattern = '*/Finance/Ledger/ledger*.txt',
-    command = '0r ~/.config/nvim/skeletons/ledger.txt'
+  pattern = '*/Finance/Ledger/ledger*.txt',
+  command = '0r ~/.config/nvim/skeletons/ledger.txt'
 })
 
 --HTML
 autocmd('BufNewFile', {
-    pattern = '*.html',
-    command = '0r ~/.config/nvim/skeletons/html-skeleton.html'
+  pattern = '*.html',
+  command = '0r ~/.config/nvim/skeletons/html-skeleton.html'
 })
 
 --CSS
 autocmd('BufNewFile', {
-    pattern = {'style.css', 'reset.css'},
-    command = '0r ~/.config/nvim/skeletons/css-reset.css'
+  pattern = {'style.css', 'reset.css'},
+  command = '0r ~/.config/nvim/skeletons/css-reset.css'
 })
