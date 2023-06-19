@@ -27,11 +27,12 @@ return {
         },
         silent = true,
       }
+
       require('mini.base16').setup{
         -- framer
         palette = {
-          base00 = "#181818",
-          base01 = "#151515",
+          base00 = "#000000",
+          base01 = "#111111",
           base02 = "#464646",
           base03 = "#747474",
           base04 = "#B9B9B9",
@@ -41,7 +42,7 @@ return {
           base08 = "#FD886B",
           base09 = "#FC4769",
           base0A = "#FECB6E",
-          base0B = "#32CCDC",
+          base0B = "#32DCCC",
           base0C = "#ACDDFD",
           base0D = "#20BCFC",
           base0E = "#BA8CFC",
