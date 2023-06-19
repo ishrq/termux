@@ -16,3 +16,4 @@ newsboat/.config/newsboat/urls
 newsboat/.config/newsboat/urls-alt
 newsboat/.config/newsboat/urls-video
 nvim/.config/nvim/lazy-lock.json
+nvim/.config/nvim/.undo-history/

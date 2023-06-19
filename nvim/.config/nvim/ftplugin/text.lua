@@ -1,14 +1,13 @@
 -- Indent 2 spaces
-vim.o.tabstop = 2
+vim.o.tabstop     = 2
 vim.o.softtabstop = 2
-vim.o.shiftwidth = 2
+vim.o.shiftwidth  = 2
 
 
 -- Mini.ai textobjects
 
 local spec_pair = require('mini.ai').gen_spec.pair
 vim.b.miniai_config = {
-    -- TODO: add textobject for footnote
     custom_textobjects = {
         d = {{ '()%d%d%d%d[-|/]%d%d[-|/]%d%d()', '()%d%d[-|/]%d%d[-|/]%d%d%d%d()', }}, -- date
         u = {{ 'https://[%www.][%S]+', 'http://[%www.][%S]+' }}, -- url

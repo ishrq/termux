@@ -69,15 +69,6 @@ autocmd('BufRead', {
   command = 'setlocal cc='
 })
 
--- Set wrap and spell
-autocmd('FileType', {
-  pattern = { "gitcommit", "markdown", "text", "log" },
-  callback = function()
-    vim.opt_local.wrap = true
-    vim.opt_local.spell = true
-  end,
-})
-
 --Fold
 autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEnter'}, {
   group = augroup('TS_FOLD_WORKAROUND', {}),

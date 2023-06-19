@@ -13,7 +13,7 @@ map('', 'gV', '`[v`]', default, {desc='Select last modified'})
 map('i', '<C-z>', '<C-g>u<Esc>[S1z=`]a<C-g>u', {desc='Fix spelling'})
 map('n', '<Leader>=', ':set spell!<CR>', {desc='Toggle spell check'})
 map('n', '<Leader>8', ':execute "set cc=" . (&cc == "" ? "80" : "")<CR>', default, {desc='Toggle character column'})
-map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>', { desc='Split line' })
+map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>', {desc='Split line'})
 map('x', 'g/', '<Esc>/\\%V', {desc='Search inside selection'})
 
 -- Search selected text
@@ -73,7 +73,8 @@ map('n', '<Leader>e', vim.diagnostic.open_float)
 map('n', '<leader>q', vim.diagnostic.setloclist, default)
 
 -- mini.trailspace
--- map('n', '<Leader>t', '<Cmd>%s/\\s\\+$//e<CR>', {desc='Trim trailing space'})
+-- map('n', '<Leader>t', '<Cmd>%s/\\s\\+$//e<CR>', {desc='Remove trailing whitespace'})
+-- map('n', '<Leader>T', '<Cmd>g/^\\s*$/d<CR>', {desc='Remove blank lines'})
 map('n', '<Leader>t', '<Cmd>lua MiniTrailspace.trim()<CR>', {desc='Trim trailing space'})
 map('n', '<Leader>T', '<Cmd>lua MiniTrailspace.trim_last_lines()<CR>', {desc='Trim trailing lines'})
 
