@@ -42,7 +42,7 @@
     conflictstyle = diff3
 
 [help]
-    autoCorrect = prompt
+    autoCorrect = 20
 
 [color]
     ui = auto
