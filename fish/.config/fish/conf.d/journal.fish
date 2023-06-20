@@ -8,7 +8,7 @@
 function journal
   set -f day $(date +"%F")
 
-  if test -d "~/ARCHIVE"
+  if test -d "$HOME/ARCHIVE"
     set file ~/ARCHIVE/Journal/journal.txt
   else
     set file ~/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/journal.txt
@@ -20,11 +20,10 @@ function journal
     case $argv
       set -f entry "$argv"
       if grep -q "^$day" $file
-        sed -i "s/$day/$day\\n$entry/g" $file
+        sed -i "s/$day/$day\\n$entry/g" $file && echo "[Entry added on $day]"
       else
-        sed -i "s/===/===\\n\\n$day\\n$entry/g" $file
+        sed -i "s/===/===\\n\\n$day\\n$entry/g" $file && echo "[Entry created for $day]"
       end
-      echo "[Entry added on $day]"
   end
 end
 

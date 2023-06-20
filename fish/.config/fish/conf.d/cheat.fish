@@ -3,7 +3,7 @@
 
 function cheat -d "Cheatsheet"
 
-  if test -d "~/RESOURCES"
+  if test -d "$HOME/RESOURCES"
     set file ~/RESOURCES/Notes/Cheatsheet/*.txt
   else
     set file ~/storage/shared/Documents/COMPUTER/RESOURCES/Notes/Cheatsheet/*.txt

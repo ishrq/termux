@@ -27,10 +27,10 @@ function sync -d "Sync files between devices"
         set dest "s8"
 
         rsync -auzP ~/RESOURCES/ --exclude=Fonts/ s8:~/storage/shared/Documents/COMPUTER/RESOURCES/
-        rsync -auzP ~/ARCHIVE/{Workouts,Daybook,Weight-Log,Logs,Journal} s8:~/storage/shared/Documents/COMPUTER/ARCHIVE/
+        rsync -auzP ~/ARCHIVE/{Workouts,Daybook,Ledger,Weight-Log,Logs,Journal} s8:~/storage/shared/Documents/COMPUTER/ARCHIVE/
 
         rsync -auzP ~/RESOURCES/ --exclude=Fonts/ m10:~/storage/shared/Documents/COMPUTER/RESOURCES/
-        rsync -auzP ~/ARCHIVE/{Workouts,Daybook,Weight-Log,Logs,Journal} m10:~/storage/shared/Documents/COMPUTER/ARCHIVE/
+        rsync -auzP ~/ARCHIVE/{Workouts,Daybook,Ledger,Weight-Log,Logs,Journal} m10:~/storage/shared/Documents/COMPUTER/ARCHIVE/
     end
 
     rsync -auzP --exclude=config ~/.config/newsboat/ $dest:~/.config/newsboat/

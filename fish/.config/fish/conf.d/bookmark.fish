@@ -5,7 +5,7 @@
 
 function bookmark
 
-  if test -d "~/RESOURCES"
+  if test -d "$HOME/RESOURCES"
     set browser "librewolf"
     set dir ~/RESOURCES/Bookmarks/
     set bk_file ~/RESOURCES/Bookmarks/bookmark.txt

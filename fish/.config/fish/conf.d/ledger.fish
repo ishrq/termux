@@ -5,29 +5,25 @@
 
 
 function ledger
-    if test $USER = "u0_a1692" || test $USER = "u0_a215" #Termux S8,M10
-    set -f file ~/storage/shared/Documents/COMPUTER/AREAS/Finance/Ledger/ledger-$(date +"%Y%m").txt
-  else
-    set -f file ~/AREAS/Finance/Ledger/ledger-$(date +"%Y%m").txt
-  end
-  if ! test -f $file
-    cp ~/.config/nvim/templates/ledger.txt $file
-    echo "New ledger created."
-  end
-  switch $argv[1]
-    case ''
-      $EDITOR $file
-    case '*'
-      set -f day $(date +"%d/%m/%Y")
-      set -f entry "\t$argv[1] $argv[2]"
-      if grep -q ^$day $file
-        sed -i "s/$day/$day\\n$entry/g" $file
-      else
-        sed -i "s/DAILY/DAILY\\n\\n$day/g" $file
-        sed -i "s/$day/$day\\n$entry/g" $file
-      end
-      echo "[Entry added]"
- end
+    set month $(date +"%Y-%m")
+
+    if test -d "$HOME/ARCHIVE"
+        set file ~/ARCHIVE/Ledger/ledger-$month.txt
+    else
+        set file ~/storage/shared/Documents/COMPUTER/ARCHIVE/Ledger/ledger-$month.txt
+    end
+
+    if ! test -f $file
+        echo "New ledger created."
+    end
+
+    switch $argv
+        case ''
+            $EDITOR $file
+        case '*'
+            set entry "$(date +"%F") $argv"
+            echo $entry >> $file && echo "[Entry added]"
+    end
 end
 
 abbr -a lgr ' ledger'
