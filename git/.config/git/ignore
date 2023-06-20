@@ -1,65 +1,121 @@
-# Node
-npm-debug.log
-/node_modules/
+# https://github.com/github/gitignore
 
-# Mac
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon
 ._*
+.DocumentRevisions-V100
+.fseventsd
 .Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
 
 # Windows
 Thumbs.db
+Thumbs.db:encryptable
 ehthumbs.db
-desktop.ini
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
 
-# IDE
-.vscode
-.idea
-.iml
-*.sublime-workspace
+# GPG
+secring.*
 
-# Temporary
-*~
+# Syncthing
+.stversions
+
+# Images
+# *.jpg
+# *.jpeg
+# *.jpe
+# *.jif
+# *.jfif
+# *.jfi
+# *.jp2
+# *.j2k
+# *.jpf
+# *.jpx
+# *.jpm
+# *.mj2
+# *.jxr
+# *.hdp
+# *.wdp
+# *.gif
+# *.raw
+# *.webp
+# *.png
+# *.apng
+# *.mng
+# *.tiff
+# *.tif
+# *.svg
+# *.svgz
+# *.xbm
+# *.bmp
+# *.dib
+# *.ico
+# *.3dm
+# *.max
+
+# Backups
 *.bak
-*.swp
-*.swo
-*.sw[nop]
-/tmp
-tmp/**/*
+*.gho
+*.ori
+*.orig
+*.tmp
 
-# General
-log/
-*.log
-
-# Compiled
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
-*.pyc
-*.pyo
-
-# Packages
+# It's better to unpack these files and commit the raw source because
+# git has its own built in compression methods.
 *.7z
-*.dmg
-*.iso
 *.jar
 *.rar
 *.zip
+*.gz
+*.gzip
+*.tgz
+*.bzip
+*.bzip2
+*.bz2
+*.xz
+*.lzma
+*.cab
+*.xar
+
+# Packing-only formats
+*.iso
+*.tar
+
+# Package management formats
+*.dmg
+*.xpi
+*.gem
+*.egg
+*.deb
+*.rpm
 *.msi
-
-# Databases
-*.sql
-*.sqlite
-*.sqlite3
-
-# Others
-.bundle
-.byebug_history
-.env
-.git/
-/bower_components/
-/tags
-rerun.txt
+*.msm
+*.msp
+*.txz
