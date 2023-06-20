@@ -31,19 +31,19 @@ snippet qlink paste link
 snippet url
     <$1>
 
-snippet qurl
+snippet qurl paste url
     <${1:`@+`}>
 
 snippet img image
     ![${1:Alt}](${2:Path})
 
-snippet fr footnote reference
+snippet fn footnote
     [^${1:1}]: $2
 
-snippet fn footnote
+snippet fl footnote link
     [^${1:1}]
 
-snippet strikethrough
+snippet stk strikethrough
     ~~$1~~
 
 snippet bold
@@ -55,16 +55,13 @@ snippet italic
 snippet bolditalic
     ***$1***
 
-snippet quote
-    > $1
-
 snippet code
-    `$1`
+    \`$1\`
 
 snippet codeblock
-    ```${1:lang}
-    $2
-    ```
+    \`\`\`${1:language}
+    ${2:code}
+    \`\`\`
 
 snippet sub subscript
     <sub>$1</sub>
@@ -72,7 +69,7 @@ snippet sub subscript
 snippet sup superscript
     <sup>$1</sup>
 
-snippet task
+snippet td todo
     - [${1: }] $2
 
 snippet def definition
@@ -87,15 +84,6 @@ snippet h2
 
 snippet h3
     ### $1
-
-snippet h4
-    #### $1
-
-snippet h5
-    ##### $1
-
-snippet h6
-    ####### $1
 
 snippet table
     | ${1:Column1}    | ${2:Column2}    | ${3:Column3}    |
