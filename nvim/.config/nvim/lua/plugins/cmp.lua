@@ -66,9 +66,13 @@ return {
       }),
     })
 
-    -- Set configuration for specific filetype.
-    cmp.setup.filetype({'markdown'}, {
-      sources = cmp.config.sources({{name = 'path'}}, {{name = 'luasnip'}}, {{name = 'buffer'}})
+    -- Filetype config
+    cmp.setup.filetype({'text'}, {
+      sources = cmp.config.sources({
+        {name = 'path'},
+        {name = 'luasnip', keyword_length = 3},
+        {name = 'buffer', keyword_length = 2},
+      })
     })
 
     -- Disable completion in comments
