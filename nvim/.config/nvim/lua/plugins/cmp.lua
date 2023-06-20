@@ -25,9 +25,9 @@ return {
       },
       sources = {
         {name = 'path'},
-        {name = 'luasnip', keyword_length = 1},
-        {name = 'buffer', keyword_length = 2},
-        {name = 'nvim_lsp', keyword_length = 2},
+        {name = 'luasnip', keyword_length = 2},
+        {name = 'buffer', keyword_length = 3},
+        {name = 'nvim_lsp', keyword_length = 3},
       },
       window = {
         -- completion = cmp.config.window.bordered(),
@@ -71,7 +71,7 @@ return {
       sources = cmp.config.sources({
         {name = 'path'},
         {name = 'luasnip', keyword_length = 3},
-        {name = 'buffer', keyword_length = 2},
+        {name = 'buffer', keyword_length = 3},
       })
     })
 
