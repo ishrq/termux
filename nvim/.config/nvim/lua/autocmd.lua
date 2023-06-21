@@ -141,13 +141,20 @@ autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter' }, {
 })
 
 
---SKELETON
+-- Highlights
 
---Ledger
-autocmd('BufNewFile', {
-  pattern = '*/Finance/Ledger/ledger*.txt',
-  command = '0r ~/.config/nvim/skeletons/ledger.txt'
+autocmd('BufReadPost', {
+  group = Date,
+  callback = function() vim.cmd.hi('Date guifg=#FC4769') end,
 })
+
+autocmd('BufReadPost', {
+  group = Url,
+  callback = function() vim.cmd.hi('Url gui=underline,italic') end,
+})
+
+
+--SKELETON
 
 --HTML
 autocmd('BufNewFile', {

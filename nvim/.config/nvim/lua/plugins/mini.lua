@@ -27,9 +27,10 @@ return {
         },
         silent = true,
       }
-
       require('mini.base16').setup{
-        -- framer
+        -- More themes available at:
+        -- https://github.com/wroyca/dotfiles/tree/main/home/dot_config/nvim/colors
+        -- base16-framer
         palette = {
           base00 = "#000000",
           base01 = "#111111",
@@ -70,8 +71,16 @@ return {
       require('mini.hipatterns').setup{
         highlighters = {
           hex_color = require('mini.hipatterns').gen_highlighter.hex_color(), --hex color
-          date      = { pattern = '()%d%d%d%d[-|/]%d%d[-|/]%d%d()' },
-          url       = { pattern = 'https://[%www.][%S]+', 'http://[%S]+'},
+          url       = { pattern = 'https://[%www.][%S]+', 'http://[%S]+', group = 'Url'},
+
+          date = {
+            pattern = function(buf_id)
+              if vim.bo[buf_id].filetype ~= 'text' then return nil end
+              return '()%d%d%d%d[-|/]%d%d[-|/]%d%d()'
+            end,
+            group = 'Date'
+          },
+
         },
       }
 
