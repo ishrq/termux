@@ -58,6 +58,10 @@ return {
 {
   "nvim-treesitter/nvim-treesitter-context",
   event = "VimEnter",
-  config = true
+  config = function()
+    require('treesitter-context').setup{
+      max_lines = 1;
+    }
+  end
 }
 }
