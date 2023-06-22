@@ -55,20 +55,6 @@ autocmd({'BufRead', 'BufNewFile'}, {
   command = ' setlocal noswapfile nobackup noundofile shada="" '
 })
 
--- Color column indicator for 80 characters
-autocmd({'BufRead', 'BufNewFile'}, {
-  pattern = { 'gitcommit', 'markdown', 'text' },
-  callback = function()
-    vim.opt_local.cc = '80'
-  end,
-})
-
--- Disable color column
-autocmd('BufRead', {
-  pattern = {'*/Journal/*', '*/Finance/*', '*/House/*', '*/List/*'},
-  command = 'setlocal cc='
-})
-
 --Fold
 autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEnter'}, {
   group = augroup('TS_FOLD_WORKAROUND', {}),
@@ -76,14 +62,6 @@ autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEnter'}, {
     vim.opt.foldmethod = 'expr'
     vim.opt.foldexpr   = 'nvim_treesitter#foldexpr()'
   end
-})
-
---HTML/CSS Shiftwidth
-autocmd('FileType', {
-  pattern = { "html", "css" },
-  callback = function()
-    vim.bo.shiftwidth = 2
-  end,
 })
 
 --Create directory on save
