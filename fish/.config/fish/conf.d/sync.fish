@@ -17,7 +17,7 @@ function sync -d "Sync files between devices"
       set target_ip "192.168.0.103"
     end
 
-    set log ~/storage/emulated/0/Documents/COMPUTER/ARCHIVE/Logs/sync.log
+    set log ~/storage/shared/Documents/COMPUTER/ARCHIVE/Logs/sync.log
 
     # phone -> phone
     if ping -c 1 $target_ip | grep -q "Unreachable"
