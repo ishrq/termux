@@ -9,7 +9,7 @@ return {
         'williamboman/mason-lspconfig.nvim',
         dependencies = { 'williamboman/mason.nvim', config = true },
         config = function ()
-          ensure_installed = { 'codespell', 'marksman', 'stylua', 'write-good', }
+          ensure_installed = { 'codespell', 'marksman', 'write-good', }
         end,
       },
     },
