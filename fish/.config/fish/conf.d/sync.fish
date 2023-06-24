@@ -23,6 +23,7 @@ function sync -d "Sync files between devices"
     if ping -c 1 $target_ip | grep -q "Unreachable"
       set_color red; echo "$target is offline"
     else
+      curl -S "$target_ip:1821/sshd"
       rsync -ahmuqz --log-file=$log --mkpath --partial --exclude=TBR/Audiobook ~/storage/shared/Documents/ $target:~/storage/shared/Documents/
       rsync -ahmuqz --log-file=$log --mkpath --partial ~/.local/share/newsboat/ $target:~/.local/share/newsboat/
       rsync -ahmuqz --log-file=$log --mkpath --partial --exclude=config ~/.config/newsboat/ $target:~/.config/newsboat/
@@ -62,6 +63,7 @@ function sync -d "Sync files between devices"
       if ping -c 1 $target_ip | grep -q "Unreachable"
         set_color red; echo "$target is offline"
       else
+        curl -S "$target_ip:1821/sshd"
         rsync -ahmuqz --log-file=$log --mkpath --partial --exclude={Fonts,Fork-bombs,gitignore} ~/RESOURCES/ $target:~/storage/shared/Documents/COMPUTER/RESOURCES/
         rsync -ahmuqz --log-file=$log --mkpath --partial --exclude={Audiobook,Ebook,Old_References,Papers,Phone-Backups,Projects,Screenshots,Travel} ~/ARCHIVE/ $target:~/storage/shared/Documents/COMPUTER/ARCHIVE/
         rsync -ahmuqz --log-file=$log --mkpath --partial ~/.local/share/newsboat/ $target:~/.local/share/newsboat/
