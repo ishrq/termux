@@ -98,7 +98,7 @@ return {
         pattern = 'MiniFilesBufferCreate',
         callback = function(args)
           local buf_id = args.data.buf_id
-          vim.keymap.set('n', 'g.', toggle_dotfiles, { buffer = buf_id })
+          vim.keymap.set('n', '<leader>.', toggle_dotfiles, { buffer = buf_id })
         end,
       })
 
@@ -112,39 +112,14 @@ return {
       vim.api.nvim_create_autocmd('User', {
         pattern = 'MiniFilesBufferCreate',
         callback = function(args)
-          vim.keymap.set('n', 'g~', files_set_cwd, { buffer = args.data.buf_id })
+          vim.keymap.set('n', '<leader>p', files_set_cwd, { buffer = args.data.buf_id })
         end,
       })
-
-      -- Open in split
-      local map_split = function(buf_id, lhs, direction)
-        local rhs = function()
-          -- Make new window and set it as target
-          local new_target_window
-          vim.api.nvim_win_call(MiniFiles.get_target_window(), function()
-            vim.cmd(direction .. ' split')
-            new_target_window = vim.api.nvim_get_current_win()
-          end)
-          MiniFiles.set_target_window(new_target_window)
-        end
-        -- Adding `desc` will result into `show_help` entries
-        local desc = 'Split ' .. direction
-        vim.keymap.set('n', lhs, rhs, { buffer = buf_id, desc = desc })
-      end
-      vim.api.nvim_create_autocmd('User', {
-        pattern = 'MiniFilesBufferCreate',
-        callback = function(args)
-          local buf_id = args.data.buf_id
-          map_split(buf_id, 'gs', 'belowright horizontal')
-          map_split(buf_id, 'gv', 'belowright vertical')
-        end,
-      })
-
 
       require('mini.hipatterns').setup{
         highlighters = {
           hex_color = require('mini.hipatterns').gen_highlighter.hex_color(), --hex color
-          url       = { pattern = 'https://[%www.][%S]+', 'http://[%S]+', group = 'Url'},
+          url       = { pattern = 'http[s]?://[^>%]%)\'"]+', group = 'Url'},
 
           date = {
             pattern = function(buf_id)
