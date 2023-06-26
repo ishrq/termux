@@ -12,14 +12,8 @@ vim.b.miniai_config = {
     },
 }
 
-local map = vim.keymap.set
 local nxo = {'n', 'x', 'o'}
-map(nxo, ']d', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'd', {n_lines='200'})<CR>", {desc='Next date'})
-map(nxo, '[d', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'd', {search_method='prev', n_lines='200'})<CR>", {desc='Previous date'})
-map(nxo, ']u', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'u', {n_lines='200'})<CR>", {desc='Next url'})
-map(nxo, '[u', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'u', {search_method='prev', n_lines='200'})<CR>", {desc='Previous url'})
-
--- MiniBracketed
-vim.b.minibracketed_config = {
-  treesitter = { suffix = '' },
-}
+vim.keymap.set(nxo, ']d', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'd')<CR>", {desc='Next date'})
+vim.keymap.set(nxo, '[d', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'd', {search_method='prev'})<CR>", {desc='Previous date'})
+vim.keymap.set(nxo, ']u', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'u')<CR>", {desc='Next url'})
+vim.keymap.set(nxo, '[u', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'u', {search_method='prev'})<CR>", {desc='Previous url'})

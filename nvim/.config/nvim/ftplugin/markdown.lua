@@ -20,22 +20,23 @@ vim.b.miniai_config = {
     f = { '%[%^()%d+()%]' }, -- footnote
     h = { '^#+%s().+%S()' }, -- heading
     t = { '^-%s%[()[%s|x]()%]%s' }, -- todo
-    T = { '^-%s%[[%s|x]%]%s().+%S()' }, -- todo task
+    T = { '^-%s%[[%s|x]%]%s().+%S()' }, -- todo item
     u = { 'http[s]?://[^>%]%)\'"]+' }, -- url
   },
 }
 
+--NOTE: instead of 't' and 'T' for todo and todo item, use 'l' and 'L' for all lists?
+--List includes todo, ordered, and unordered list,
+
 local map = vim.keymap.set
 local nxo = {'n', 'x', 'o'}
-map(nxo, ']d', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'd', {n_lines='200'})<CR>", {desc='Next Date'})
-map(nxo, '[d', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'd', {search_method='prev', n_lines='200'})<CR>", {desc='Previous Date'})
-map(nxo, ']f', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'f', {n_lines='200'})<CR>", {desc='Next Footnote'})
-map(nxo, '[f', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'f', {search_method='prev', n_lines='200'})<CR>", {desc='Previous Footnote'})
-map(nxo, ']u', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'u', {n_lines='200'})<CR>", {desc='Next URL'})
-map(nxo, '[u', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'u', {search_method='prev', n_lines='200'})<CR>", {desc='Previous URL'})
+map(nxo, ']d', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'd')<CR>", {desc='Next Date'})
+map(nxo, '[d', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'd', {search_method='prev'})<CR>", {desc='Previous Date'})
+map(nxo, ']f', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'f')<CR>", {desc='Next Footnote'})
+map(nxo, '[f', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'f', {search_method='prev'})<CR>", {desc='Previous Footnote'})
+map(nxo, ']u', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'u')<CR>", {desc='Next URL'})
+map(nxo, '[u', "<Cmd>lua MiniAi.move_cursor('left', 'i', 'u', {search_method='prev'})<CR>", {desc='Previous URL'})
 
-
--- MiniBracketed
-vim.b.minibracketed_config = {
-  treesitter = { suffix = '' },
-}
+--TODO: add mapping for todo & headings
+-- map(nxo, ']t', "<Cmd>lua MiniAi.move_cursor('left', 'i', 't')<CR>", {desc='Next Todo'})
+-- map(nxo, '[t', "<Cmd>lua MiniAi.move_cursor('left', 'i', 't', {search_method='prev'})<CR>", {desc='Previous Todo'})
