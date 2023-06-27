@@ -5,93 +5,99 @@ return {
     dependencies = {
       {
         'williamboman/mason.nvim',
-        build = function()
-          pcall(vim.cmd, 'MasonUpdate')
-        end,
+        cmd = 'Mason',
       },
-      { 'williamboman/mason-lspconfig.nvim' },
+       {
+         'williamboman/mason-lspconfig.nvim',
+         cond = vim.fn.hostname() == 'pop-os'
+       },
     },
     config = function()
-      vim.api.nvim_create_autocmd('LspAttach', {
-        desc = 'LSP actions',
-        callback = function(event)
-          local map = function(keys, func, desc)
-            if desc then
-              desc = "LSP: " .. desc
+      if vim.fn.hostname() == 'pop-os' then
+        vim.api.nvim_create_autocmd('LspAttach', {
+          desc = 'LSP actions',
+          callback = function(event)
+            local map = function(keys, func, desc)
+              if desc then
+                desc = "LSP: " .. desc
+              end
+
+              vim.keymap.set('n', keys, func, { buffer = bufnr, remap = false, desc = desc })
             end
 
-            vim.keymap.set('n', keys, func, { buffer = bufnr, remap = false, desc = desc })
+            map(',ca', vim.lsp.buf.code_action, "Code Action")
+            map(',rn', vim.lsp.buf.rename, "Rename")
+            map('gd', vim.lsp.buf.definition, "Goto Definition")
+            map('gD', vim.lsp.buf.declaration, "Goto Declaration")
+            map(',gr', vim.lsp.buf.references, "Goto References")
+            map(',gi', vim.lsp.buf.implementation, "Goto Implementation")
+            map(',td', vim.lsp.buf.type_definition, "Type Definition")
+            map('K', vim.lsp.buf.hover, "Hover Documentation")
+            map('<C-k>', vim.lsp.buf.signature_help, "Signature Documentation")
+            map('<C-f>', function() vim.lsp.buf.format { async = true } end, "Format")
+            map(',wa', vim.lsp.buf.add_workspace_folder, "Workspace Add Folder")
+            map(',wr', vim.lsp.buf.remove_workspace_folder, "Workspace Remove Folder")
+            map(',wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, "Workspace List Folder")
           end
-
-          map(',ca', vim.lsp.buf.code_action, "Code Action")
-          map(',rn', vim.lsp.buf.rename, "Rename")
-          map(',gd', vim.lsp.buf.definition, "Goto Definition")
-          map(',gD', vim.lsp.buf.declaration, "Goto Declaration")
-          map(',gr', vim.lsp.buf.references, "Goto References")
-          map(',gi', vim.lsp.buf.implementation, "Goto Implementation")
-          map(',td', vim.lsp.buf.type_definition, "Type Definition")
-          map('K', vim.lsp.buf.hover, "Hover Documentation")
-          map('<C-k>', vim.lsp.buf.signature_help, "Signature Documentation")
-          map('<C-f>', function() vim.lsp.buf.format { async = true } end, "Format")
-          map(',wa', vim.lsp.buf.add_workspace_folder, "Workspace Add Folder")
-          map(',wr', vim.lsp.buf.remove_workspace_folder, "Workspace Remove Folder")
-          map(',wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, "Workspace List Folder")
-        end
-      })
-
-      require('mason').setup()
-      require('mason-lspconfig').setup({
-        ensure_installed = {
-          -- 'bashls',
-          -- 'clangd',
-          -- 'cssls',
-          -- 'denols',
-          -- 'html',
-          -- 'lua_ls',
-          'marksman',
-          -- 'pyright',
-          -- 'tailwindcss',
-        }
-      })
-
-      local lspconfig = require('lspconfig')
-      local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-      require('mason-lspconfig').setup_handlers({
-        function(server_name)
-          lspconfig[server_name].setup({
-            capabilities = lsp_capabilities,
-          })
-        end,
-      })
-
-      -- require 'lspconfig'.lua_ls.setup {
-      --   Lua = {
-      --     runtime = { version = 'LuaJIT', },
-      --     diagnostics = { globals = { 'vim' }, },
-      --     workspace = { library = vim.api.nvim_get_runtime_file('', true), },
-      --     telemetry = { enable = false, },
-      --   },
-      -- }
-
-      -- Edit lsp diagnostics signs (in margin)
-      local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = "󰋽 " }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+        })
       end
 
-      -- Edit inline diagnostic preferences
-      vim.diagnostic.config({
-        virtual_text = {
-          prefix = "",
-        },
-        severity_sort = true,
-        float = {
-          source = "always",
-        },
-      })
-    end,
+      require('mason').setup()
+
+      if vim.fn.hostname() == 'pop-os' then
+        require('mason-lspconfig').setup({
+          ensure_installed = {
+            'bashls',
+            'clangd',
+            'cssls',
+            'denols',
+            'html',
+            'lua_ls',
+            'marksman',
+            'pyright',
+            'tailwindcss',
+          }
+        })
+
+        local lspconfig = require('lspconfig')
+        local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+        require('mason-lspconfig').setup_handlers({
+          function(server_name)
+            lspconfig[server_name].setup({
+              capabilities = lsp_capabilities,
+            })
+          end,
+        })
+
+        require 'lspconfig'.lua_ls.setup {
+          Lua = {
+            runtime = { version = 'LuaJIT', },
+            diagnostics = { globals = { 'vim' }, },
+            workspace = { library = vim.api.nvim_get_runtime_file('', true), },
+            telemetry = { enable = false, },
+          },
+        }
+
+        -- Edit lsp diagnostics signs (in margin)
+        local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = "󰋽 " }
+        for type, icon in pairs(signs) do
+          local hl = "DiagnosticSign" .. type
+          vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+        end
+
+        -- Edit inline diagnostic preferences
+        vim.diagnostic.config({
+          virtual_text = {
+            prefix = "",
+          },
+          severity_sort = true,
+          float = {
+            source = "always",
+          },
+        })
+      end
+    end
   },
   -- https://github.com/hrsh7th/nvim-cmp
   {
@@ -99,7 +105,10 @@ return {
     lazy = true,
     event = "InsertEnter",
     dependencies = {
-      { 'hrsh7th/cmp-nvim-lsp', event = 'VeryLazy' },
+      {
+        'hrsh7th/cmp-nvim-lsp',
+        cond = vim.fn.hostname() == 'pop-os'
+      },
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'saadparwaiz1/cmp_luasnip',
