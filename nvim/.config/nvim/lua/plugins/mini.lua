@@ -25,31 +25,42 @@ return {
           end,
 
         },
+        n_lines = 500,
         silent = true,
       }
-      require('mini.base16').setup{
-        -- More themes available at:
-        -- https://github.com/wroyca/dotfiles/tree/main/home/dot_config/nvim/colors
-        -- base16-framer
-        palette = {
-          base00 = "#000000",
-          base01 = "#111111",
-          base02 = "#464646",
-          base03 = "#747474",
-          base04 = "#B9B9B9",
-          base05 = "#D0D0D0",
-          base06 = "#E8E8E8",
-          base07 = "#EEEEEE",
-          base08 = "#FD886B",
-          base09 = "#FC4769",
-          base0A = "#FECB6E",
-          base0B = "#32DCCC",
-          base0C = "#ACDDFD",
-          base0D = "#20BCFC",
-          base0E = "#BA8CFC",
-          base0F = "#B15F4A",
+
+      -- More themes available at:
+      -- https://github.com/wroyca/dotfiles/tree/main/home/dot_config/nvim/colors
+      -- base16-framer
+      local b0
+      local b1
+      if vim.fn.hostname() == "pop-os" then
+        b0 = "#181818"
+        b1 = "#151515"
+      else
+        b0 = "#000000"
+        b1 = "#111111"
+      end
+        require('mini.base16').setup{
+          palette = {
+            base00 = b0,
+            base01 = b1,
+            base02 = "#464646",
+            base03 = "#747474",
+            base04 = "#B9B9B9",
+            base05 = "#D0D0D0",
+            base06 = "#E8E8E8",
+            base07 = "#EEEEEE",
+            base08 = "#FD886B",
+            base09 = "#FC4769",
+            base0A = "#FECB6E",
+            base0B = "#32EEDC",
+            base0C = "#ACDDFD",
+            base0D = "#20BCFC",
+            base0E = "#BA8CFC",
+            base0F = "#B15F4A",
+          }
         }
-      }
 
       require('mini.bracketed').setup{
         buffer     = { suffix = 'b', options = {} },
@@ -68,37 +79,30 @@ return {
         yank       = { suffix = '', options = {} },
       }
 
+      local go_in
+      local go_out
       if vim.fn.hostname() == "pop-os" then
-        require('mini.files').setup{
-          mappings = {
-            close       = 'q',
-            go_in       = '<Right>',
-            go_in_plus  = '<CR>',
-            go_out      = '<Left>',
-            go_out_plus = '',
-            reset       = '<BS>',
-            show_help   = 'g?',
-            synchronize = '=',
-            trim_left   = '<',
-            trim_right  = '>',
-          },
-        }
+        go_in = "<M-l>"
+        go_out = "<M-h>"
       else
-        require('mini.files').setup{
-          mappings = {
-            close       = 'q',
-            go_in       = '<Right>',
-            go_in_plus  = '<CR>',
-            go_out      = '<Left>',
-            go_out_plus = '',
-            reset       = '<BS>',
-            show_help   = 'g?',
-            synchronize = '=',
-            trim_left   = '<',
-            trim_right  = '>',
-          },
-        }
+        go_in = "<Right>"
+        go_out = "<Left>"
       end
+
+      require('mini.files').setup{
+        mappings = {
+          close       = 'q',
+          go_in       = go_in,
+          go_in_plus  = '<CR>',
+          go_out      = go_out,
+          go_out_plus = '',
+          reset       = '<BS>',
+          show_help   = 'g?',
+          synchronize = '=',
+          trim_left   = '<',
+          trim_right  = '>',
+        },
+      }
 
       -- Show/hide dot files in file tree
       local show_dotfiles = true
@@ -115,7 +119,7 @@ return {
         pattern = 'MiniFilesBufferCreate',
         callback = function(args)
           local buf_id = args.data.buf_id
-          vim.keymap.set('n', '<leader>.', toggle_dotfiles, { buffer = buf_id })
+          vim.keymap.set('n', '<Leader>.', toggle_dotfiles, { buffer = buf_id })
         end,
       })
 
@@ -129,7 +133,7 @@ return {
       vim.api.nvim_create_autocmd('User', {
         pattern = 'MiniFilesBufferCreate',
         callback = function(args)
-          vim.keymap.set('n', '<leader>p', files_set_cwd, { buffer = args.data.buf_id })
+          vim.keymap.set('n', 'cd', files_set_cwd, { buffer = args.data.buf_id })
         end,
       })
 
