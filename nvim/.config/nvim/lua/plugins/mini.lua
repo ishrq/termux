@@ -68,20 +68,37 @@ return {
         yank       = { suffix = '', options = {} },
       }
 
-      require('mini.files').setup{
-        mappings = {
-          close       = 'q',
-          go_in       = '<Right>',
-          go_in_plus  = '<CR>',
-          go_out      = '<Left>',
-          go_out_plus = '',
-          reset       = '<BS>',
-          show_help   = 'g?',
-          synchronize = '=',
-          trim_left   = '<',
-          trim_right  = '>',
-        },
-      }
+      if vim.fn.hostname() == "pop-os" then
+        require('mini.files').setup{
+          mappings = {
+            close       = 'q',
+            go_in       = '<Right>',
+            go_in_plus  = '<CR>',
+            go_out      = '<Left>',
+            go_out_plus = '',
+            reset       = '<BS>',
+            show_help   = 'g?',
+            synchronize = '=',
+            trim_left   = '<',
+            trim_right  = '>',
+          },
+        }
+      else
+        require('mini.files').setup{
+          mappings = {
+            close       = 'q',
+            go_in       = '<Right>',
+            go_in_plus  = '<CR>',
+            go_out      = '<Left>',
+            go_out_plus = '',
+            reset       = '<BS>',
+            show_help   = 'g?',
+            synchronize = '=',
+            trim_left   = '<',
+            trim_right  = '>',
+          },
+        }
+      end
 
       -- Show/hide dot files in file tree
       local show_dotfiles = true

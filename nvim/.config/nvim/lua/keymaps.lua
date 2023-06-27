@@ -73,7 +73,7 @@ map('n', '<Leader>e', vim.diagnostic.open_float)
 map('n', '<leader>q', vim.diagnostic.setloclist, default)
 
 -- mini.files
-map('n', '<Leader>ft', '<Cmd>lua MiniFiles.open()<CR>', {desc='Open file tree'})
+map('n', '<C-t>', '<Cmd>lua MiniFiles.open()<CR>', {desc='Open file tree'})
 
 -- mini.trailspace
 map('n', '<Leader>t', '<Cmd>lua MiniTrailspace.trim()<CR>', {desc='Trim trailing space'})
