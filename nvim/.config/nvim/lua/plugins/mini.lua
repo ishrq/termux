@@ -13,6 +13,10 @@ return {
       require('mini.statusline').setup()
       require('mini.trailspace').setup()
 
+      if vim.fn.hostname() == "pop-os" then
+        require('mini.fuzzy').setup()
+      end
+
       require('mini.ai').setup{
         custom_textobjects = {
           x = { '%f[%d]%d+' }, -- number
@@ -137,9 +141,14 @@ return {
         end,
       })
 
+      local hex_clr = {}
+      if vim.fn.hostname() ~= "pop-os" then
+        hex_clr = require('mini.hipatterns').gen_highlighter.hex_color()
+      end
+
       require('mini.hipatterns').setup{
         highlighters = {
-          hex_color = require('mini.hipatterns').gen_highlighter.hex_color(), --hex color
+          hex_color = hex_clr,
           url       = { pattern = 'http[s]?://[^>%]%)\'"]+', group = 'Url'},
 
           date = {

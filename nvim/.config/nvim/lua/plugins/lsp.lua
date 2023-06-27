@@ -96,6 +96,7 @@ return {
   -- https://github.com/hrsh7th/nvim-cmp
   {
     "hrsh7th/nvim-cmp",
+    lazy = true,
     event = "InsertEnter",
     dependencies = {
       { 'hrsh7th/cmp-nvim-lsp', event = 'VeryLazy' },
@@ -178,6 +179,7 @@ return {
   -- https://github.com/L3MON4D3/LuaSnip
   {
     'L3MON4D3/LuaSnip',
+    lazy = true,
     event = 'InsertEnter',
     opts = {
       history = true,
