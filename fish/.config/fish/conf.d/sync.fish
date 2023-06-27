@@ -35,8 +35,8 @@ function sync -d "Sync files between devices"
       set_color red; echo "Laptop is offline"
     else
       rsync -ahmuqz --log-file=$log --mkpath --partial ~/storage/shared/documents/computer/ laptop:~/
-      rsync -ahmuqz --log-file=$log --mkpath --partial ~/storage/dcim/screenshots/ laptop:~/Archive/screenshots/
-      rsync -ahmuqz --log-file=$log --mkpath --partial ~/storage/shared/backups/ laptop:~/Archive/Phone-Backups/Backup-$device/
+      rsync -ahmuqz --log-file=$log --mkpath --partial ~/storage/dcim/screenshots/ laptop:~/ARCHIVE/Screenshots/
+      rsync -ahmuqz --log-file=$log --mkpath --partial ~/storage/shared/backups/ laptop:~/ARCHIVE/Phone-Backups/Backup-$device/
       rsync -ahmuqz --log-file=$log --mkpath --partial ~/.local/share/newsboat/ laptop:~/.local/share/newsboat/
       rsync -ahmuqz --log-file=$log --mkpath --partial --exclude=config ~/.config/newsboat/ laptop:~/.config/newsboat/
       rsync -ahmuqz --log-file=$log --mkpath --partial ~/.config/fish/config.fish laptop:~/.config/fish/
