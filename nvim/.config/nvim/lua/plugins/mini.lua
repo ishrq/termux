@@ -36,19 +36,14 @@ return {
       -- More themes available at:
       -- https://github.com/wroyca/dotfiles/tree/main/home/dot_config/nvim/colors
       -- base16-framer
-      local b0
-      local b1
-      if vim.fn.hostname() == "pop-os" then
-        b0 = "#181818"
-        b1 = "#151515"
-      else
+      local b0 = "#181818"
+      if vim.fn.hostname() ~= "pop-os" then
         b0 = "#000000"
-        b1 = "#111111"
       end
         require('mini.base16').setup{
           palette = {
             base00 = b0,
-            base01 = b1,
+            base01 = "#151515",
             base02 = "#464646",
             base03 = "#747474",
             base04 = "#B9B9B9",
@@ -67,28 +62,25 @@ return {
         }
 
       require('mini.bracketed').setup{
-        buffer     = { suffix = 'b', options = {} },
-        comment    = { suffix = 'c', options = {} },
-        conflict   = { suffix = 'x', options = {} },
-        diagnostic = { suffix = 'e', options = {} },
-        file       = { suffix = '', options = {} },
-        indent     = { suffix = 'i', options = {} },
-        jump       = { suffix = 'j', options = {} },
-        location   = { suffix = 'l', options = {} },
-        oldfile    = { suffix = '', options = {} },
-        quickfix   = { suffix = 'q', options = {} },
-        treesitter = { suffix = '', options = {} },
-        undo       = { suffix = '', options = {} },
-        window     = { suffix = 'w', options = {} },
-        yank       = { suffix = '', options = {} },
+        buffer     = { suffix = 'b' },
+        comment    = { suffix = 'c' },
+        conflict   = { suffix = 'x' },
+        diagnostic = { suffix = 'e' },
+        file       = { suffix = '' },
+        indent     = { suffix = 'i' },
+        jump       = { suffix = 'j' },
+        location   = { suffix = 'l' },
+        oldfile    = { suffix = '' },
+        quickfix   = { suffix = 'q' },
+        treesitter = { suffix = '' },
+        undo       = { suffix = '' },
+        window     = { suffix = 'w' },
+        yank       = { suffix = '' },
       }
 
-      local go_in
-      local go_out
-      if vim.fn.hostname() == "pop-os" then
-        go_in = "<M-l>"
-        go_out = "<M-h>"
-      else
+      local go_in = "<M-l>"
+      local go_out = "<M-h>"
+      if vim.fn.hostname() ~= "pop-os" then
         go_in = "<Right>"
         go_out = "<Left>"
       end
@@ -174,9 +166,7 @@ return {
       }
 
       require('mini.splitjoin').setup{
-        mappings = {
-          toggle = '<Leader>x',
-        },
+        mappings = { toggle = '<Leader>x' },
       }
 
       require('mini.surround').setup{

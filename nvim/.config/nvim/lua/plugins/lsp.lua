@@ -2,6 +2,7 @@ return {
   -- https://github.com/neovim/nvim-lspconfig
   {
     'neovim/nvim-lspconfig',
+    cond = vim.fn.hostname() == 'pop-os',
     dependencies = {
       {
         'williamboman/mason.nvim',
@@ -9,7 +10,7 @@ return {
       },
        {
          'williamboman/mason-lspconfig.nvim',
-         cond = vim.fn.hostname() == 'pop-os'
+         cond = vim.fn.hostname() == 'pop-os',
        },
     },
     config = function()
@@ -209,8 +210,8 @@ return {
   -- https://github.com/jose-elias-alvarez/null-ls.nvim
   {
     'jose-elias-alvarez/null-ls.nvim',
+    lazy = true,
     event = { 'BufReadPre', 'BufNewFile' },
-    dependencies = 'nvim-lua/plenary.nvim',
     opts = function()
       local null_ls = require('null-ls')
       local code_actions = null_ls.builtins.code_actions
@@ -219,20 +220,18 @@ return {
       local hover = null_ls.builtins.hover
       local completion = null_ls.builtins.completion
 
-      return {
-        sources = {
-          completion.luasnip,
-          completion.spell,
-          diagnostics.todo_comments,
-          diagnostics.trail_space,
-          hover.dictionary,
+      sources = {
+        completion.luasnip,
+        completion.spell,
+        diagnostics.todo_comments,
+        diagnostics.trail_space,
+        hover.dictionary,
 
-          code_actions.gitsigns,
-          diagnostics.write_good,
+        code_actions.gitsigns,
+        diagnostics.write_good,
 
-          diagnostics.codespell,
-          formatting.codespell,
-        }
+        diagnostics.codespell,
+        formatting.codespell,
       }
     end,
   },
