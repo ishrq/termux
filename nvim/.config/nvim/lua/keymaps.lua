@@ -9,43 +9,19 @@ local allow_remap = { noremap=false, silent=true }
 local expr = { expr=true, silent=true }
 
 -- General
-map('', 'gV', '`[v`]', default, {desc='Select last modified'})
-map('i', '<C-z>', '<C-g>u<Esc>[S1z=`]a<C-g>u', {desc='Fix spelling'})
 map('n', '<Leader>=', ':set spell!<CR>', {desc='Toggle spell check'})
 map('n', '<Leader>8', ':execute "set cc=" . (&cc == "" ? "80" : "")<CR>', default, {desc='Toggle character column'})
 map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>', {desc='Split line'})
-map('x', 'g/', '<Esc>/\\%V', {desc='Search inside selection'})
-
--- Search selected text
-map('x', '*', [[y/\V<C-R>=escape(@", '/\')<CR><CR>]])
-map('x', '#', [[y?\V<C-R>=escape(@", '?\')<CR><CR>]])
+map({'n','x'}, 'gd', '"+d', {desc='Delete to system clipboard'})
 
 -- Better indenting
 map('v', '<', '<gv^')
 map('v', '>', '>gv^')
 
--- Register
-map({'n','x'}, 'gy', '"+y', {desc='Yank to system clipboard'})
-map({'n','x'}, 'gd', '"+d', {desc='Delete to system clipboard'})
-map('n', 'gp', '"+p', {desc='Paste from system clipboard'})
-map('x', 'gp', '"+P', {desc='Paste from system clipboard'})
-
 -- Command mode movement
 map('c', '<C-a>', '<Home>')
 map('c', '<C-n>', '<Down>')
 map('c', '<C-p>', '<Up>')
-map('c', '<M-h>', '<Left>')
-map('c', '<M-l>', '<Right>')
-
--- Insert mode movement
-map('i', '<M-h>', '<Left>', allow_remap)
-map('i', '<M-j>', '<Down>', allow_remap)
-map('i', '<M-k>', '<Up>', allow_remap)
-map('i', '<M-l>', '<Right>', allow_remap)
-
--- Move through line wrap
-map({'n','x'}, 'j', 'v:count == 0 ? "gj" : "j"', expr)
-map({'n','x'}, 'k', 'v:count == 0 ? "gk" : "k"', expr)
 
 -- Less cursor movement
 map('', 'J', 'mzJ`z')
@@ -71,6 +47,10 @@ map('n', '\\j', ":tab drop ~/ARCHIVE/Journal/journal.txt<CR>", {desc='Open journ
 -- Diagnostic keymaps
 map('n', '<Leader>e', vim.diagnostic.open_float)
 map('n', '<leader>q', vim.diagnostic.setloclist, default)
+
+-- mini.basic
+map({ 'n', 'i', 'x' }, '<C-s>', '<Nop>')
+map({ 'n' }, '<C-z>', '<Nop>')
 
 -- mini.files
 map('n', '<C-t>', '<Cmd>lua MiniFiles.open()<CR>', {desc='Open file tree'})

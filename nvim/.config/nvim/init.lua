@@ -1,11 +1,8 @@
 -- Author: IA
--- Machine: S8
-
 
 require('options')
 require('keymaps')
 require('autocmd')
-
 
 -- Install lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

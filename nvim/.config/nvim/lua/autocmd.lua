@@ -1,6 +1,8 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
+-- Some commands are set by mini.basic
+
 augroup('bufcheck', {clear=true})
 
 -- Reload config file on change
@@ -8,15 +10,6 @@ autocmd('BufWritePost', {
   group   = 'bufcheck',
   pattern = vim.env.MYVIMRC,
   command = 'silent source %'
-})
-
--- Highlight yank
-autocmd('TextYankPost', {
-  group    = 'bufcheck',
-  pattern  = '*',
-  callback = function()
-    vim.highlight.on_yank{timeout=300}
-  end
 })
 
 -- Resume previous position
@@ -40,13 +33,6 @@ autocmd('BufWritePre', {
 autocmd('BufEnter', {
   pattern = '*',
   command = 'set fo-=c fo-=r fo-=o'
-})
-
--- Start git messages in insert mode
-autocmd('FileType', {
-  group   = 'bufcheck',
-  pattern = { 'gitcommit', 'gitrebase', },
-  command = 'startinsert | 1'
 })
 
 -- No backup, swapfile, undofile for gopass

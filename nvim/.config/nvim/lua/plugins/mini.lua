@@ -40,26 +40,45 @@ return {
       if vim.fn.hostname() ~= "pop-os" then
         b0 = "#000000"
       end
-        require('mini.base16').setup{
-          palette = {
-            base00 = b0,
-            base01 = "#151515",
-            base02 = "#464646",
-            base03 = "#747474",
-            base04 = "#B9B9B9",
-            base05 = "#D0D0D0",
-            base06 = "#E8E8E8",
-            base07 = "#EEEEEE",
-            base08 = "#FD886B",
-            base09 = "#FC4769",
-            base0A = "#FECB6E",
-            base0B = "#32EEDC",
-            base0C = "#ACDDFD",
-            base0D = "#20BCFC",
-            base0E = "#BA8CFC",
-            base0F = "#B15F4A",
-          }
+      require('mini.base16').setup {
+        palette = {
+          base00 = b0,
+          base01 = "#151515",
+          base02 = "#464646",
+          base03 = "#747474",
+          base04 = "#B9B9B9",
+          base05 = "#D0D0D0",
+          base06 = "#E8E8E8",
+          base07 = "#EEEEEE",
+          base08 = "#FD886B",
+          base09 = "#FC4769",
+          base0A = "#FECB6E",
+          base0B = "#32EEDC",
+          base0C = "#ACDDFD",
+          base0D = "#20BCFC",
+          base0E = "#BA8CFC",
+          base0F = "#B15F4A",
         }
+      }
+
+      require('mini.basics').setup({
+        options = {
+          basic = true,
+          extra_ui = false,
+          win_borders = 'default',
+        },
+        mappings = {
+          basic = true,
+          option_toggle_prefix = '',
+          windows = false,
+          move_with_alt = true,
+        },
+        autocommands = {
+          basic = true,
+          relnum_in_visual_mode = false,
+        },
+        silent = false,
+      })
 
       require('mini.bracketed').setup{
         buffer     = { suffix = 'b' },
