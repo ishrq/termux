@@ -6,9 +6,6 @@ vim.o.shiftwidth  = 2
 -- character column
 vim.o.cc = 81
 
--- markdown-preview.nvim
-vim.keymap.set('n', '<C-p>', '<Plug>MarkdownPreviewToggle', {desc='Markdown Preview'})
-
 -- MiniAi textobjects
 local spec_pair = require('mini.ai').gen_spec.pair
 vim.b.miniai_config = {
