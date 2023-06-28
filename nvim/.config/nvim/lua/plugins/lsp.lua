@@ -220,18 +220,20 @@ return {
       local hover = null_ls.builtins.hover
       local completion = null_ls.builtins.completion
 
-      sources = {
-        completion.luasnip,
-        completion.spell,
-        diagnostics.todo_comments,
-        diagnostics.trail_space,
-        hover.dictionary,
+      return {
+        sources = {
+          completion.luasnip,
+          completion.spell,
+          diagnostics.todo_comments,
+          diagnostics.trail_space,
+          hover.dictionary,
 
-        code_actions.gitsigns,
-        diagnostics.write_good,
+          code_actions.gitsigns,
+          diagnostics.write_good,
 
-        diagnostics.codespell,
-        formatting.codespell,
+          diagnostics.codespell,
+          formatting.codespell,
+        }
       }
     end,
   },

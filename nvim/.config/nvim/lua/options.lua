@@ -4,12 +4,19 @@
 vim.o.colorcolumn    = ''
 vim.o.lcs            = "eol:↴"
 vim.o.list           = true
-vim.o.numberwidth    = 3
 vim.o.relativenumber = true
 vim.o.ruler          = true
 vim.o.scrolloff      = 4
 vim.o.sidescrolloff  = 4
 vim.o.syntax         = 'on'
+
+if vim.fn.hostname() == 'pop-os' then
+  vim.o.numberwidth    = 4
+  vim.o.scrolloff      = 8
+else
+  vim.o.numberwidth    = 3
+  vim.o.scrolloff      = 4
+end
 
 --FILETYPE
 vim.o.encoding       = 'utf-8'
