@@ -1,6 +1,7 @@
 return {
   -- https://github.com/lewis6991/gitsigns.nvim
   'lewis6991/gitsigns.nvim',
+  cond = vim.fn.hostname() == 'pop-os',
   event = 'VeryLazy',
   cmd = 'Gitsigns',
   opts = {

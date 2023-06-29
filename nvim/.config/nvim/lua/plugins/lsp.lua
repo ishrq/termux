@@ -3,45 +3,44 @@ return {
   {
     'neovim/nvim-lspconfig',
     cond = vim.fn.hostname() == 'pop-os',
-    dependencies = {
-      {
-        'williamboman/mason.nvim',
-        cmd = 'Mason',
-      },
-       {
-         'williamboman/mason-lspconfig.nvim',
-         cond = vim.fn.hostname() == 'pop-os',
-       },
-    },
     config = function()
-      if vim.fn.hostname() == 'pop-os' then
-        vim.api.nvim_create_autocmd('LspAttach', {
-          desc = 'LSP actions',
-          callback = function(event)
-            local map = function(keys, func, desc)
-              if desc then
-                desc = "LSP: " .. desc
-              end
-
-              vim.keymap.set('n', keys, func, { buffer = bufnr, remap = false, desc = desc })
+      vim.api.nvim_create_autocmd('LspAttach', {
+        desc = 'LSP actions',
+        callback = function(event)
+          local map = function(keys, func, desc)
+            if desc then
+              desc = "LSP: " .. desc
             end
 
-            map('K', vim.lsp.buf.hover, "Hover Documentation")
-            map('gd', vim.lsp.buf.definition, "Goto Definition")
-            map('gD', vim.lsp.buf.declaration, "Goto Declaration")
-            map('<leader>d', vim.lsp.buf.type_definition, "Goto Type Definition")
-            map('<C-k>', vim.lsp.buf.signature_help, "Signature Documentation")
-            map('<C-f>', function() vim.lsp.buf.format { async = true } end, "Format")
-            map('<leader>ca', vim.lsp.buf.code_action, "Code Action")
-            map('<leader>gi', vim.lsp.buf.implementation, "Goto Implementation")
-            map('<leader>gr', vim.lsp.buf.references, "Goto References")
-            map('<leader>rn', vim.lsp.buf.rename, "Rename")
-            map('<leader>wa', vim.lsp.buf.add_workspace_folder, "Workspace Add Folder")
-            map('<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, "Workspace List Folder")
-            map('<leader>wr', vim.lsp.buf.remove_workspace_folder, "Workspace Remove Folder")
+            vim.keymap.set('n', keys, func, { buffer = bufnr, remap = false, desc = desc })
           end
-        })
-      end
+
+          map('K', vim.lsp.buf.hover, "Hover Documentation")
+          map('gd', vim.lsp.buf.definition, "Goto Definition")
+          map('gD', vim.lsp.buf.declaration, "Goto Declaration")
+          map('<leader>d', vim.lsp.buf.type_definition, "Goto Type Definition")
+          map('<C-k>', vim.lsp.buf.signature_help, "Signature Documentation")
+          map('<C-f>', function() vim.lsp.buf.format { async = true } end, "Format")
+          map('<leader>ca', vim.lsp.buf.code_action, "Code Action")
+          map('<leader>gi', vim.lsp.buf.implementation, "Goto Implementation")
+          map('<leader>gr', vim.lsp.buf.references, "Goto References")
+          map('<leader>rn', vim.lsp.buf.rename, "Rename")
+          map('<leader>wa', vim.lsp.buf.add_workspace_folder, "Workspace Add Folder")
+          map('<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, "Workspace List Folder")
+          map('<leader>wr', vim.lsp.buf.remove_workspace_folder, "Workspace Remove Folder")
+        end
+      })
+    end
+  },
+  {
+    'williamboman/mason.nvim',
+    cond = vim.fn.hostname() == 'pop-os',
+    cmd = 'Mason',
+    dependencies = {
+      'williamboman/mason-lspconfig.nvim',
+      -- cond = vim.fn.hostname() == 'pop-os',
+    },
+    config = function()
 
       require('mason').setup()
 
@@ -210,6 +209,7 @@ return {
   -- https://github.com/jose-elias-alvarez/null-ls.nvim
   {
     'jose-elias-alvarez/null-ls.nvim',
+    cond = vim.fn.hostname() == 'pop-os',
     lazy = true,
     event = { 'BufReadPre', 'BufNewFile' },
     opts = function()
@@ -235,6 +235,6 @@ return {
           formatting.codespell,
         }
       }
-    end,
+    end
   },
 }
