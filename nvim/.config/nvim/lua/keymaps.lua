@@ -12,7 +12,6 @@ local expr = { expr=true, silent=true }
 map('n', '<Leader>=', ':set spell!<CR>', {desc='Toggle spell check'})
 map('n', '<Leader>8', ':execute "set cc=" . (&cc == "" ? "80" : "")<CR>', default, {desc='Toggle character column'})
 map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>', {desc='Split line'})
-map({'n','x'}, 'gd', '"+d', {desc='Delete to system clipboard'})
 
 -- Better indenting
 map('v', '<', '<gv^')
