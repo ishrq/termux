@@ -86,7 +86,7 @@ return {
         conflict   = { suffix = 'x' },
         diagnostic = { suffix = 'e' },
         file       = { suffix = '' },
-        indent     = { suffix = 'i' },
+        indent     = { suffix = '' },
         jump       = { suffix = 'j' },
         location   = { suffix = 'l' },
         oldfile    = { suffix = '' },
@@ -176,6 +176,10 @@ return {
       require('mini.indentscope').setup{
         draw = {
           animation = require('mini.indentscope').gen_animation.none()
+        },
+        mappings = {
+          goto_top = '',
+          goto_bottom = '',
         },
         symbol = "│",
       }
