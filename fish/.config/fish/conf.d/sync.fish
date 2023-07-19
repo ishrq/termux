@@ -24,7 +24,7 @@ function sync -d "Sync files between devices"
       set_color red; echo "$target is offline"
     else
       curl -S "$target_ip:1821/sshd"
-      rsync -ahmuqz --log-file=$log --mkpath --partial --exclude=TBR/Audiobook ~/storage/shared/Documents/ $target:~/storage/shared/Documents/
+      rsync -ahmuqz --log-file=$log --mkpath --partial ~/storage/shared/Documents/COMPUTER $target:~/storage/shared/Documents/COMPUTER
       rsync -ahmuqz --log-file=$log --mkpath --partial ~/.local/share/newsboat/ $target:~/.local/share/newsboat/
       rsync -ahmuqz --log-file=$log --mkpath --partial --exclude=config ~/.config/newsboat/ $target:~/.config/newsboat/
       set_color green; echo "Sync with $target successful"

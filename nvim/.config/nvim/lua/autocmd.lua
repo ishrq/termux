@@ -29,6 +29,13 @@ autocmd('BufWritePre', {
   command = ":%s/\\s\\+$//e"
 })
 
+-- Format JSON on write
+vim.api.nvim_create_autocmd('BufWritePre', {
+  group = vim.api.nvim_create_augroup("format-file", {}),
+  pattern = '*.json',
+  command = ":%!jq"
+})
+
 -- Don't auto comment new lines
 autocmd('BufEnter', {
   pattern = '*',

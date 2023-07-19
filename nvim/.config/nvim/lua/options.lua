@@ -53,6 +53,7 @@ vim.o.spell          = true
 vim.o.showmatch      = true
 vim.o.timeoutlen     = 1000  --key timeout
 vim.o.updatetime     = 50  --decrease update time
+vim.o.formatprg      = 'jq'
 
 --From: https://this-week-in-neovim.org/2023/Jan/9
 local ns = vim.api.nvim_create_namespace('toggle_hlsearch')

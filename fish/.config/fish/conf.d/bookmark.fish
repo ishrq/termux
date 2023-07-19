@@ -2,6 +2,7 @@
 # Desc: Bookmark script
 # ---
 
+# Dependencies: awk, fzf
 
 function bookmark
 

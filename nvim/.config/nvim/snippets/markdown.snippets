@@ -1,3 +1,17 @@
+extends html
+
+snippet blog Blog Post Meta
+    ---
+    title: $1
+    slug: $2
+    description: $3
+    tags: [$4]
+    date: $5
+    draft: true
+    image: $6
+    related: [$7]
+    ---
+
 snippet pn Permanent note
     ---
     Type: Permanent Note

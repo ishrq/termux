@@ -1,31 +1,28 @@
 # Author: IA
 # ---
 
-function cheat -d "Cheatsheet"
+# Dependencies: fzf, awk
 
+function cheat -d "Cheatsheet"
   if test -d "$HOME/RESOURCES"
-    set file ~/RESOURCES/Notes/Cheatsheet/*.txt
+    set file ~/RESOURCES/Lists/cheatsheet.txt
   else
-    set file ~/storage/shared/Documents/COMPUTER/RESOURCES/Notes/Cheatsheet/*.txt
+    set file ~/storage/shared/Documents/COMPUTER/RESOURCES/Lists/cheatsheet.txt
   end
 
-  set filter "echo -n {} | awk -F':' '{print \$NF }'"
-
-  set ctrl_y "execute($filter | fish_clipboard_copy)+abort"
-
   set selected (
-  awk '!/^($|#)/' $file | fzf \
+  awk '!/^($|#)/' $file | fzf -d ' # ' \
     --header "Cheatsheet" \
-    --preview="$filter" \
+    --preview="echo -n {1}" \
     --preview-window="up,25%:wrap:follow" \
     --query=(commandline) \
-    --bind="alt-e:$alt_e,ctrl-y:$ctrl_y" \
-    --no-bold
+    --bind="ctrl-y:execute(echo -n {1} | fish_clipboard_copy)+abort" \
+    --no-bold +m
   )
 
   # replace query with selected
   if test $status -eq 0
-    commandline -r -- $(echo $selected | awk -F': ' '{print $NF}')
+    commandline -r -- $(echo $selected)
   end
 
   commandline -f repaint

@@ -11,7 +11,7 @@ if test $USER="ia" && test $hostname="pop-os"
 
     # Abbreviations
     abbr -a a 'aerc'
-    abbr -a b 'vi ~/ARCHIVE/Journal/books.txt'
+    abbr -a b 'vi ~/RESOURCES/Lists/book-rec.txt'
     abbr -a bc 'bluetoothctl connect FC:E8:06:E9:03:B9'
     abbr -a bd 'bluetoothctl disconnect FC:E8:06:E9:03:B9'
 
@@ -31,7 +31,7 @@ if test $USER = "u0_a1692" || test $USER = "u0_a215"
     set -x FZF_DEFAULT_OPTS '--cycle --no-bold --layout=reverse --info=inline --margin=1 --border=thinblock --preview-window="up:80%:wrap" --height=70% --tabstop=4 --scrollbar="▏▕" --color="bg:#181616,fg:#c5c9c5,bg+:#87a987,fg+:#181616,hl:#c4746e,hl+:#ffffff,gutter:#181616,pointer:#8ea4a2,marker:#c4b28a,info:#949fb5,border:#181616" --bind="ctrl-y:execute(echo -n {} | fish_clipboard_copy)+abort" --bind="alt-e:execute(echo -n {} | xargs $EDITOR)+abort" --bind="ctrl-q:close,ctrl-p:toggle-preview,ctrl-a:beginning-of-line,ctrl-e:end-of-line,ctrl-l:clear-query"'
 
     # Abbreviations
-    abbr -a b 'vi ~/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/books.txt'
+    abbr -a b 'vi ~/storage/shared/Documents/COMPUTER/RESOURCES/Lists/book-rec.txt'
 
 end
 
