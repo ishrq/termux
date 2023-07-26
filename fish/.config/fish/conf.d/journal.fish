@@ -9,9 +9,9 @@ function journal
   set -f day $(date +"%F")
 
   if test -d "$HOME/ARCHIVE"
-    set file ~/ARCHIVE/Journal/journal.txt
+    set file ~/ARCHIVE/Journals/journal.txt
   else
-    set file ~/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/journal.txt
+    set file ~/storage/shared/Documents/COMPUTER/ARCHIVE/Journals/journal.txt
   end
 
   switch $argv

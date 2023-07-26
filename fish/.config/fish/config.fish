@@ -10,10 +10,10 @@ if test $USER="ia" && test $hostname="pop-os"
 
 
     # Abbreviations
-    abbr -a a 'aerc'
     abbr -a b 'vi ~/RESOURCES/Lists/book-rec.txt'
     abbr -a bc 'bluetoothctl connect FC:E8:06:E9:03:B9'
     abbr -a bd 'bluetoothctl disconnect FC:E8:06:E9:03:B9'
+    abbr -a t 'vi -c ":cd ~/ARCHIVE/Journals/Backlog/ " ~/ARCHIVE/Journals/Backlog/todo.txt'
 
 end
 
@@ -32,6 +32,7 @@ if test $USER = "u0_a1692" || test $USER = "u0_a215"
 
     # Abbreviations
     abbr -a b 'vi ~/storage/shared/Documents/COMPUTER/RESOURCES/Lists/book-rec.txt'
+    abbr -a t 'vi -c ":cd ~/storage/shared/Documents/COMPUTER/ARCHIVE/Journals/Backlog/ " ~/storage/shared/Documents/COMPUTER/ARCHIVE/Journals/Backlog/todo.txt'
 
 end
 

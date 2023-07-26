@@ -8,11 +8,11 @@ function ledger
   set month $(date +"%Y-%m")
 
   if test -d "$HOME/ARCHIVE"
-    set dir ~/ARCHIVE/Ledger/
-    set file ~/ARCHIVE/Ledger/ledger-$month.txt
+    set dir ~/ARCHIVE/Journals/Ledger/
+    set file ~/ARCHIVE/Journals/Ledger/ledger-$month.txt
   else
-    set dir ~/storage/shared/Documents/COMPUTER/ARCHIVE/Ledger/
-    set file ~/storage/shared/Documents/COMPUTER/ARCHIVE/Ledger/ledger-$month.txt
+    set dir ~/storage/shared/Documents/COMPUTER/ARCHIVE/Journals/Ledger/
+    set file ~/storage/shared/Documents/COMPUTER/ARCHIVE/Journals/Ledger/ledger-$month.txt
   end
 
   if ! test -f $file

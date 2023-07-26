@@ -4,16 +4,18 @@
 
 function capture
   if test -d "$HOME/ARCHIVE"
-    set file ~/ARCHIVE/Journal/backlog.txt
+    set dir ~/ARCHIVE/Journals/Backlog/
+    set file ~/ARCHIVE/Journals/Backlog/capture.txt
   else
-    set file ~/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/backlog.txt
+    set dir ~/storage/shared/Documents/COMPUTER/ARCHIVE/Journals/Backlog/
+    set file ~/storage/shared/Documents/COMPUTER/ARCHIVE/Journals/Backlog/capture.txt
   end
 
   switch $argv
     case $argv
       echo $argv >> $file && echo "[Entry captured]"
     case ''
-      $EDITOR $file
+      $EDITOR -c ":cd $dir" $file
   end
 end
 
