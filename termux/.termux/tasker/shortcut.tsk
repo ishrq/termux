@@ -4,24 +4,20 @@
 switch $argv
     case "Article History"
         set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/RESOURCES/Bookmarks/archive-reads.txt
-    case "Backlog"
-        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/backlog.txt
+    case "Capture"
+        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journals/Backlog/capture.txt
     case "Bookmarks"
         set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/RESOURCES/Bookmarks/bookmark.txt
     case "Books"
-        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/books.txt
+        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/RESOURCES/Lists/book-rec.txt
     case "Ideas"
-        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/ideas.txt
-    case "Journal"
-        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/journal.txt
-    case "Planned Projects"
-        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/RESOURCES/Lists/planned-projects.txt
+        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journals/Backlog/ideas.txt
     case "Readlater"
         set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/RESOURCES/Bookmarks/readlater.txt
     case "Watchlist"
-        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journal/watchlist.txt
+        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journals/watchlist.txt
     case "Workout Note"
-        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Workouts/workout-note.txt
+        set -f file /data/data/com.termux/files/home/storage/shared/Documents/COMPUTER/ARCHIVE/Journals/Workouts/workout-note.txt
 end
 
 nvim $file
