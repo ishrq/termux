@@ -30,7 +30,7 @@ function bookmark
   set ctrl_r "reload(awk '!/^(\$|#)/' $rl_file)+change-prompt(Readlater> )+change-preview-window(hidden|)+unbind(change,ctrl-r)+rebind(ctrl-z,ctrl-b,tab)"
   set ctrl_z "reload(awk '!/^(\$|#)/' $ar_file)+change-prompt(Archive> )+change-preview-window(up,1)+unbind(tab,ctrl-z)+rebind(change,ctrl-b,ctrl-r)"
 
-  set alt_z "execute-silent(test -n {q} && date +'%F  {q}' >> $ar_file || date +'%F  {-1}' >> $ar_file )+reload(awk '!/^(\$|#)/' $ar_file)"
+  set alt_z "execute-silent(test -n {q} && date +'%F {q}' >> $ar_file || echo '$(date +"%F {-1}")' >> $ar_file )+reload(awk '!/^(\$|#)/' $ar_file)"
   set alt_r "execute-silent(test -n {q} && echo {q} >> $rl_file || echo {-1} >> $rl_file )+reload(awk '!/^(\$|#)/' $rl_file)"
 
 
