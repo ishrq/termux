@@ -11,4 +11,4 @@ if test $USER = "u0_a1692" || test $USER = "u0_a215"
 else
     set file ~/RESOURCES/Bookmarks/archive-reads.txt
 end
-echo $(date +"%F  $argv[1]") >> $file
+echo $(date +"%F $argv[1]") >> $file
