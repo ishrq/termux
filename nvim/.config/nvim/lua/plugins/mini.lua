@@ -133,6 +133,12 @@ return {
         delay = { idle_stop = 10 }
       }
 
+      require('mini.operators').setup{
+        exchange = {
+          prefix = 'ge'
+        }
+      }
+
       require('mini.splitjoin').setup{
         mappings = { toggle = '<Leader>x' },
       }
