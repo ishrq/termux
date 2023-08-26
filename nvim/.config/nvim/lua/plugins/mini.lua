@@ -11,6 +11,7 @@ return {
       require('mini.move').setup()
       require('mini.pairs').setup()
       require('mini.statusline').setup()
+      require('mini.surround').setup()
       require('mini.trailspace').setup()
 
       if vim.fn.hostname() == "pop-os" then
@@ -143,19 +144,6 @@ return {
         mappings = { toggle = '<Leader>x' },
       }
 
-      require('mini.surround').setup{
-        mappings = {
-          add            = 'ys',
-          delete         = 'ds',
-          find           = '',
-          find_left      = '',
-          highlight      = '',
-          replace        = 'cs',
-          update_n_lines = '',
-          suffix_last    = 'l',
-          suffix_next    = 'n',
-        },
-      }
     end
   }
 }
