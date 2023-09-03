@@ -32,20 +32,21 @@ function bookmark
 
   set alt_z "execute-silent(test -n {q} && date +'%F {q}' >> $ar_file || echo '$(date +"%F {-1}")' >> $ar_file )+reload(awk '!/^(\$|#)/' $ar_file)"
   set alt_r "execute-silent(test -n {q} && echo {q} >> $rl_file || echo {-1} >> $rl_file )+reload(awk '!/^(\$|#)/' $rl_file)"
+  set alt_space "execute-silent(test -n {q} && echo {q} >> $bk_file || echo {-1} >> $bk_file )+reload(awk '!/^(\$|#)/' $bk_file)"
 
 
-  awk '!/^($|#)/' $rl_file | fzf\
+  awk '!/^($|#)/' $bk_file | fzf\
     -e --multi +s \
     --preview='echo {-1}'\
     --preview-window='hidden'\
     --query=(commandline) \
-    --prompt="Readlater> "\
+    --prompt="Bookmarks> "\
     --header 'Bookmarks | Readlater | Archive'\
     --bind="enter:$enter,ctrl-o:$ctrl_o"\
     --bind="alt-e:$alt_e"\
     --bind="ctrl-y:$ctrl_y"\
     --bind="ctrl-z:$ctrl_z,ctrl-b:$ctrl_b,ctrl-r:$ctrl_r"\
-    --bind="alt-z:$alt_z,alt-r:$alt_r"\
+    --bind="alt-space:$alt_space,alt-z:$alt_z,alt-r:$alt_r"\
 
   commandline -r -- $(echo "")
   commandline -f repaint
