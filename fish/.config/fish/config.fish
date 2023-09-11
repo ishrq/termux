@@ -74,7 +74,7 @@ abbr -a la 'lsd -a'
 abbr -a ld 'lsd -d'
 abbr -a ll 'lsd -l'
 abbr -a ls 'lsd'
-abbr -a tree 'lsd --tree'
+abbr -a tree 'lsd --tree --depth 2'
 
 abbr -a g 'git'
 abbr -a ga 'git add'
