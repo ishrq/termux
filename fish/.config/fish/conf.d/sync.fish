@@ -82,7 +82,7 @@ function ____laptop-to-phone
       set_color red; echo "$target is offline"
     else
       curl -S "$target_ip:1821/sshd"
-      rsync -ahmuqz --log-file=$log --mkpath --partial --exclude={Fonts,Fork-bombs,gitignore} ~/RESOURCES/ $target:~/storage/shared/Documents/COMPUTER/RESOURCES/
+      rsync -ahmuqz --log-file=$log --mkpath --partial --exclude={Design-Assets,Fonts,Fork-bombs,gitignore} ~/RESOURCES/ $target:~/storage/shared/Documents/COMPUTER/RESOURCES/
 
       rsync -ahmuqz --log-file=$log --mkpath --partial ~/ARCHIVE/{Client-Invoices,Journals,Logs,Receipts,References} $target:~/storage/shared/Documents/COMPUTER/ARCHIVE/
 
