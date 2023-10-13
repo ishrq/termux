@@ -3,7 +3,7 @@
 # ---
 
 function magic-enter-cmd -d "git status or ls on pressing enter in a dir"
-    set -l cmd exa --icons --group-directories-first
+    set -l cmd lsd
     set -l is_git_repository (fish -c "git rev-parse --is-inside-work-tree >&2" 2>| grep true) # variable indicating git.
     set -l repo_has_changes (git status -s --ignore-submodules=dirty)
 
