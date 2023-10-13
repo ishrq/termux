@@ -16,8 +16,6 @@ function sync -d "Sync files between devices"
       set -g device "s8"
     else if test $USER = "u0_a215" #M10
       set -g device "m10"
-    else if test $USER = "u0_a241" #A20
-      set -g device "a20"
     end
     ____phone-to-laptop
     ____phone-to-phone
@@ -29,13 +27,11 @@ function sync -d "Sync files between devices"
 end
 
 function ____phone-to-phone
-  for target in s8 m10 a20
+  for target in s8 m10
     if test $target = "s8"
       set target_ip "192.168.0.103"
     else if test $target = "m10"
       set target_ip "192.168.0.101"
-    else if test $target = "a20"
-      set target_ip "192.168.0.106"
     end
   if test $target != $device
     if ping -c 1 $target_ip | grep -q "Unreachable"
@@ -70,13 +66,11 @@ function ____phone-to-laptop
 end
 
 function ____laptop-to-phone
-  for target in s8 m10 a20
+  for target in s8 m10
     if test $target = "s8"
       set target_ip "192.168.0.103"
     else if test $target = "m10"
       set target_ip "192.168.0.101"
-    else if test $target = "a20"
-      set target_ip "192.168.0.106"
     end
     if ping -c 1 $target_ip | grep -q "Unreachable"
       set_color red; echo "$target is offline"
