@@ -78,7 +78,7 @@ function ____laptop-to-phone
       curl -S "$target_ip:1821/sshd"
       rsync -ahmuqz --log-file=$log --mkpath --partial --exclude={Design-Assets,Fonts,Fork-bombs,gitignore} ~/RESOURCES/ $target:~/storage/shared/Documents/COMPUTER/RESOURCES/
 
-      rsync -ahmuqz --log-file=$log --mkpath --partial ~/ARCHIVE/{Client-Invoices,Journals,Logs,Receipts,References} $target:~/storage/shared/Documents/COMPUTER/ARCHIVE/
+      rsync -ahmuqz --log-file=$log --mkpath --partial ~/ARCHIVE/{Client-Invoices,Finances,Journals,Logs,Receipts,References} $target:~/storage/shared/Documents/COMPUTER/ARCHIVE/
 
       rsync -ahmuqz --log-file=$log --mkpath --partial ~/.local/share/newsboat/ $target:~/.local/share/newsboat/
       rsync -ahmuqz --log-file=$log --mkpath --partial --exclude=config ~/.config/newsboat/ $target:~/.config/newsboat/
