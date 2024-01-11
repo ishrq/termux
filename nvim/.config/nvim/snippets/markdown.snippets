@@ -12,6 +12,22 @@ snippet blog Blog Post Meta
     related: [$7]
     ---
 
+snippet tdcmeta
+    ---
+    title: $1
+    slug: $2
+    author:$3
+    source:$4
+    via:$5
+    image: { src: ../../../public/post-images/$6, alt: "$7" }
+    description: $8
+    categories: [${9:News}]
+    tags: [$10]
+    date: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}
+    relatedPosts:$12
+    draft: false
+    ---
+
 snippet pn Permanent note
     ---
     Type: Permanent Note
