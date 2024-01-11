@@ -26,16 +26,18 @@ function bookmark
   set alt_e "execute(rg -l {-1} $dir | xargs $EDITOR)"
   set ctrl_y "execute(echo -n {-1} | fish_clipboard_copy)+abort"
 
-  set ctrl_b "reload(awk '!/^(\$|#)/' $bk_file)+change-prompt(Bookmarks> )+change-preview-window(up,1)+unbind(tab,ctrl-b)+rebind(change,ctrl-z,ctrl-r)"
-  set ctrl_r "reload(awk '!/^(\$|#)/' $rl_file)+change-prompt(Readlater> )+change-preview-window(hidden|)+unbind(change,ctrl-r)+rebind(ctrl-z,ctrl-b,tab)"
-  set ctrl_z "reload(awk '!/^(\$|#)/' $ar_file)+change-prompt(Archive> )+change-preview-window(up,1)+unbind(tab,ctrl-z)+rebind(change,ctrl-b,ctrl-r)"
+  set filter '!/^($|#)/'
+
+  set ctrl_b "reload(awk '$filter' $bk_file)+change-prompt(Bookmarks> )+change-preview-window(up,1)+unbind(tab,ctrl-b)+rebind(change,ctrl-z,ctrl-r)"
+  set ctrl_r "reload(awk '$filter' $rl_file)+change-prompt(Readlater> )+change-preview-window(hidden|)+unbind(change,ctrl-r)+rebind(ctrl-z,ctrl-b,tab)"
+  set ctrl_z "reload(awk '$filter' $ar_file)+change-prompt(Archive> )+change-preview-window(up,1)+unbind(tab,ctrl-z)+rebind(change,ctrl-b,ctrl-r)"
+
 
   set alt_z "execute-silent(test -n {q} && date +'%F {q}' >> $ar_file || echo '$(date +"%F {-1}")' >> $ar_file )+reload(awk '!/^(\$|#)/' $ar_file)"
   set alt_r "execute-silent(test -n {q} && echo {q} >> $rl_file || echo {-1} >> $rl_file )+reload(awk '!/^(\$|#)/' $rl_file)"
   set alt_space "execute-silent(test -n {q} && echo {q} >> $bk_file || echo {-1} >> $bk_file )+reload(awk '!/^(\$|#)/' $bk_file)"
 
-
-  awk '!/^($|#)/' $bk_file | fzf\
+  awk $filter $bk_file | fzf\
     -e --multi +s \
     --preview='echo {-1}'\
     --preview-window='hidden'\
@@ -47,8 +49,10 @@ function bookmark
     --bind="ctrl-y:$ctrl_y"\
     --bind="ctrl-z:$ctrl_z,ctrl-b:$ctrl_b,ctrl-r:$ctrl_r"\
     --bind="alt-space:$alt_space,alt-z:$alt_z,alt-r:$alt_r"\
-
-  commandline -r -- $(echo "")
+    # --bind='ctrl-t:transform:[[ ! {fzf:prompt} =~ Bookmarks ]] &&
+    #   echo "change-prompt(Bookmarks> )+reload(awk '$filter' '$bk_file')+change-preview-window(up,1)" ||
+    #   echo "change-prompt(Readlater> )+reload(awk '$filter' '$rl_file')+change-preview-window(hidden)" ||
+    #   echo "change-prompt(Archive> )+reload(awk '$filter' '$ar_file')+change-preview-window(up,1)"'ommandline -r -- $(echo "")
   commandline -f repaint
 end
 
