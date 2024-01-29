@@ -32,6 +32,12 @@ map('n', 'n', 'nzzzv')
 map('n', 'N', 'Nzzzv')
 map('n', '{', '{zz')
 map('n', '}', '}zz')
+map('n', 'zo', 'zozz')
+map('n', 'zr', 'zrzz')
+map('n', 'zR', 'zRzz')
+map('n', 'zc', 'zczz')
+map('n', 'zm', 'zmzz')
+map('n', 'zM', 'zMzz')
 map('v', 'y', 'ygv<Esc>')
 
 -- Add undo break-points
