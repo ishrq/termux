@@ -22,6 +22,7 @@ function bookmark
 
   set enter "become($browser {-1})"
   set ctrl_o "execute-silent(open {-1} >/dev/null 2>&1 &)"
+  set ctrl_p "become($browser --private-window {-1})"
 
   set alt_e "execute(rg -l {-1} $dir | xargs $EDITOR)"
   set ctrl_y "execute(echo -n {-1} | fish_clipboard_copy)+abort"
@@ -44,7 +45,7 @@ function bookmark
     --query=(commandline) \
     --prompt="Bookmarks> "\
     --header 'Bookmarks | Readlater | Archive'\
-    --bind="enter:$enter,ctrl-o:$ctrl_o"\
+    --bind="enter:$enter,ctrl-o:$ctrl_o,ctrl-p:$ctrl_p"\
     --bind="alt-e:$alt_e"\
     --bind="ctrl-y:$ctrl_y"\
     --bind="ctrl-z:$ctrl_z,ctrl-b:$ctrl_b,ctrl-r:$ctrl_r"\
