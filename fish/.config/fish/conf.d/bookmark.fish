@@ -39,7 +39,7 @@ function bookmark
   set alt_space "execute-silent(test -n {q} && echo {q} >> $bk_file || echo {-1} >> $bk_file )+reload(awk '!/^(\$|#)/' $bk_file)"
 
   awk $filter $bk_file | fzf\
-    -e --multi +s \
+    -e -m +s \
     --preview='echo {-1}'\
     --preview-window='hidden'\
     --query=(commandline) \
@@ -49,11 +49,7 @@ function bookmark
     --bind="alt-e:$alt_e"\
     --bind="ctrl-y:$ctrl_y"\
     --bind="ctrl-z:$ctrl_z,ctrl-b:$ctrl_b,ctrl-r:$ctrl_r"\
-    --bind="alt-space:$alt_space,alt-z:$alt_z,alt-r:$alt_r"\
-    # --bind='ctrl-t:transform:[[ ! {fzf:prompt} =~ Bookmarks ]] &&
-    #   echo "change-prompt(Bookmarks> )+reload(awk '$filter' '$bk_file')+change-preview-window(up,1)" ||
-    #   echo "change-prompt(Readlater> )+reload(awk '$filter' '$rl_file')+change-preview-window(hidden)" ||
-    #   echo "change-prompt(Archive> )+reload(awk '$filter' '$ar_file')+change-preview-window(up,1)"'ommandline -r -- $(echo "")
+    --bind="alt-space:$alt_space,alt-z:$alt_z,alt-r:$alt_r"
   commandline -f repaint
 end
 
