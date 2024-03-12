@@ -1,0 +1,10 @@
+snippet tdcissue
+    {
+      "issue": $1,
+      "title": "${CURRENT_MONTH_NAME}, ${CURRENT_YEAR}",
+      "date": "${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "cover": {
+        "src": "../../../public/$2",
+        "alt": "$3"
+      }
+    }

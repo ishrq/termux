@@ -2,7 +2,7 @@
 # Desc: Bookmark script
 # ---
 
-# Dependencies: awk, fzf
+# Dependencies: fzf
 
 function bookmark
 
@@ -27,18 +27,16 @@ function bookmark
   set alt_e "execute(rg -l {-1} $dir | xargs $EDITOR)"
   set ctrl_y "execute(echo -n {-1} | fish_clipboard_copy)+abort"
 
-  set filter '!/^($|#)/'
-
-  set ctrl_b "reload(awk '$filter' $bk_file)+change-prompt(Bookmarks> )+change-preview-window(up,1)+unbind(tab,ctrl-b)+rebind(change,ctrl-z,ctrl-r)"
-  set ctrl_r "reload(awk '$filter' $rl_file)+change-prompt(Readlater> )+change-preview-window(hidden|)+unbind(change,ctrl-r)+rebind(ctrl-z,ctrl-b,tab)"
-  set ctrl_z "reload(awk '$filter' $ar_file)+change-prompt(Archive> )+change-preview-window(up,1)+unbind(tab,ctrl-z)+rebind(change,ctrl-b,ctrl-r)"
+  set ctrl_b "reload(cat $bk_file)+change-prompt(Bookmarks> )+change-preview-window(hidden)+unbind(tab,ctrl-b)+rebind(change,ctrl-z,ctrl-r)"
+  set ctrl_r "reload(cat $rl_file)+change-prompt(Readlater> )+change-preview-window(hidden|)+unbind(change,ctrl-r)+rebind(ctrl-z,ctrl-b,tab)"
+  set ctrl_z "reload(cat $ar_file)+change-prompt(Archive> )+change-preview-window(up,1)+unbind(tab,ctrl-z)+rebind(change,ctrl-b,ctrl-r)"
 
 
-  set alt_z "execute-silent(test -n {q} && date +'%F {q}' >> $ar_file || echo '$(date +"%F {-1}")' >> $ar_file )+reload(awk '!/^(\$|#)/' $ar_file)"
-  set alt_r "execute-silent(test -n {q} && echo {q} >> $rl_file || echo {-1} >> $rl_file )+reload(awk '!/^(\$|#)/' $rl_file)"
-  set alt_space "execute-silent(test -n {q} && echo {q} >> $bk_file || echo {-1} >> $bk_file )+reload(awk '!/^(\$|#)/' $bk_file)"
+  set alt_z "execute-silent(test -n {q} && date +'%F {q}' >> $ar_file || echo '$(date +"%F {-1}")' >> $ar_file )+reload(cat $ar_file)"
+  set alt_r "execute-silent(test -n {q} && echo {q} >> $rl_file || echo {-1} >> $rl_file )+reload(cat $rl_file)"
+  set alt_space "execute-silent(test -n {q} && echo {q} >> $bk_file || echo {-1} >> $bk_file )+reload(cat $bk_file)"
 
-  awk $filter $bk_file | fzf\
+  cat $bk_file | fzf\
     -e -m +s \
     --preview='echo {-1}'\
     --preview-window='hidden'\
