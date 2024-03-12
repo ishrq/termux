@@ -48,6 +48,7 @@ vim.o.autoread       = true
 vim.o.ch             = 1 --commandbar height
 vim.o.grepprg        = 'rg' --default grep
 vim.o.lazyredraw     = true
+vim.o.termguicolors  = true
 vim.o.ls             = 2 --statusbar height
 vim.o.spell          = false
 vim.o.showmatch      = true
