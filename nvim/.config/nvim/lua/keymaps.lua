@@ -12,6 +12,7 @@ local expr = { expr=true, silent=true }
 map('n', '<Leader>=', ':set spell!<CR>', {desc='Toggle spell check'})
 map('n', '<Leader>8', ':execute "set cc=" . (&cc == "" ? "80" : "")<CR>', default, {desc='Toggle character column'})
 map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>', {desc='Split line'})
+map('i', '<C-z>', '<C-g>u<Esc>[S1z=`]a<C-g>u', {desc='Fix spelling'})
 
 -- Better indenting
 map('v', '<', '<gv^')
@@ -66,7 +67,6 @@ end, {expr = true})
 
 -- mini.basic
 map({ 'n', 'i', 'x' }, '<C-s>', '<Nop>')
-map({ 'n' }, '<C-z>', '<Nop>')
 
 -- mini.files
 map('n', '<C-t>', '<Cmd>lua MiniFiles.open()<CR>', {desc='Open file tree'})
