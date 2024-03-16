@@ -11,7 +11,7 @@ function sync -d "Sync files between devices"
   end
 
   # phone
-  if test $USER = "u0_a1692" || test $USER = "u0_a215" || test $USER = "u0_a241"
+  if test $USER = "u0_a1692" || test $USER = "u0_a215"
     if test $USER = "u0_a1692" #S8
       set -g device "s8"
     else if test $USER = "u0_a215" #M10
