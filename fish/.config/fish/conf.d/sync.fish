@@ -76,9 +76,9 @@ function ____laptop-to-phone
       set_color red; echo "$target is offline"
     else
       curl -S "$target_ip:1821/sshd"
-      rsync -ahmuqz --log-file=$log --mkpath --partial --exclude={Design-Assets,Fonts,Fork-bombs,gitignore,Virtual-Images,SecLists} ~/RESOURCES/ $target:~/storage/shared/Documents/COMPUTER/RESOURCES/
+      rsync -ahmuqz --log-file=$log --mkpath --partial ~/RESOURCES/{Bookmarks,Culinary,House,IDs,Lists,Notes,Syllabus} $target:~/storage/shared/Documents/COMPUTER/RESOURCES/
 
-      rsync -ahmuqz --log-file=$log --mkpath --partial ~/ARCHIVE/{Client-Invoices,Finances,Journals,Logs,Receipts,References} $target:~/storage/shared/Documents/COMPUTER/ARCHIVE/
+      rsync -ahmuqz --log-file=$log --mkpath --partial ~/ARCHIVE/{Finances,Journals,Logs,Medical,Receipts,References,Resume} $target:~/storage/shared/Documents/COMPUTER/ARCHIVE/
 
       rsync -ahmuqz --log-file=$log --mkpath --partial ~/.local/share/newsboat/ $target:~/.local/share/newsboat/
       rsync -ahmuqz --log-file=$log --mkpath --partial --exclude=config ~/.config/newsboat/ $target:~/.config/newsboat/
