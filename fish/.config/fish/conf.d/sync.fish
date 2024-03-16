@@ -38,9 +38,9 @@ function ____phone-to-phone
       set_color red; echo "$target is offline"
     else
       curl -S "$target_ip:1821/sshd"
-      rsync -ahmuqz --log-file=$log --mkpath --partial ~/storage/shared/Documents/COMPUTER/ $target:~/storage/shared/Documents/COMPUTER/
-      rsync -ahmuqz --log-file=$log --mkpath --partial ~/.local/share/newsboat/ $target:~/.local/share/newsboat/
-      rsync -ahmuqz --log-file=$log --mkpath --partial --exclude=config ~/.config/newsboat/ $target:~/.config/newsboat/
+      for dir in ~/storage/shared/Documents/COMPUTER/ ~/.config/newsboat/ ~/.local/share/newsboat/
+        rsync -ahmuqz --log-file=$log --mkpath --partial $dir $target:$dir
+      end
       set_color green; echo "Sync with $target successful"
     end
   end
