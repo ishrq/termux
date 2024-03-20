@@ -31,7 +31,7 @@ function ____phone-to-phone
     if test $target = "s8"
       set target_ip "192.168.0.103"
     else if test $target = "m10"
-      set target_ip "192.168.0.108"
+      set target_ip "192.168.0.101"
     end
   if test $target != $device
     if ping -c 1 $target_ip | grep -q "Unreachable"
@@ -70,7 +70,7 @@ function ____laptop-to-phone
     if test $target = "s8"
       set target_ip "192.168.0.103"
     else if test $target = "m10"
-      set target_ip "192.168.0.108"
+      set target_ip "192.168.0.101"
     end
     if ping -c 1 $target_ip | grep -q "Unreachable"
       set_color red; echo "$target is offline"
