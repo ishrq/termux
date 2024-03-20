@@ -8,8 +8,10 @@ return {
       require('mini.align').setup()
       require('mini.comment').setup()
       require('mini.cursorword').setup()
+      require('mini.extra').setup()
       require('mini.move').setup()
       require('mini.pairs').setup()
+      require('mini.pick').setup()
       require('mini.statusline').setup()
       require('mini.surround').setup()
       require('mini.trailspace').setup()
@@ -18,23 +20,17 @@ return {
         require('mini.fuzzy').setup()
       end
 
+      local gen_ai_spec = require('mini.extra').gen_ai_spec
       require('mini.ai').setup{
         custom_textobjects = {
-          x = { '%f[%d]%d+' }, -- number
-
-          -- entire buffer
-          B = function()
-            local from = { line = 1, col = 1 }
-            local to = { line = vim.fn.line('$'), col = math.max(vim.fn.getline('$'):len(), 1) }
-            return { from = from, to = to }
-          end,
-
+          B = gen_ai_spec.buffer(),
+          D = gen_ai_spec.diagnostic(),
+          I = gen_ai_spec.indent(),
+          N = gen_ai_spec.number(),
         },
         n_lines = 500,
         silent = true,
       }
-
-      require('mini.hues').setup({ background = '#000000', foreground = '#c9c5cb', saturation = 'high' })
 
       require('mini.basics').setup({
         options = {
@@ -61,7 +57,7 @@ return {
         conflict   = { suffix = 'x' },
         diagnostic = { suffix = 'e' },
         file       = { suffix = '' },
-        indent     = { suffix = '' },
+        indent     = { suffix = 'i' },
         jump       = { suffix = 'j' },
         location   = { suffix = 'l' },
         oldfile    = { suffix = '' },
@@ -93,13 +89,15 @@ return {
         },
       }
 
+      require('mini.hues').setup({
+        background = '#000000',
+        foreground = '#c9c5cb',
+        saturation = 'high'
+      })
+
       require('mini.indentscope').setup{
         draw = {
           animation = require('mini.indentscope').gen_animation.none()
-        },
-        mappings = {
-          goto_top = '',
-          goto_bottom = '',
         },
         symbol = "│",
       }
