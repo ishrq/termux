@@ -11,8 +11,8 @@ function backup -d "Backup files"
   # tar -rvzf $target/private-files-$date.tar.gz ~/RESOURCES
   # echo "$date" >> $log
 
-  rsync -ahmuqz --log-file=$log --mkpath --partial --exclude={Audiobook,Ebook} ~/ARCHIVE/ $target/ARCHIVE/
-  rsync -ahmuqz --log-file=$log --mkpath --partial --exclude={Virtual-Images,SecLists} ~/RESOURCES $target
+  rsync -ahmuqz --log-file=$log --mkpath --partial ~/ARCHIVE/ $target/ARCHIVE/
+  rsync -ahmuqz --log-file=$log --mkpath --partial --exclude={Virtual-Images,SecLists,gitignore,fork-bomb} ~/RESOURCES $target
 
   set_color green; echo "Backup successful!"
 end
