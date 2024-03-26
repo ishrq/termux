@@ -105,3 +105,4 @@ abbr -a nv 'newsboat -u ~/.config/newsboat/urls-video -c ~/.local/share/newsboat
 abbr -a p 'gopass'
 abbr -a pc 'gopass -c'
 abbr -a po 'gopass otp'
+abbr -a pg 'passge.sh'
