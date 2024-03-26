@@ -56,6 +56,7 @@ function ____phone-to-laptop
     rsync -amuqz --log-file=$log --mkpath --partial ~/storage/shared/backups/ laptop:~/ARCHIVE/Phone-Backups/Backup-$device/
     rsync -amuqz --log-file=$log --mkpath --partial ~/.local/share/newsboat/ laptop:~/.local/share/newsboat/
     rsync -amuqz --log-file=$log --mkpath --partial --exclude=config ~/.config/newsboat/ laptop:~/.config/newsboat/
+    rsync -amuqz --log-file=$log --mkpath --partial ~/.scripts/ laptop:~/.scripts/
     rsync -amuqz --log-file=$log --mkpath --partial ~/.config/fish/config.fish laptop:~/.config/fish/
     rsync -amuqz --log-file=$log --mkpath --partial --exclude={autopair,fzf,sponge}.fish ~/.config/fish/conf.d/ laptop:~/.config/fish/conf.d/
     rsync -amuqz --log-file=$log --mkpath --partial ~/.config/nvim/snippets/ laptop:~/.config/nvim/snippets/
@@ -82,6 +83,7 @@ function ____laptop-to-phone
 
       rsync -amuqz --log-file=$log --mkpath --partial ~/.local/share/newsboat/ $target:~/.local/share/newsboat/
       rsync -amuqz --log-file=$log --mkpath --partial --exclude=config ~/.config/newsboat/ $target:~/.config/newsboat/
+      rsync -amuqz --log-file=$log --mkpath --partial ~/.scripts/ $target:~/.scripts/
       rsync -amuqz --log-file=$log --mkpath --partial ~/.config/fish/config.fish $target:~/.config/fish/
       rsync -amuqz --log-file=$log --mkpath --partial --exclude={autopair,fzf,sponge}.fish ~/.config/fish/conf.d/ $target:~/.config/fish/conf.d/
       rsync -amuqz --log-file=$log --mkpath --partial ~/.config/nvim/snippets/ $target:~/.config/nvim/snippets/
